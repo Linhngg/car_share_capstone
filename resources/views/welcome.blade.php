@@ -79,15 +79,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Car Share
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel.com/docs">Curtis</a>
+                    <a href="https://laracasts.com">Ronit</a>
+                    <a href="https://laravel-news.com">Khairi</a>
+                    <a href="https://forge.laravel.com">Linh</a>
                 </div>
             </div>
         </div>
