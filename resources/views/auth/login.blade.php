@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('assets')
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container">
@@ -64,6 +67,16 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" id="card1">
+                fndj
             </div>
         </div>
     </div>
