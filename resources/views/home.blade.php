@@ -64,9 +64,9 @@
                     infoWindow.open(map);
                 }
             </script>
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPWvU7gcEWfLVo5nFPBbM9AL3KfYHqTaU&callback=initMap">
-            </script>
+            {{--<script async defer--}}
+                    {{--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPWvU7gcEWfLVo5nFPBbM9AL3KfYHqTaU&callback=initMap">--}}
+            {{--</script>--}}
         </div>
     </div>
 </div>
