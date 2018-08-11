@@ -6,11 +6,48 @@
     text-align: center;
 }
 
-.btnLogin{
+.btn-dark{
     width: 100%;
     background: #1A1A1A;
     color:#ffffff;
 }
+.btn-dark:hover{
+    background: #3d3d3d;
+}
 .input-group-text{
     background-color: #ffffff;
+}
+
+.pic {
+    position: relative;
+    border-radius: 5px;
+    max-height: 100%;
+    max-width: 100%;
+}
+.card-img{
+    float: right;
+    top: -132px;
+    left:265px;
+
+
+}
+.card-img span{
+     top:-270px;
+    right:180px;
+    position: relative;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 20px;
+
+}
+.logo{
+    top: -360px;
+    left:80px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.card {
+   height: 400px;
+    width: auto;
 }
