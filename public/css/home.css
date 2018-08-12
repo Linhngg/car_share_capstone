@@ -18,6 +18,16 @@
     display: inline-block;
 
 }
-#text{
-    display:none;
+
+.dropdownSpan{
+    text-align: left !important;
+}
+.mapBox{
+    float: right;
+
+}
+.btn-dark{
+    width: 100%;
+    background: #1A1A1A;
+    color:#ffffff;
 }

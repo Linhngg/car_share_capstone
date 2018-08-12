@@ -169,7 +169,7 @@
                             </div>
 
                             <button type="submit" class="btn-dark form-control">
-                                {{ __('Submit') }}
+                                {{ __('REGISTER') }}
                             </button>
                             <label class=" col-form-label text-md-right">{{ __('Already have account?') }}</label>
                                         <a href="{{ route('login') }}">Login</a>
