@@ -21,7 +21,8 @@
                 {{--You are logged in!--}}
                 {{--</div>--}}
                 {{--</div>--}}
-                <div id="map"></div><script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+                <div id="map"></div>
+                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
                 <script>
                     //First implimentation of user location function
                     //Curtis Maunder
