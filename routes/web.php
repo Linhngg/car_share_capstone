@@ -13,8 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(\App\Http\Middleware\HttpsProtocol::class);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware(\App\Http\Middleware\HttpsProtocol::class);
