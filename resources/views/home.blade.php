@@ -7,8 +7,6 @@
 @endsection
 
 @section('content')
-    <br><br>
-
 
     <div class="container-fluid">
         <div class="row">

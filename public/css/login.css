@@ -32,7 +32,7 @@
 
 }
 .card-img span{
-     top:-270px;
+    top:-270px;
     right:180px;
     position: relative;
     color: #ffffff;
@@ -48,6 +48,6 @@
 }
 
 .card {
-   height: 400px;
+    height: 400px;
     width: auto;
 }
