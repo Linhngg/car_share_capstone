@@ -13,6 +13,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        if (env('APP_ENV') === 'production' || env('APP_ENV') === 'prod') {
+            $this->app['url']->forceScheme('https');
+        }
     }
     /**
      * Register any application services.
@@ -21,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (env('APP_ENV') === 'production' || env('APP_ENV') === 'prod') {
-            $this->app['url']->forceScheme('https');
-        }
+//        if (env('APP_ENV') === 'production' || env('APP_ENV') === 'prod') {
+//            $this->app['url']->forceScheme('https');
+//        }
 //        $this->app['url']->forceScheme('https');
     }
 }
