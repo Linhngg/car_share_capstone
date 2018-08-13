@@ -48,3 +48,8 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+.logo {
+    position: relative;
+    left: 15px;
+    top: 10px;
+}

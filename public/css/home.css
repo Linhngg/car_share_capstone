@@ -4,7 +4,24 @@
 }
 /* Optional: Makes the sample page fill the window. */
 /*html, body {*/
-    /*height: 100%;*/
-    /*margin: 0;*/
-    /*padding: 0;*/
+/*height: 100%;*/
+/*margin: 0;*/
+/*padding: 0;*/
 /*}*/
+
+#searchBtn{
+    border: none;
+    background-color: inherit;
+    padding: 14px;
+    font-size: 16px;
+
+}
+.mapBox{
+    float: right;
+
+}
+.btn-dark{
+    width: 100%;
+    background: #1A1A1A;
+    color:#ffffff;
+}
