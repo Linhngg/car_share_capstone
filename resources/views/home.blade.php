@@ -64,30 +64,29 @@
                                  </div>
                                 </div>
                         </div>
-                        <div class="form-control  border-white">
-                            <button type="submit" class="btn-dark form-control">
+                        <div class="form-control">
+
                                 {{ __('FIND CARS') }}
                                 <br>
-                                <table style="width:100%">
-                                    <h1>Avaliable Cars</h1>
+                                <table>
 
                                     <tr>
                                         <td>Car One</td>
-                                        <td> <img src="/public/images/c1.png"></td>
+                                        <td>  <img class="logo" src="{{url('/images/c1.png')}}" width="150" height="75"/> </td>
                                         <td>$6.85 per/hour</td>
                                     </tr>
                                     <tr>
                                         <td>Car Two</td>
-                                        <td> <img src="/public/images/c2.png"></td>
+                                        <td>  <img class="logo" src="{{url('/images/c2.png')}}" width="150" height="75"/> </td>
                                         <td>$5.85 per/hour</td>
                                     </tr>
                                     <tr>
                                         <td>Car Three</td>
-                                        <td> <img src="/public/images/c3.png"></td>
+                                        <td>  <img class="logo" src="{{url('/images/c3.png')}}" width="150" height="75"/> </td>
                                         <td>$4.85 per/hour</td>
                                     </tr>
                                 </table>
-                            </button>
+
                         </div>
                     </form>
                 </div>
