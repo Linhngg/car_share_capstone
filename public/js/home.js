@@ -39,3 +39,11 @@ function showMap(lat, lon) {
         title: 'User Location'
     });
 }
+function toggleResultBox() {
+    var rBox = document.getElementById("resultBox");
+    if (rBox.style.display === "none") {
+        rBox.style.display = "block";
+    } else {
+        rBox.style.display = "none";
+    }
+}
