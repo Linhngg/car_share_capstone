@@ -62,12 +62,17 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .logo{
+                width:33%;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+
             @if (Route::has('login'))
                 <div class="top-right links">
+
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
@@ -79,6 +84,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
+                    <img class="logo" src="{{url('/images/logo1.png')}}" alt="Image logo"/>
                     Car Share
                 </div>
 

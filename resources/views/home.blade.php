@@ -2,12 +2,98 @@
 
 @section('assets')
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card-header"><h3>{{'Find cars near you'}}</h3></div>
+                <div class="form-group">
+                    <form>
+                        <input id="location" type="text" placeholder="Enter City or Address" class="form-control" required autofocus>
+                        &nbsp; OR <a class="lead " href="{{ route("home") }}">Find Me</a><br>
+
+                        <div class="card">
+
+                                <input id="searchBtn" class="collapsed" type="button" value="Advanced search" data-toggle="collapse" data-target="#advSearchBox" aria-expanded="false"
+                                       aria-haspopup="false" aria-controls="advSearchBox">
+                                <div id="advSearchBox" class="form-control border-white" aria-expanded="false" aria-hidden="true">
+                                    <div class="btn-group dropright form-control border-white">
+                                        <button class="btn btn-secondary dropdown-toggle form-control " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="false"
+                                                aria-expanded="false">
+                                            <span class="text-md-left"> Number of seats </span>
+                                        </button>
+                                        <br>
+                                        <div class="form-row dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">2</a>
+                                            <a class="dropdown-item" href="#">5</a>
+                                            <a class="dropdown-item" href="#">8</a>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="btn-group dropright form-control border-white">
+                                        <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="false"
+                                                aria-expanded="false">
+                                            <span class="text-md-left"> Car type </span>
+                                        </button>
+                                        <div class="form-row dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Car 1 </a>
+                                            <a class="dropdown-item" href="#">Car 2 </a>
+                                            <a class="dropdown-item" href="#">Car 3 </a>
+                                            <a class="dropdown-item" href="#">Car 4 </a>
+                                            <a class="dropdown-item" href="#">Car 5 </a>
+                                        </div>
+                                    </div>
+                                  <div class="form-control border-white">
+                                        <input type="checkbox" id="checkboxChild" class="form-check-input" aria-label="Checkbox for Child seat" value="child seat">
+                                        <label class="form-check-label" for="checkboxChild">Child seat</label><br>
+                                        <input type="checkbox" class="form-check-input" id="checkboxNav" aria-label="Checkbox for Navigation system" value="navigation system">
+                                        <label class="form-check-label"  for="checkboxNav">Navigation system</label><br>
+                                        <input type="checkbox" class="form-check-input" id="checkboxBike" aria-label="Checkbox for Bike rack" value="bike rack">
+                                        <label class="form-check-label" for="checkboxBike">Bike rack</label><br>
+                                        <input type="checkbox" class="form-check-input" id="checkboxChair" aria-label="Checkbox for Wheelchair accessible" value="wheelchair accessible">
+                                        <label class="form-check-label" for="checkboxChair">Wheelchair accessible</label><br>
+                                        <input type="checkbox" class="form-check-input" id="checkboxCruise" aria-label="Checkbox for Cruise control" value="cruise control">
+                                        <label class="form-check-label" for="checkboxCruise">Cruise control</label><br>
+                                        <input type="checkbox" class="form-check-input" id="checkboxRack" aria-label="Checkbox for Roof rack" value="roof rack">
+                                        <label class="form-check-label" for="checkboxRack">Roof rack</label><br>
+                                 </div>
+                                </div>
+                        </div>
+                        <div class="form-control">
+
+                                {{ __('FIND CARS') }}
+                                <br>
+                                <table>
+
+                                    <tr>
+                                        <td>Car One</td>
+                                        <td>  <img class="logo" src="{{url('/images/c1.png')}}" width="150" height="75"/> </td>
+                                        <td>$6.85 per/hour</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Car Two</td>
+                                        <td>  <img class="logo" src="{{url('/images/c2.png')}}" width="150" height="75"/> </td>
+                                        <td>$5.85 per/hour</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Car Three</td>
+                                        <td>  <img class="logo" src="{{url('/images/c3.png')}}" width="150" height="75"/> </td>
+                                        <td>$4.85 per/hour</td>
+                                    </tr>
+                                </table>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-md-9 mapBox">
                 {{--<div class="card">--}}
                 {{--<div class="card-header">Dashboard</div>--}}
 
@@ -21,50 +107,8 @@
                 {{--You are logged in!--}}
                 {{--</div>--}}
                 {{--</div>--}}
+
                 <div id="map"></div>
-                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-                <script>
-                    //First implimentation of user location function
-                    //Curtis Maunder
-                    window.onload = function() {
-                        // Check to see if the browser supports the GeoLocation API.
-                        if (navigator.geolocation) {
-                            // Get the location
-                            navigator.geolocation.getCurrentPosition(function(position) {
-
-                                //Store and show users location
-                                //Google maps uses latitude and longitude
-                                var lat = position.coords.latitude;
-                                var lon = position.coords.longitude;
-
-                                showMap(lat, lon);
-                            });
-                        } else {
-                            //Inform the user they cannot use the "find me" feature
-                            document.getElementById('error').innerHTML = "Sorry. You are unable to use GeoLocation";
-                        }
-                    }
-                    // Show the user's position on a Google map.
-                    function showMap(lat, lon) {
-                        var userLocation = new google.maps.LatLng(lat, lon);
-
-                        // Map Options
-                        var mapOptions = {
-                            zoom: 8,
-                            center: userLocation,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-
-                        // Generate the map and add the marker
-                        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-                        var marker = new google.maps.Marker({
-                            position: userLocation,
-                            map: map,
-                            title: 'User Location'
-                        });
-                    }
-                </script>
             </div>
         </div>
     </div>

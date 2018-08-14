@@ -81,8 +81,9 @@
     {{--</div>--}}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-9">
                 <div class="card">
+                    <div class="formBox col-md-4">
                     <div class="card-head">{{ __('MEMBERS LOGIN') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
@@ -126,7 +127,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btnLogin form-control">
+                                <button type="submit" class="btn-dark form-control">
                                     {{ __('LOGIN') }}
                                 </button>
                             </div>
@@ -137,9 +138,14 @@
                             </div>
                         </form>
                     </div>
-
-
+                    </div>
+                    <div  class="card-img col-md-auto"><img class="pic" src="{{url('/images/car1.png')}}" alt="Image Car"/>
+                        <img class="logo" src="{{url('/images/logo.png')}}" alt="Image logo"/>
+                        <span> WELCOME</span>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </div>
