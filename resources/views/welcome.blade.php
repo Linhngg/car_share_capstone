@@ -46,7 +46,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 77px;
             }
 
             .links > a {
@@ -63,7 +63,7 @@
                 margin-bottom: 30px;
             }
             .logo{
-                width:33%;
+                width:35%;
             }
         </style>
     </head>
@@ -83,7 +83,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title">
                     <img class="logo" src="{{url('/images/logo1.png')}}" alt="Image logo"/>
                     Car Share
                 </div>

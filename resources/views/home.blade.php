@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <div class="card-header"><h3>{{'Find cars near you'}}</h3></div>
+                <div class="text-muted"><h3>{{'Find cars near you'}}</h3></div>
                 <div class="form-group">
                     <form>
                         <input id="location" type="text" placeholder="Enter City or Address" class="form-control" required autofocus>
@@ -64,30 +64,37 @@
                                  </div>
                                 </div>
                         </div>
-                        <div class="form-control">
-
+                        <div class="form-control  border-white">
+                            <button type="submit" onclick="toggleResultBox()" class="btn-dark form-control">
                                 {{ __('FIND CARS') }}
+                            </button>
+                        </div>
+                       <!--
+                        <div class="form-control " id="resultBox">
+                            <h3 class="text-muted">AVAILABLE CARS</h3>
                                 <br>
-                                <table>
+                                <tr>
 
                                     <tr>
                                         <td>Car One</td>
-                                        <td>  <img class="logo" src="{{url('/images/c1.png')}}" width="150" height="75"/> </td>
+                                        <td>  <img src="{{url('/images/c1.png')}}" width="150" height="75"/> </td>
                                         <td>$6.85 per/hour</td>
                                     </tr>
                                     <tr>
                                         <td>Car Two</td>
-                                        <td>  <img class="logo" src="{{url('/images/c2.png')}}" width="150" height="75"/> </td>
+                                        <td>  <img  src="{{url('/images/c2.png')}}" width="150" height="75"/> </td>
                                         <td>$5.85 per/hour</td>
                                     </tr>
                                     <tr>
-                                        <td>Car Three</td>
-                                        <td>  <img class="logo" src="{{url('/images/c3.png')}}" width="150" height="75"/> </td>
-                                        <td>$4.85 per/hour</td>
-                                    </tr>
-                                </table>
 
-                        </div>
+                                        <td> <img src="{{url('/images/c3.png')}}" width="150" height="75"/> </td>
+                                        <tr>Car Three</tr>
+                                        <tr>$4.85 per/hour</tr>
+                                </tr>
+                                </table>
+                                  </div>
+                    -->
+
                     </form>
                 </div>
             </div>
