@@ -79,69 +79,72 @@
             {{--</div>--}}
         {{--</div>--}}
     {{--</div>--}}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10 col-sm-12">
                 <div class="card">
-                    <div class="formBox col-md-4">
-                    <div class="card-head">{{ __('MEMBERS LOGIN') }}</div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                            @csrf
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                       <img src="{{url('/images/mail.png')}}" alt="Image Envelope"/>
-                                    </span>
+                    <div class="row">
+                        <div class="formBox col-md-4">
+                            <div class="card-head">{{ __('MEMBERS LOGIN') }}</div>
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                           <img src="{{url('/images/mail.png')}}" alt="Image Envelope"/>
+                                        </span>
+                                            </div>
+                                            <input id="email" type="email" placeholder="Email Address"
+                                                   class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                   name="email" required autofocus>
+
+                                            @if ($errors->has('email'))
+                                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <input id="email" type="email" placeholder="Email Address"
-                                           class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                           name="email" required autofocus>
 
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                           <img src="{{url('/images/closed-lock.png')}}" alt="Image password"/>
+                                        </span>
+                                            </div>
+                                            <input id="password" type="password" placeholder="Password "
+                                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                                   name="password" required>
 
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                       <img src="{{url('/images/closed-lock.png')}}" alt="Image password"/>
-                                    </span>
+                                            @if ($errors->has('password'))
+                                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <input id="password" type="password" placeholder="Password "
-                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                           name="password" required>
 
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-dark form-control">
+                                            {{ __('LOGIN') }}
+                                        </button>
+                                    </div>
+                                    <div class="form-group ">
+                                        <a href="{{ route('register') }}">Forgot Password</a>
+                                        &nbsp; &nbsp;
+                                        <a href="{{ route('register') }}">Register</a>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn-dark form-control">
-                                    {{ __('LOGIN') }}
-                                </button>
-                            </div>
-                            <div class="form-group ">
-                                <a href="{{ route('register') }}">Forgot Password</a>
-                                &nbsp; &nbsp;
-                                <a href="{{ route('register') }}">Register</a>
-                            </div>
-                        </form>
-                    </div>
-                    </div>
-                    <div  class="card-img col-md-auto"><img class="pic" src="{{url('/images/car1.png')}}" alt="Image Car"/>
-                        <img class="logo" src="{{url('/images/logo.png')}}" alt="Image logo"/>
-                        <span> WELCOME</span>
+                        </div>
+                        <div  class="card-img col-md-8">
+                            <img class="pic" src="{{url('/images/car1.png')}}" alt="Image Car"/>
+{{--                            <img class="logo" src="{{url('/images/logo.png')}}" alt="Image logo"/>--}}
+                            <span> WELCOME</span>
+                        </div>
                     </div>
                 </div>
 
