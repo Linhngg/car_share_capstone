@@ -2,6 +2,7 @@
 
 @section('assets')
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -89,7 +90,7 @@
         {{--</div>--}}
     {{--</div>--}}
 
-    <div class="container-fluid">
+  {{--  <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
@@ -103,9 +104,9 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                       <img src="{{url('/images/user.png')}}" alt="Image User"/>
-                                    </span>
+                                                <span class="input-group-text">
+                                                   <img src="{{url('/images/user.png')}}" alt="Image User"/>
+                                                </span>
                                             </div>
                                             <input id="name" type="text" placeholder="Name"
                                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -113,8 +114,8 @@
 
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                                  <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -180,11 +181,70 @@
                         </div>
                         <div  class="card-img col-md-8">
                             <img class="pic" src="{{url('/images/car1.png')}}" alt="Image Car"/>
-                            {{--                        <img class="logo" src="{{url('/images/logo.png')}}" alt="Image logo"/>--}}
+                            --}}{{--                        <img class="logo" src="{{url('/images/logo.png')}}" alt="Image logo"/>--}}{{--
                             <span> WELCOME</span>
                         </div>
                     </div>
             </div>
         </div>
+    </div>
+--}}
+    <div class="d-flex justify-content-center"> <img class="logo" src="{{url('/images/logo1.png')}}" alt="Image logo"/></div>
+    <div class="cont container-fluid">
+
+        <div class="form sign-in">
+            <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                @csrf
+                <h2>Time to feel like home,</h2>
+                <label>
+                    <span>Name</span>
+                    <input id="name" type="text" class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type ="email" class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" name="email" required autofocus>
+                    @if ($errors->has('Email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('regEmail') }}</strong>
+                        </span>
+                    @endif
+                </label>
+
+                <label>
+                    <span>Password</span>
+                    <input  type="password" class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('Password') ? ' is-invalid' : '' }}" name="password" required>
+                    @if ($errors->has('Password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('Password') }}</strong>
+                        </span>
+                    @endif
+                </label>
+                <label>
+                    <span>Confirm password</span>
+                    <input id="password-confirm" type="password" class="border-top-0 border-right-0 border-left-0 form-control form-text" name="password_confirmation" required>
+                </label>
+                <button type="submit" class="submit btn-dark">Sign Up</button>
+            </form>
+        </div>
+
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text  m--up">
+                    <h2>One of us?</h2>
+                    <p>If you already has an account, just sign in. We've missed you!</p>
+                </div>
+                <div class="img__btn BtnSign"  onclick="location.href='{{ route('login') }}';">
+                    <span class="m--up">Sign in</span>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection
