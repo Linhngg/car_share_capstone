@@ -48,7 +48,7 @@
                                             <a class="dropdown-item" href="#">Car 5 </a>
                                         </div>
                                     </div>
-                                  <div class="form-control border-white">
+                                  <div class="form-control border-white form-check">
                                         <input type="checkbox" id="checkboxChild" class="form-check-input" aria-label="Checkbox for Child seat" value="child seat">
                                         <label class="form-check-label" for="checkboxChild">Child seat</label><br>
                                         <input type="checkbox" class="form-check-input" id="checkboxNav" aria-label="Checkbox for Navigation system" value="navigation system">
@@ -69,31 +69,37 @@
                                 {{ __('FIND CARS') }}
                             </button>
                         </div>
-                       <!--
-                        <div class="form-control " id="resultBox">
+
+                    {{--    <div class="form-control " id="resultBox">
                             <h3 class="text-muted">AVAILABLE CARS</h3>
                                 <br>
-                                <tr>
+                            <table>
 
-                                    <tr>
-                                        <td>Car One</td>
-                                        <td>  <img src="{{url('/images/c1.png')}}" width="150" height="75"/> </td>
-                                        <td>$6.85 per/hour</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Car Two</td>
-                                        <td>  <img  src="{{url('/images/c2.png')}}" width="150" height="75"/> </td>
-                                        <td>$5.85 per/hour</td>
-                                    </tr>
-                                    <tr>
-
-                                        <td> <img src="{{url('/images/c3.png')}}" width="150" height="75"/> </td>
-                                        <tr>Car Three</tr>
-                                        <tr>$4.85 per/hour</tr>
+                                 <tr>
+                                    <td  rowspan="2">  <img src="{{url('/images/c1.png')}}" width="190" height="100"/></td>
+                                    <td >Car One</td>
                                 </tr>
-                                </table>
-                                  </div>
-                    -->
+                                <tr>
+                                    <td >$6.85 per/hour </td>
+                                </tr>
+
+                                <tr>
+                                    <td  rowspan="2">  <img src="{{url('/images/c2.png')}}" width="190" height="100"/></td>
+                                    <td >Car One</td>
+                                </tr>
+                                <tr>
+                                    <td >$6.85 per/hour </td>
+                                </tr>
+                                <tr>
+                                    <td  rowspan="2">  <img src="{{url('/images/c3.png')}}" width="190" height="100"/></td>
+                                    <td >Car One</td>
+                                </tr>
+                                <tr>
+                                    <td >$6.85 per/hour </td>
+                                </tr>
+
+                            </table>
+                        </div>--}}
 
                     </form>
                 </div>

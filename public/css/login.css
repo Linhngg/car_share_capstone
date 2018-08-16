@@ -7,7 +7,6 @@
 }
 
 .btn-dark{
-    width: 100%;
     background: #1A1A1A;
     color:#ffffff;
 }
@@ -42,10 +41,28 @@
     /*top: -360px;*/
     /*left:80px;*/
     /*position: relative;*/
+    margin-bottom: 30px;
     border-radius: 5px;
     opacity: 0.7;
 }
+.justify-content-center img {
+    max-width: 250px;
+    max-height: 150px;
+}
+@media only screen and (min-width: 40.063em) {
+    .justify-content-center img {
+        max-width: 400px;
+        max-height: 100px;
+    }
+}
 
+@media only screen and (min-width: 64.063em) {
+
+    .justify-content-center img {
+        max-width: 400px;
+        max-height: 100px;
+    }
+}
 .card {
     /*height: 400px;*/
     width: auto;
