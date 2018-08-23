@@ -3,6 +3,7 @@
 @section('assets')
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('js/simdata.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/carsim.js') }}"></script>
 @endsection
 
