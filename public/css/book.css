@@ -1,0 +1,36 @@
+#inputBox{
+padding-top: 10px;
+
+}
+#outerInputBox{
+    padding-left: 35px;
+}
+.img-thumbnail{
+    width: 34px;
+    height: 35px;
+
+}
+.infoCar{
+margin-bottom: 2px;
+}
+#bookBtn{
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.mapouter{
+    text-align:right;
+    height:auto;
+    width:auto;
+}
+.gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    height:auto;
+    width:auto;
+    margin-top: 10px;
+    }
+.gmap_canvas iframe{
+    width:400px;
+    height: 280px;
+
+}
