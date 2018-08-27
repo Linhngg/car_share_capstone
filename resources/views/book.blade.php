@@ -8,10 +8,14 @@
 
 @section('content')
 
-    <div class="container-fluid justify-content-center" id="outerInputBox">
-        <h1 class="display-5 ">Book for Honda CR-V SUV{{-- <span class="text-right">Price $200/Day</span>--}}</h1>
-        <div class="row ">
-            <div class="col-md-7 border border-dark rounded " >
+    <div class="container-fluid " id="outerInputBox">
+        <div class="row">
+            <div class="col-md-7 col-sm-7"> <h1 class="display-5">Book for Honda CR-V SUV</h1></div>
+            <div class="priceDisplay col-md-3 col-sm-2" > <h2 class="display-5 text-center">Price $200/Day</h2> </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-7 border border-dark rounded" >
                 <div class="row" id="inputBox">
                 <div class="col-md-3 ">
                     <div class="form-group">
@@ -152,34 +156,33 @@
                             <p class="font-weight-bold">Family car</p>
                         </div>
                         <br>
-                        <button type="button" class="btn float-right btn-lg btn-dark " id="bookBtn">Continue</button>
+                        <button type="button" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Continue</button>
                     </div>
 
                 </div>
-            {{--Slide images--}}
+
         </div>
-
-            <div class="col-md-3">
-
+            {{--Slide images--}}
+            <div class="col-md-3" id="slide">
                 <div id="carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#indicator" data-slide-to="0" class="active"></li>
-                        <li data-target="#indicator" data-slide-to="1"></li>
-                        <li data-target="#indicator" data-slide-to="2"></li>
-                        <li data-target="#indicator" data-slide-to="3"></li>
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="3"></li>
                     </ol>
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active">
-                            <img class="d-block w-100 " src="{{url('/images/honda1.jpg')}}" alt="First slide">
+                            <img class="img-fluid d-block w-100 " src="{{url('/images/honda1.jpg')}}" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{url('/images/honda2.jpg')}}" alt="Second slide">
+                            <img class="img-fluid d-block w-100" src="{{url('/images/honda2.jpg')}}" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{url('/images/honda3.jpg')}}" alt="Third slide">
+                            <img class="img-fluid d-block w-100" src="{{url('/images/honda3.jpg')}}" alt="Third slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{url('/images/honda4.jpg')}}" alt="Fourth slide">
+                            <img class="img-fluid d-block w-100" src="{{url('/images/honda4.jpg')}}" alt="Fourth slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -191,16 +194,21 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                {{--map--}}
-                <div class="mapouter ">
+                {{--map  Delete as soon as we able to display car location on map --}}
+                <div class="mapouter">
                     <div class="gmap_canvas rounded">
-                        <iframe class="border-0" id="gmap_canvas" src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                ></iframe>
+                        <iframe class="border-0"  src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                     </div>
                 </div>
             </div>
 
+            {{--Small images clickable for carousel--}}
+            <div class="col-md-1" id="slideSmall">
+                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="0" src="{{url('/images/honda1.jpg')}}" alt="slide 1 small image">
+                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="1" src="{{url('/images/honda2.jpg')}}" alt="slide 2 small image">
+                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="2" src="{{url('/images/honda3.jpg')}}" alt="slide 3 small image">
+                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="3" src="{{url('/images/honda4.jpg')}}" alt="slide 4 small image">
+            </div>
         </div>
-
     </div>
 @endsection

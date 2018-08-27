@@ -1,6 +1,5 @@
 #inputBox{
-padding-top: 10px;
-
+margin-top: 10px;
 }
 #outerInputBox{
     padding-left: 35px;
@@ -18,19 +17,37 @@ margin-bottom: 2px;
     margin-bottom: 10px;
 }
 .mapouter{
-    text-align:right;
-    height:auto;
-    width:auto;
+    max-height:100%;
+    max-width:100%;
 }
 .gmap_canvas {
     overflow:hidden;
     background:none!important;
-    height:auto;
-    width:auto;
+    max-height:100%;
+    max-width:100%;
     margin-top: 10px;
     }
-.gmap_canvas iframe{
-    width:400px;
+.gmap_canvas iframe {
+    width: 380px;
     height: 280px;
+}
+#slide {
 
+    padding-right:0px;
+}
+#slideSmall{
+    padding-left: 2px;
+}
+#slideSmall img{
+    width: 75px;
+    max-height: 75px;
+    cursor: pointer;
+    margin-bottom: 2px;
+
+}
+.carousel-indicators,.input-group-prepend {
+    cursor: pointer;
+}
+.priceDisplay{
+    padding-left: 0px;
 }
