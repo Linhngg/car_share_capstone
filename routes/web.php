@@ -23,3 +23,5 @@ Route::get('/book/{id}', 'BookingController@book')->name('book');
 Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
 Route::post('/confirm', 'BookingController@confirm')->name('confirm-booking');
 Route::post('/return', 'BookingController@return')->name('return');
+Route::get('/maps', 'AdminController@maps')->name('maps');
+Route::get('/bookings', 'AdminController@bookings')->name('bookings');
