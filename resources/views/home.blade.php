@@ -20,9 +20,9 @@
 
                             <input id="searchBtn" class="collapsed" type="button" value="Advanced search" data-toggle="collapse" data-target="#advSearchBox" aria-expanded="false"
                                    aria-haspopup="false" aria-controls="advSearchBox">
-                            <div id="advSearchBox" class="form-control border-white" aria-expanded="false" aria-hidden="true">
+                            <div id="advSearchBox" class="collapse form-control border-white" aria-expanded="false" aria-hidden="true">
                                 <div class="btn-group dropright form-control border-white">
-                                    <button class="btn btn-secondary dropdown-toggle form-control " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="false"
+                                    <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="false"
                                             aria-expanded="false">
                                         <span class="text-md-left"> Number of seats </span>
                                     </button>

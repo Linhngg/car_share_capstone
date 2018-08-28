@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-                <div class="row border-bottom">
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="pickupLocation" class="font-weight-bold" >Pickup Location</label>
@@ -91,6 +91,7 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 {{--Bottom Row--}}
                 {{--first column--}}
                 <div class="row">
