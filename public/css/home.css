@@ -1,5 +1,5 @@
 #map {
-    height: 100vh;
+    height: 90vh;
     /*width: 100vw;*/
 }
 /* Optional: Makes the sample page fill the window. */
@@ -26,5 +26,14 @@
     color:#ffffff;
 }
 #resultBox{
-    display:none;
+    /*display:none;*/
+}
+
+.home {
+    /*padding: 0 !important;*/
+}
+
+.search-col {
+    height: 90vh;
+    /*padding: 15px !important;*/
 }
