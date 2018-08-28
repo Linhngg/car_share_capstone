@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-    <img class="logo" src="{{url('/images/logo2.png')}}" alt="Image logo"/>
+    <img class="img-fluid logo" src="{{url('/images/logo2.png')}}" alt="Image logo"/>
         {{--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
             {{--<div class="container">--}}
                 {{--<a class="navbar-brand" href="{{ url('/') }}">--}}
