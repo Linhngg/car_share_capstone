@@ -10,7 +10,7 @@
 
     <div class="container-fluid " id="outerInputBox">
         <div class="row">
-            <div class="col-md-7 col-sm-7"> <h1 class="display-5">Book for Honda CR-V SUV</h1></div>
+            <div class="col-md-7 col-sm-7"> <h1 class="display-5">Book for {{ $car->model }}</h1></div>
             <div class="priceDisplay col-md-3 col-sm-2" > <h2 class="display-5 text-center">Price $200/Day</h2> </div>
         </div>
 
@@ -157,7 +157,9 @@
                             <p class="font-weight-bold">Family car</p>
                         </div>
                         <br>
-                        <button type="button" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Continue</button>
+                        {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking']) !!}
+                        <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Confirm</button>
+                        {!! Form::close() !!}
                     </div>
 
                 </div>
