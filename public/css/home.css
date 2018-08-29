@@ -28,6 +28,9 @@
 }
 #resultBox{
     /*display:none;*/
+    height: 65vh;
+    overflow: scroll;
+    width: 100%;
 }
 
 .home {
@@ -35,6 +38,6 @@
 }
 
 .search-col {
-    height: 90vh;
+    height: 85vh;
     /*padding: 15px !important;*/
 }

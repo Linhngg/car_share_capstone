@@ -67,6 +67,7 @@
             Ready to Drive now!
         </div>
         {!! Form::open(['method' => 'POST', 'route' => 'return']) !!}
+        {{ Form::hidden('id', $car->id) }}
         <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Return</button>
         {!! Form::close() !!}
     </div>
