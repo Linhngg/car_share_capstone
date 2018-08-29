@@ -1,20 +1,10 @@
 //Cars
-function car(){
+console.log("simdata");
 
-};
-var car1 = {
-    lat: -37.816102,
-    lng: 144.952744,
-    move: true
-};
 var car2 = new google.maps.LatLng(-37.812951, 144.952162);
 var car3 = new google.maps.LatLng(-37.812951, 144.952162);
 var car4 = new google.maps.LatLng(-37.809191, 144.966418);
 var car5 = new google.maps.LatLng(-37.816357, 144.964255);
-
-var cars = [
-    car1, car2
-];
 
 //Path nodes
 //Path nodes are hard coded
