@@ -95,31 +95,15 @@
                                 <h3 class="text-muted">AVAILABLE CARS</h3>
                                 <br>
                                 <table>
-
-                                    <tr>
-                                        <td  rowspan="2"> <img src="{{url('/images/c1.png')}}" width="190" height="100"/></td>
-                                        <td ><a href="{{ route('book', 1) }}">Car one</a></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td >$6.85 per/hour </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td  rowspan="2">  <img src="{{url('/images/c2.png')}}" width="190" height="100"/></td>
-                                        <td >Car One</td>
-                                    </tr>
-                                    <tr>
-                                        <td >$6.85 per/hour </td>
-                                    </tr>
-                                    <tr>
-                                        <td  rowspan="2">  <img src="{{url('/images/c3.png')}}" width="190" height="100"/></td>
-                                        <td >Car One</td>
-                                    </tr>
-                                    <tr>
-                                        <td >$6.85 per/hour </td>
-                                    </tr>
-
+                                    @foreach ($cars as $car)
+                                        <tr>
+                                            <td  rowspan="2"> <img src="{{url('/images/c1.png')}}" width="190" height="100"/></td>
+                                            <td ><a href="{{ route('book', $car->id) }}">{{ $car->model }}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td >$6.85 per/hour </td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
