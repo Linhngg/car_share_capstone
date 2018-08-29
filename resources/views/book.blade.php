@@ -157,7 +157,8 @@
                             <p class="font-weight-bold">Family car</p>
                         </div>
                         <br>
-                        {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking']) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
+                        {{ Form::hidden('id', $car->id) }}
                         <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Confirm</button>
                         {!! Form::close() !!}
                     </div>

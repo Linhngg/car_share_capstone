@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Car;
+use App\Booking;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -14,16 +17,23 @@ class BookingController extends Controller
         return view('book')->with('car', $car);
     }
 
-    public function confirm()
+    public function confirm(Request $request)
     {
+        $car_id = $request->input('id');
+        $user = Auth::user();
+        $car = Car::find($car_id);
+        $car->book();
 
-        //Proceed booking
-        return view('driving');
+        $booking = new Booking;
+        $booking->make($car->id, $user->id);
+        return view('driving')->with('car', $car);
     }
 
-    public function return()
+    public function return(Request $request)
     {
-        //Proceed return
+        $id = $request->input('id');
+        $car = Car::find($id);
+        $car->return();
         return redirect('home');
     }
 }
