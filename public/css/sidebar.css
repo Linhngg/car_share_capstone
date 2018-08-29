@@ -1,6 +1,9 @@
+
+
 #sidebar {
     overflow: hidden;
     z-index: 3;
+    transition: all 0.3s;
 }
 #sidebar .list-group {
     min-width: 250px;
@@ -8,14 +11,15 @@
     background-color: #333;
     min-height:705px;
 }
-#sidebar i {
-    margin-right: 6px;
+#sidebar a span {
+    font-size: 16px;
+    padding-left: 10px;
+
 }
 
 #sidebar .list-group-item {
     border-radius: 0;
     background-color: inherit;
-    color: #ccc;
     border-left: 0;
     border-right: 0;
     border-color: #1A1A1A;
@@ -24,14 +28,24 @@
 
 /* highlight active menu */
 #sidebar .list-group-item:not(.collapsed) {
-    background-color: inherit;
+    background-color: rgba(12, 12, 12, 0.75);
+}
+#sidebar.active.collapse{
+
+    display:list-item;
 }
 
+
 /* closed state */
-#sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-    display: inline;
-    text-align: right;
+#sidebar.active .list-group .list-group-item[aria-expanded="false"]::after {
     padding-left: 5px;
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+}
+#sidebar.active.collapse{
+
+    display:list-item;
 }
 
 /* open state */
@@ -55,6 +69,8 @@
 
 
 
+
+
 @media (max-width:768px) {
     #sidebar {
         min-width: 35px;
@@ -64,6 +80,21 @@
         transition: all 0.25s ease;
         transform: translateX(-45px);
         position: fixed;
+    }
+    #sidebar #sidebarTitle h5 {
+        display: none;
+
+    }
+    #sidebar.active #sidebarTitle h4{
+        display: none;
+    }
+
+    #sidebar.active a span{
+        display: none;
+    }
+    #sidebar.active #sidebarTitle h5 {
+        display: block;
+        padding-left: 13px;
     }
 
     #sidebar.show {
@@ -87,16 +118,17 @@
         text-align: center;
         padding: .75rem .5rem;
     }
+    .collapse.show {
+        visibility: visible;
+    }
     /* hide caret icons of top level when collapsed */
     #sidebar .list-group > .list-group-item[aria-expanded="true"]::after,
     #sidebar .list-group > .list-group-item[aria-expanded="false"]::after {
-        display:none;
+        display:list-item;
     }
 }
 
-.collapse.show {
-    visibility: visible;
-}
+
 .collapsing {
     visibility: visible;
     height: 0;
@@ -108,8 +140,50 @@
 .collapsing.width {
     -webkit-transition-property: width, visibility;
     transition-property: width, visibility;
-    width: 0;
+    width: 80px;
     height: 100%;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
 }
+
+
+/*TRY*/
+
+/* Shrinking the sidebar from 250px to 80px and center aligining its content*/
+#sidebar.active {
+    min-width: 88px;
+    max-width: 88px;
+    text-align: left;
+}
+
+#sidebar #sidebarTitle svg ,#sidebar #sidebarTitleCollapse svg {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    float: left;
+    margin-left:4px;
+    margin-right:4px;
+}
+
+/* Toggling the sidebar Title content, hide the big heading [h4] and showing the small heading [h5] and vice versa*/
+#sidebar #sidebarTitleCollapse h5 , #sidebar #sidebarTitleCollapse svg,#sidebar.active a span{
+    display: none;
+}
+#sidebar.active #sidebarTitle h4,#sidebar.active #sidebarTitle svg{
+    display: none;
+}
+
+#sidebar.active #sidebarTitleCollapse h5 , #sidebar.active #sidebarTitleCollapse svg{
+    display: block;
+}
+#sidebar.active #sidebarTitleCollapse h5{
+    padding-left: 20px;
+}
+#sidebar.active div a {
+    margin-right:0;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+
