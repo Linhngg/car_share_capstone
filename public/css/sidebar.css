@@ -1,105 +1,87 @@
+
+
 #sidebar {
     overflow: hidden;
     z-index: 3;
+    transition: all 0.4s;
 }
 #sidebar .list-group {
     min-width: 250px;
     max-width: 250px;
     background-color: #333;
-    min-height:705px;
+    min-height:89vh;
+    max-height: 89vh;
 }
-#sidebar i {
-    margin-right: 6px;
+#sidebar a span {
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 #sidebar .list-group-item {
     border-radius: 0;
     background-color: inherit;
-    color: #ccc;
     border-left: 0;
     border-right: 0;
-    border-color: #1A1A1A;
     white-space: nowrap;
 }
 
-/* highlight active menu */
-#sidebar .list-group-item:not(.collapsed) {
-    background-color: inherit;
+#sidebar.active.collapse{
+    display:list-item;
 }
 
-/* closed state */
-#sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-    display: inline;
-    text-align: right;
-    padding-left: 5px;
-}
-
-/* open state */
-#sidebar .list-group .list-group-item[aria-expanded="true"] {
-    background-color:inherit;
-}
-#sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-    display: inline;
-    text-align: right;
-    padding-left: 5px;
-}
 #sidebarTitle{
     padding-top: 10px;
-
 }
-/* level 1*/
-#sidebar .list-group .collapse .list-group-item,
-#sidebar .list-group .collapsing .list-group-item  {
-    padding-left: 20px;
-}
-
-
 
 @media (max-width:768px) {
     #sidebar {
-        min-width: 35px;
-        max-width: 40px;
+        min-width: 70px;
+        max-width: 70px;
         overflow-y: auto;
         overflow-x: visible;
         transition: all 0.25s ease;
         transform: translateX(-45px);
-        position: fixed;
+        position: relative;
     }
 
+    #sidebar #sidebarTitle h4,#sidebar #sidebarTitle svg ,#sidebarCollapse svg,#sidebar.active a span,  #sidebar a span{
+        display: none;
+
+    }
+    #sidebar.active #sidebarTitle h4,#sidebar.active #sidebarTitle svg{
+        display: none;
+    }
+
+    #sidebar.active #sidebarTitleCollapse h5 {
+        display: inline-block;
+        padding-left: 13px;
+    }
+    #sidebar #sidebarTitle h5{
+        display: inline-block;
+        text-align: left;
+
+    }
     #sidebar.show {
         transform: translateX(0);
     }
 
-    #sidebar::-webkit-scrollbar{ width: 0px; }
+    #sidebar::-webkit-scrollbar{ width: 0; }
 
-    #sidebar, #sidebar .list-group {
-        min-width: 35px;
+    #sidebar, #sidebar .list-group{
+        min-width: 70px;
         overflow: visible;
     }
-    /* overlay sub levels on small screens */
-    #sidebar .list-group .collapse.show, #sidebar .list-group .collapsing {
-        position: relative;
-        z-index: 1;
-        width: 190px;
-        top: 0;
+
+    .collapse.show {
+        visibility: visible;
     }
-    #sidebar .list-group > .list-group-item {
-        text-align: center;
-        padding: .75rem .5rem;
-    }
-    /* hide caret icons of top level when collapsed */
-    #sidebar .list-group > .list-group-item[aria-expanded="true"]::after,
-    #sidebar .list-group > .list-group-item[aria-expanded="false"]::after {
-        display:none;
-    }
+
 }
 
-.collapse.show {
-    visibility: visible;
-}
+
 .collapsing {
     visibility: visible;
-    height: 0;
+    height: 100%;
     -webkit-transition-property: height, visibility;
     transition-property: height, visibility;
     -webkit-transition-timing-function: ease-out;
@@ -108,8 +90,38 @@
 .collapsing.width {
     -webkit-transition-property: width, visibility;
     transition-property: width, visibility;
-    width: 0;
+    width: 70px ;
     height: 100%;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
 }
+
+/* Shrinking the sidebar from 250px to 70px and aligining its content to left*/
+#sidebar.active {
+    min-width: 70px;
+    max-width: 70px;
+    text-align: left;
+}
+
+/* Toggling the sidebar Title content, hide the big heading [h4] and showing the small heading [h5] and vice versa*/
+#sidebar #sidebarTitleCollapse h5 , #sidebar #sidebarTitleCollapse svg,#sidebar.active a span{
+    display: none;
+}
+#sidebar.active #sidebarTitle h4,#sidebar.active #sidebarTitle svg{
+    display: none;
+}
+
+#sidebar.active #sidebarTitleCollapse h5 , #sidebar.active #sidebarTitleCollapse svg{
+    display: inline-block;
+}
+#sidebar.active #sidebarTitleCollapse h5{
+    padding-left: 7px;
+}
+#sidebar.active div a {
+    margin-right:0;
+    display: inline-block;
+    margin-bottom:5px;
+    margin-left:5px;
+}
+
+
