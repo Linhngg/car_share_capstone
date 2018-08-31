@@ -84,14 +84,14 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center" >
                             <div class="col-md-4">
                                 <button type="button" class="btn btn-dark" onclick="toggleResultBox()">Search</button>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div id="resultBox">
+                            <div id="resultBox" >
                                 <h3 class="text-muted">AVAILABLE CARS</h3>
                                 <br>
                                 <table>
