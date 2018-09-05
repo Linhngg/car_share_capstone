@@ -41,57 +41,13 @@
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">
-                    <tr>
-                        <th scope="row">Holden Commodore</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hyundai i30</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Volkswagen Polo</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Mazda 3NEO</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">BMW 335i M Sport</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Jeep Grand Cherokee</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Nissan X-Trail</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Toyota Kluger GX</th>
-                        <td>-</td>
-                        <td>Available</td>
-
-                    <tr>
-                        <th scope="row">Mercedes-Benz GLE350 d Auto 4MATIC</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Ford Falcon XR6</th>
-                        <td>-</td>
-                        <td>Available</td>
-                    </tr>
-
+                        @foreach ($cars as $car)
+                            <tr>
+                                <th scope="row">{{ $car->model  }}</th>
+                                <td>{{ $car->long }} - {{ $car->lat }}</td>
+                                <td>{{ $car->status }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </main>

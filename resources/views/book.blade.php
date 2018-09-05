@@ -198,10 +198,10 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                {{--map  Delete as soon as we able to display car location on map --}}
+
                 <div class="mapouter">
                     <div class="gmap_canvas rounded">
-                        <iframe class="border-0"  src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                        <iframe src=<?php echo "https://www.google.com/maps/embed/v1/place?key=AIzaSyDPWvU7gcEWfLVo5nFPBbM9AL3KfYHqTaU&q=".$car->lat.",".$car->long."&zoom=17&maptype=satellite"; ?> width="360" height="270" frameborder="0" style="border:0"></iframe>
                     </div>
                 </div>
             </div>
