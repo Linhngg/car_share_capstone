@@ -1,71 +1,50 @@
 //Cars
 console.log("simdata");
-
-var car2 = new google.maps.LatLng(-37.812951, 144.952162);
-var car3 = new google.maps.LatLng(-37.812951, 144.952162);
-var car4 = new google.maps.LatLng(-37.809191, 144.966418);
-var car5 = new google.maps.LatLng(-37.816357, 144.964255);
+var carMarkers = [];
 
 //Path nodes
 //Path nodes are hard coded
-var node1 = new google.maps.LatLng(-37.836711, 144.914824);
-var node2 = new google.maps.LatLng();
-var node3 = new google.maps.LatLng();
-var node4 = new google.maps.LatLng();
-var node5 = new google.maps.LatLng();
-var node6 = new google.maps.LatLng();
-var node7 = new google.maps.LatLng();
-var node8 = new google.maps.LatLng();
-var node9 = new google.maps.LatLng();
-var node10 = new google.maps.LatLng();
-var node11 = new google.maps.LatLng();
-var node12 = new google.maps.LatLng();
-var node13 = new google.maps.LatLng();
-var node14 = new google.maps.LatLng();
-var node15 = new google.maps.LatLng();
-var node16 = new google.maps.LatLng();
-var node17 = new google.maps.LatLng();
-var node18 = new google.maps.LatLng();
-var node19 = new google.maps.LatLng();
-var node20 = new google.maps.LatLng();
-var node21 = new google.maps.LatLng();
-var node22 = new google.maps.LatLng();
-var node23 = new google.maps.LatLng();
-var node24 = new google.maps.LatLng();
-var node25 = new google.maps.LatLng();
-var node26 = new google.maps.LatLng();
-var node27 = new google.maps.LatLng();
-var node28 = new google.maps.LatLng();
-var node29 = new google.maps.LatLng();
-var node30 = new google.maps.LatLng();
-var node31 = new google.maps.LatLng();
-var node32 = new google.maps.LatLng();
-var node33 = new google.maps.LatLng();
-var node34 = new google.maps.LatLng();
-var node35 = new google.maps.LatLng();
-var node36 = new google.maps.LatLng();
-var node37 = new google.maps.LatLng();
-var node38 = new google.maps.LatLng();
-var node39 = new google.maps.LatLng();
-var node40 = new google.maps.LatLng();
-var node41 = new google.maps.LatLng();
-var node42 = new google.maps.LatLng();
-var node43 = new google.maps.LatLng();
-var node44 = new google.maps.LatLng();
-var node45 = new google.maps.LatLng();
-var node46 = new google.maps.LatLng();
-var node47 = new google.maps.LatLng();
-var node48 = new google.maps.LatLng();
-var node49 = new google.maps.LatLng();
-var node50 = new google.maps.LatLng();
-var node51 = new google.maps.LatLng();
-
 var nodes = [
-    node1, node2, node3, node4, node5, node6, node7, node8, node9, node10,
-    node11, node12, node13, node14, node15, node16, node17, node18, node19, node20,
-    node21, node22, node23, node24, node25, node26, node27, node28, node29, node30,
-    node31, node32, node33, node34, node35, node36, node37, node38, node39, node40,
-    node41, node42, node43, node44, node45, node46, node47, node48, node49, node50
+    new google.maps.LatLng(-37.836711, 144.914824),
+    new google.maps.LatLng(-37.83234, 144.91224),
+    new google.maps.LatLng(-37.82259, 144.91129),
+    new google.maps.LatLng(-37.78204, 144.90889),
+    new google.maps.LatLng(-37.79133, 144.91868),
+    new google.maps.LatLng(-37.78441, 144.94957),
+    new google.maps.LatLng(-37.79628, 144.9609),
+    new google.maps.LatLng(-37.80998, 144.95532),
+    new google.maps.LatLng(-37.81168, 144.93696),
+    new google.maps.LatLng(-37.81107, 144.94563),
+    new google.maps.LatLng(-37.82348, 144.9579),
+    new google.maps.LatLng(-37.82036, 144.95833),
+    new google.maps.LatLng(-37.81615, 144.95223),
+    new google.maps.LatLng(-37.81554, 144.9391),
+    new google.maps.LatLng(-37.8192, 144.96082),
+    new google.maps.LatLng(-37.82158, 144.9652),
+    new google.maps.LatLng(-37.82246, 144.96871),
+    new google.maps.LatLng(-37.82666, 144.967),
+    new google.maps.LatLng(-37.83202, 144.95687),
+    new google.maps.LatLng(-37.83114, 144.9385),
+    new google.maps.LatLng(-37.843, 144.9615),
+    new google.maps.LatLng(-37.84808, 144.97653),
+    new google.maps.LatLng(-37.84551, 144.98159),
+    new google.maps.LatLng(-37.86733, 144.97644),
+    new google.maps.LatLng(-37.84612, 144.9924),
+    new google.maps.LatLng(-37.83256, 144.99575),
+    new google.maps.LatLng(-37.82442, 144.99258),
+    new google.maps.LatLng(-37.81697, 144.99292),
+    new google.maps.LatLng(-37.81236, 145.01146),
+    new google.maps.LatLng(-37.81453, 144.97893),
+    new google.maps.LatLng(-37.81181, 144.9676),
+    new google.maps.LatLng(-37.80937, 144.96511),
+    new google.maps.LatLng(-37.81141, 144.96202),
+    new google.maps.LatLng(-37.80469, 144.97155),
+    new google.maps.LatLng(-37.80323, 144.97153),
+    new google.maps.LatLng(-37.7933, 144.96734),
+    new google.maps.LatLng(-37.79791, 144.9676),
+    new google.maps.LatLng(-37.79866, 144.9779),
+    new google.maps.LatLng(-37.79717, 145.0112),
+    new google.maps.LatLng(-37.803, 144.90683)
 ];
 
 //End points

@@ -19,13 +19,21 @@
 ?>
 <script type = "text/javascript">
     //Cars object constructor
-    function car(id, make, lat, lng, status){
+    function car(id, make, lat, lng, status, dlat, dlng){
         this.id = id;
         this.make = make;
         this.lat = lat;
         this.lng = lng;
         this.status = status;
+        this.dlat = dlat;
+        this.dlng = dlng;
+        this.timeScale = 20;
+        this.path = new Array();
+        this.nodesVisited = 0
+        this.finished = false;
     };
+
+    var cars = [];
 </script>
 <?php
 $servername = "localhost";
@@ -60,6 +68,7 @@ if ($result->num_rows > 0) {
             $cstatus = false;
         ?>
         <script type= "text/javascript">
+            var i = <?php echo $i ?>;
             var cid = <?php echo $cid ?>;
             var cmake = "<?php echo $cmake ?>";
             var clat = <?php echo $clat ?>;
@@ -72,13 +81,10 @@ if ($result->num_rows > 0) {
             else
                 cstatus = true;
 
-            console.log(cstatus);
-
-            var car1 = new car(cid, cmake, clat, clng, cstatus);
-
-            console.log(car1.make);
+            cars[i] = new car(cid, cmake, clat, clng, cstatus, 0, 0);
         </script>
 <?php
+        $i++;
     }
 } else {
     echo "0 results";
