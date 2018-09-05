@@ -39,9 +39,10 @@
 
 
             {{--main content--}}
-            <main class="col-md-10 float-left ">
-                <a class="navbar-toggler" id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a> <br>
-              <h1>Maps</h1>
+            <main class="col-md-10 float-left">
+                <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
+              <h1>maps</h1>
+                <div style="width: 100%"><iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=RMIT%20melbourne+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Embed Google Map</a></iframe></div><br />
             </main>
         </div>
     </div>

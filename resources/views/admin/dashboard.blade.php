@@ -30,11 +30,74 @@
             </div>
             {{--main content--}}
             <main class="col-md-10 float-left">
-                <a class="navbar-toggler" id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a><br>
-                <h1>Dashboard</h1>
+                <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
+                <h1>dashboard</h1>
+                <table class="table table-hover rounded table-bordered ">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"> Car Make/Model</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="font-weight-bold">
+                    <tr>
+                        <th scope="row">Holden Commodore</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hyundai i30</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Volkswagen Polo</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mazda 3NEO</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">BMW 335i M Sport</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Jeep Grand Cherokee</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nissan X-Trail</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Toyota Kluger GX</th>
+                        <td>-</td>
+                        <td>Available</td>
+
+                    <tr>
+                        <th scope="row">Mercedes-Benz GLE350 d Auto 4MATIC</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ford Falcon XR6</th>
+                        <td>-</td>
+                        <td>Available</td>
+                    </tr>
+
+                    </tbody>
+                </table>
             </main>
         </div>
     </div>
+
 
 @endsection
 @section('assets')
