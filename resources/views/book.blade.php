@@ -206,7 +206,7 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                {{--map  Delete as soon as we able to display car location on map --}}
+
                 <div class="mapouter">
                     <div class="gmap_canvas rounded">
                         <iframe class="border-0 rounded"  src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
