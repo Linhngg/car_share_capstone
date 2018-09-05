@@ -2,7 +2,12 @@
 
 @section('assets')
     <link href="{{ asset('css/book.css') }}" rel="stylesheet">
-    {{--<script type="text/javascript" src="{{ asset('js/book.js') }}"></script>--}}
+    <script type="text/javascript" src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/wickedpicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/book.js') }}"></script>
+    <link href="{{ asset('https://use.fontawesome.com/releases/v5.3.1/css/all.css') }}"  rel="stylesheet">
+
+
 
 @endsection
 
@@ -17,57 +22,60 @@
         <div class="row justify-content-center">
             <div class="col-md-7 border border-dark rounded" >
                 <div class="row" id="inputBox">
-                <div class="col-md-3 ">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="pickupDate" class="font-weight-bold" >Pickup Date</label>
                         <div class="input-group">
-                            <input type='date' id="pickupDate"  class="form-control" />
+                            <input type="date" id="pickupDate" disabled class="font-weight-bold text-info form-control todayDate" />
                             <span class="input-group-prepend">
-                        <span class="input-group-text">
-                            <img src="{{url('/images/calendar.png')}}" alt="Image calendar"/>
-                        </span>
-                    </span>
+                             <span class="input-group-text rounded-right">
+                                <i class="far fa-calendar-alt fa-lg"></i>
+                             </span>
+                            </span>
                         </div>
+
                     </div>
                 </div>
             <div class="col-md-3">
-                <div class="form-group ">
+                <div class="form-group">
                     <label for="pickupTime" class="font-weight-bold" >Pickup Time</label>
                     <div class="input-group">
-                        <input type="time" id="pickupTime"  class="form-control" />
-                        <span class="input-group-prepend">
-                        <span class="input-group-text">
-                            <img src="{{url('/images/clock.png')}}" alt="Image calendar"/>
+                        <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
+                        <span class="input-group-prepend" onclick="timepickerFunc()">
+                            <span class="input-group-text rounded-right">
+                               <i class="far fa-clock fa-lg"></i>
+                            </span>
                         </span>
-                    </span>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="form-group ">
+                <div class="form-group">
                     <label for="returnDate" class="font-weight-bold">Return Date</label>
                     <div class="input-group">
-                        <input type="time" id="pickupTime"  class="form-control" />
-                        <span class="input-group-prepend">
-                        <span class="input-group-text">
-                            <img src="{{url('/images/calendar.png')}}" alt="Image calendar"/>
-                        </span>
-                    </span>
+                        <input type="date" id="returnDate" disabled class="font-weight-bold text-info form-control todayDate" />
+                            <span class="input-group-prepend">
+                             <span class="input-group-text rounded-right">
+                                <i class="far fa-calendar-alt fa-lg"></i>
+                             </span>
+                            </span>
                     </div>
+
                 </div>
 
             </div>
+                    {{--wickedpicker--}}
             <div class="col-md-3">
                 <div class="form-group ">
                     <label for="returnTime" class="font-weight-bold">Return Time</label>
                     <div class="input-group">
-                        <input type="time" id="returnTime"  class="form-control" />
-                        <span class="input-group-prepend">
-                        <span class="input-group-text">
-                            <img src="{{url('/images/clock.png')}}" alt="Image calendar"/>
+                        <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
+                        <span class="input-group-prepend" onclick="timepickerFunc()">
+                            <span class="input-group-text rounded-right">
+                               <i class="far fa-clock fa-lg"></i>
+                            </span>
                         </span>
-                    </span>
                     </div>
                 </div>
             </div>
@@ -76,18 +84,16 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="pickupLocation" class="font-weight-bold" >Pickup Location</label>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">  <p class="font-weight-bold text-info">Melbourne CBD </p></li>
-                                <li class="list-inline-item">  <p class="badge badge-dark">{{--<a href="{{ route('') }}">Change</a> --}}Change</p></li>
-                            </ul>
+                              <p class="font-weight-bold text-info">Secure Parking - QV Car Park</p>
+
                         </div>
 
                     </div>
 
                     <div class="col-md-3">
-                        <div class="form-group ">
+                        <div class="form-group">
                             <label for="returnLocation" class="font-weight-bold" >Return Location</label>
-                            <input type="text" id="returnLocation"  class="form-control" />
+                             <p class="font-weight-bold text-info">Secure Parking - QV Car Park</p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +104,7 @@
                     <div class="col-md-4"><br>
                         <h3 class="display-5">Car Features</h3>
                         <ul class="list-inline infoCar">
-                            <li class="list-inline-item"> <img class="img-thumbnail" src="{{url('/images/icons/gas.png')}}" alt="Image gas"/></li>
+                            <li class="list-inline-item text-center d-inline-block"> <img class="img-thumbnail " src="{{url('/images/icons/gas.png')}}" alt="Image gas pump"/></li>
                             <li class="list-inline-item">   <p class="font-weight-bold">Gas Vehicle </p></li>
                         </ul>
                         <ul class="list-inline infoCar">
@@ -121,7 +127,7 @@
                     <div class="col-md-4"><br>
                         <h3 class="display-5">Car Extras</h3>
                         <ul class="list-inline infoCar">
-                            <li class="list-inline-item"> <img class="img-thumbnail" src="{{url('/images/icons/bikeRack.png')}}" alt="Image gas"/></li>
+                            <li class="list-inline-item"><img class="img-thumbnail " src="{{url('/images/icons/bikeRack.png')}}" alt="Image bike rack"/></li>
                             <li class="list-inline-item">   <p class="font-weight-bold">Bike Rack </p></li>
                         </ul>
                         <ul class="list-inline infoCar">
@@ -163,6 +169,7 @@
                         {!! Form::close() !!}
                     </div>
 
+
                 </div>
 
         </div>
@@ -188,6 +195,7 @@
                         <div class="carousel-item">
                             <img class="img-fluid d-block w-100" src="{{url('/images/honda4.jpg')}}" alt="Fourth slide">
                         </div>
+
                     </div>
                     <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -201,7 +209,7 @@
                 {{--map  Delete as soon as we able to display car location on map --}}
                 <div class="mapouter">
                     <div class="gmap_canvas rounded">
-                        <iframe class="border-0"  src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                        <iframe class="border-0 rounded"  src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                     </div>
                 </div>
             </div>
@@ -215,4 +223,11 @@
             </div>
         </div>
     </div>
+{{--    <script type="text/javascript" src="{{ asset('https://code.jquery.com/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/wickedpicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/book.js') }}"></script>--}}
+@endsection
+@section('assets')
+
+
 @endsection

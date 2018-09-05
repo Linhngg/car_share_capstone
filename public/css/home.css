@@ -27,7 +27,7 @@
     color:#ffffff;
 }
 #resultBox{
-    display:none;
+    /*display:none;*/
     height: 65vh;
     overflow: scroll;
     width: 100%;
