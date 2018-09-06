@@ -1,5 +1,16 @@
 //Cars
-console.log("simdata");
+// Map Options
+var mapOptions = {
+    zoom: 16,
+    center: new google.maps.LatLng(-37.836711, 144.914824),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+// Generate the map and add the user marker
+var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
 var carMarkers = [];
 
 //Path nodes
@@ -49,3 +60,16 @@ var nodes = [
 
 //End points
 //Cars need to start and end at any of these designated points
+var carParks = [
+    new google.maps.LatLng(-37.808364, 144.966997),
+    new google.maps.LatLng(-37.810131, 144.966364),
+    new google.maps.LatLng(-37.811768, 144.970122),
+    new google.maps.LatLng(-37.810086, 144.970522),
+    new google.maps.LatLng(-37.811317, 144.963358),
+    new google.maps.LatLng(-37.811768, 144.970122),
+    new google.maps.LatLng(-37.810735, 144.969270),
+    new google.maps.LatLng(-37.812423, 144.970032),
+    new google.maps.LatLng(-37.815737, 144.960702),
+    new google.maps.LatLng(-37.813017, 144.958348),
+    new google.maps.LatLng(-37.818087, 144.964241)
+];
