@@ -1,0 +1,38 @@
+#inputBox{
+    margin-top: 10px;
+}
+#outerInputBox{
+    padding-left: 35px;
+}
+.img-thumbnail{
+    width: 34px;
+    height: 35px;
+}
+.infoCar{
+    margin-bottom: 2px;
+}
+/*#bookBtn{*/
+    /*margin-right: 20px;*/
+    /*margin-bottom: 10px;*/
+/*}*/
+
+.gmap_canvas iframe {
+    width: 100%;
+    height: 35vh;
+    padding-top: 10px;
+}
+
+#slideSmall img{
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/*.carousel-indicators,.input-group-prepend {*/
+    /*cursor: pointer;*/
+/*}*/
+/*.priceDisplay{*/
+    /*padding-left: 0px;*/
+/*}*/
+/*.todayDate{*/
+    /*padding-right: 0;*/
+/*}*/

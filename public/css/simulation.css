@@ -1,0 +1,10 @@
+#map {
+    width: 75%;
+    display: inline-block;
+}
+
+#control_panel {
+    display: inline-block;
+    overflow: auto;
+    margin: auto;
+}
