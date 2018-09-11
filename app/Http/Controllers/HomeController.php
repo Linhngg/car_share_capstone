@@ -22,9 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $cars = Car::all();
+        $request->session()->put('cars', json_encode($cars));
         return view('home')->with('cars', $cars);
     }
 }

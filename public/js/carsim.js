@@ -1,83 +1,103 @@
 //Javascript for car simulation
 //Curtis Maunder
 
-//Storing car locations
-var car1 = new google.maps.LatLng(-37.816102, 144.952744);
-var car2 = new google.maps.LatLng(-37.812951, 144.952162);
-var car3 = new google.maps.LatLng(-37.812951, 144.952162);
-var car4 = new google.maps.LatLng(-37.809191, 144.966418);
-var car5 = new google.maps.LatLng(-37.816357, 144.964255);
-
 //Get user's location (just for the sake of centering the map)
 window.onload = function() {
-    // Check to see if the browser supports the GeoLocation API.
-    if (navigator.geolocation) {
-        // Get the location
-        navigator.geolocation.getCurrentPosition(function(position) {
+    carPaths();
+    showMap();
+}
 
-            //Store and show users location
-            //Google maps uses latitude and longitude
-            var lat = position.coords.latitude;
-            var lon = position.coords.longitude;
-
-            showMap(lat, lon);
-        });
-    } else {
-        //Inform the user they cannot use the "find me" feature
-        document.getElementById('error').innerHTML = "Sorry. You are unable to use GeoLocation";
-    }
+// Initialize the cars paths and set them to their first node
+function carPaths(){
+    for(var i = 0; i < cars.length; i++){
+        for(var j = 0; j < 5; j++){
+            cars[i].path[j] = nodes[Math.floor((Math.random() * nodes.length))];
+        };
+        cars[i].path[5] = carParks[Math.floor((Math.random() * carParks.length))];
+        cars[i].dLat = (cars[i].path[0].lat() - cars[i].lat)/1000;
+        cars[i].dLng = (cars[i].path[0].lng() - cars[i].lng)/1000;
+    };
 }
 
 // Show the user's position on a Google map.
-function showMap(lat, lon) {
-    var userLocation = new google.maps.LatLng(lat, lon);
-
-    // Map Options
-    var mapOptions = {
-        zoom: 8,
-        center: userLocation,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+function showMap() {
+    for(var i = 0; i < cars.length; i++){
+        carMarkers[i] = new google.maps.Marker({
+            position: new google.maps.LatLng(cars[i].lat, cars[i].lng),
+            map: map,
+            title: cars[i].make,
+        });
     };
 
-    // Generate the map and add the user marker
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    animateCars();
+}
 
-    var userMarker = new google.maps.Marker({
-        position: userLocation,
-        map: map,
-        title: 'User Location'
-    });
-
-    //Create animatable symbol for the car
-    var carSymbol = {
-        path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-        scale: 8,
-        strokeColor: '#393'
-    };
-
-// Create a line to move the car along
-    var line = new google.maps.Polyline({
-        path: [car1, car2],
-        icons: [{
-            icon: carSymbol,
-            offset: '100%'
-        }],
-        map: map
-    });
-
-    animateCars(line);
-
+function nextNode(car, node){
+    cars[car].dLat = (cars[car].path[node].lat() - cars[car].lat)/1000;
+    cars[car].dLng = (cars[car].path[node].lng() - cars[car].lng)/1000;
 }
 
 // Use the DOM setInterval() function to change the offset of the symbol
 // at fixed intervals.
-function animateCars(line) {
-    var count = 0;
+function animateCars() {;
+    var dLng, dLat, range;
     window.setInterval(function() {
-        count = (count + 1) % 200;
+        for(var i = 0; i < cars.length; i++){
+            if(!cars[i].finished && cars[i].running){
+                cars[i].lat += cars[i].dLat;
+                cars[i].lng += cars[i].dLng;
 
-        var icons = line.get('icons');
-        icons[0].offset = (count / 2) + '%';
-        line.set('icons', icons);
-    }, 20);
+                carMarkers[i].setPosition(new google.maps.LatLng(cars[i].lat, cars[i].lng));
+
+                dLng = cars[i].lng - cars[i].path[cars[i].nodesVisited].lng();
+                dLat = cars[i].lat - cars[i].path[cars[i].nodesVisited].lat();
+                range = Math.sqrt((dLng * dLng) + (dLat * dLat)) * 1000;
+            }
+
+            if(range < 0.005 && !cars[i].finished){
+                cars[i].nodesVisited++;
+                if(cars[i].nodesVisited <= 5)
+                    nextNode(i, cars[i].nodesVisited);
+                else if(cars[i].nodesVisited > 5){
+                    cars[i].finished = true;
+                    cars[i].running = false;
+                }
+
+                console.log(cars[i].nodesVisited);
+            }
+        }
+    }, 0.005);
+}
+
+function viewNodes(index){
+    var tmpId = "viewNode" + index;
+    if(document.getElementById(tmpId).checked){
+        for(var i = 0; i < cars[index].path.length; i++) {
+            cars[index].pathMarkers[i] = new google.maps.Marker({
+                position: new google.maps.LatLng(cars[index].path[i].lat(), cars[index].path[i].lng()),
+                map: map,
+                icon: image,
+                title: "Car: " + index + ", Node: " + i,
+            });
+        }
+    }else{
+        for(var i = 0; i < cars[index].path.length; i++){
+            cars[index].pathMarkers[i].setMap(null);
+        }
+    }
+}
+
+function viewEnd(index){
+    var tmpId = "viewEnd" + index;
+    console.log(cars[index].pathMarkers[0]);
+    if(document.getElementById(tmpId).checked){
+        cars[index].pathMarkers[5] = new google.maps.Marker({
+            position: new google.maps.LatLng(cars[index].path[5].lat(), cars[index].path[5].lng()),
+            map: map,
+            icon: image,
+            title: "Car: " + index + ", End",
+        });
+    }else{
+        cars[index].pathMarkers[5].setMap(null);
+    }
 }

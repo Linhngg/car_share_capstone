@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Car;
 
 class Booking extends Model
 {
@@ -21,5 +20,13 @@ class Booking extends Model
         $this->created_at =  date("Y-m-d H:i:s");
         $this->updated_at =  date("Y-m-d H:i:s");
         $this->save();
+    }
+
+    function user() {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+    function car() {
+        return $this->belongsTo('App\Car', 'car_id');
     }
 }

@@ -43,32 +43,16 @@
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Linh</td>
-                        <td>Linh@email.com</td>
-                        <td>BMW aa</td>
-                        <td>30 August 2018 - 13:00</td>
-                        <td>31 August 2018 - 13:00</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Ronit</td>
-                        <td>Ronit@email.com</td>
-                        <td>Honda bb</td>
-                        <td>30 August 2018 - 13:00</td>
-                        <td>31 August 2018 - 13:00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Curtis</td>
-                        <td>Curtis@email.com</td>
-                        <td>Toyota cc</td>
-                        <td>30 August 2018 - 13:00</td>
-                        <td>31 August 2018 - 13:00</td>
-                    </tr>
-
+                        @foreach ($bookings as $booking)
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{ $booking->user->name }}</td>
+                                <td>{{ $booking->user->email }}</td>
+                                <td>{{ $booking->car->model }}</td>
+                                <td>{{ $booking->start }}</td>
+                                <td>{{ $booking->end }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

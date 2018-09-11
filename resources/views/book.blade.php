@@ -6,9 +6,6 @@
     <script type="text/javascript" src="{{ asset('js/wickedpicker.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/book.js') }}"></script>
     <link href="{{ asset('https://use.fontawesome.com/releases/v5.3.1/css/all.css') }}"  rel="stylesheet">
-
-
-
 @endsection
 
 @section('content')
@@ -174,52 +171,59 @@
 
         </div>
             {{--Slide images--}}
-            <div class="col-md-3" id="slide">
-                <div id="carousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel" data-slide-to="1"></li>
-                        <li data-target="#carousel" data-slide-to="2"></li>
-                        <li data-target="#carousel" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner rounded">
-                        <div class="carousel-item active">
-                            <img class="img-fluid d-block w-100 " src="{{url('/images/honda1.jpg')}}" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="img-fluid d-block w-100" src="{{url('/images/honda2.jpg')}}" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="img-fluid d-block w-100" src="{{url('/images/honda3.jpg')}}" alt="Third slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="img-fluid d-block w-100" src="{{url('/images/honda4.jpg')}}" alt="Fourth slide">
-                        </div>
+            <div class="col-md-5" id="slide">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="carousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel" data-slide-to="1"></li>
+                                <li data-target="#carousel" data-slide-to="2"></li>
+                                <li data-target="#carousel" data-slide-to="3"></li>
+                            </ol>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img class="img-fluid d-block w-100 " src="{{url('/images/honda1.jpg')}}" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda2.jpg')}}" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda3.jpg')}}" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda4.jpg')}}" alt="Fourth slide">
+                                </div>
 
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="col-md-2" id="slideSmall">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="0" src="{{url('/images/honda1.jpg')}}" alt="slide 1 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="1" src="{{url('/images/honda2.jpg')}}" alt="slide 2 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="2" src="{{url('/images/honda3.jpg')}}" alt="slide 3 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="3" src="{{url('/images/honda4.jpg')}}" alt="slide 4 small image">
+                    </div>
                 </div>
-                {{--map  Delete as soon as we able to display car location on map --}}
-                <div class="mapouter">
-                    <div class="gmap_canvas rounded">
-                        <iframe class="border-0 rounded"  src="https://maps.google.com/maps?q=melbourne%20cbd&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                <div class="row">
+                    <div class="mapouter col-md-12">
+                        <div class="gmap_canvas rounded">
+                            <iframe class="border-0 rounded"
+                                    src=<?php echo "https://www.google.com/maps/embed/v1/place?key=AIzaSyDPWvU7gcEWfLVo5nFPBbM9AL3KfYHqTaU&q=".$car->lat.",".$car->long."&zoom=17&maptype=satellite"; ?>
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {{--Small images clickable for carousel--}}
-            <div class="col-md-1" id="slideSmall">
-                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="0" src="{{url('/images/honda1.jpg')}}" alt="slide 1 small image">
-                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="1" src="{{url('/images/honda2.jpg')}}" alt="slide 2 small image">
-                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="2" src="{{url('/images/honda3.jpg')}}" alt="slide 3 small image">
-                <img class="img-fluid rounded" data-target="#carousel" data-slide-to="3" src="{{url('/images/honda4.jpg')}}" alt="slide 4 small image">
             </div>
         </div>
     </div>
