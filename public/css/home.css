@@ -41,3 +41,35 @@
     height: 85vh;
     /*padding: 15px !important;*/
 }
+
+
+.btnFind,.btnFind :hover{
+    background-color: #AF473C;
+    color: #ffffff;
+    margin-top: 8px;
+}
+.imgMarker{
+    width: 240px;
+    height: 190px;
+}
+.divFind{
+    color: #ffffff;
+    background-color: #626E60;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.form-check{
+    padding-left: 2rem;
+}
+.divFind .dropdown{
+  margin-bottom:5px;
+}
+
+
+.btn-adv,.btn-adv:hover{
+    /*color:#C06016;*/
+    color:#ffffff;
+}
+

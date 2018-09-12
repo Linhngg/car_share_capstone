@@ -82,11 +82,12 @@ function initMap() {
         let contentString = '<div id="content">'+
             // '<div id="siteNotice">'+
             // '</div>'+
+
             '<h5 id="firstHeading" class="firstHeading">'+marker.carData.model+'</h5>'+
             '<div id="bodyContent">'+
             '</div>'+
             '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
-            '</div>';
+        '</div>';
 
         let infowindow = new google.maps.InfoWindow({
             content: contentString
