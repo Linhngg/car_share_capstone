@@ -82,10 +82,12 @@ function initMap() {
         let contentString = '<div id="content">'+
             // '<div id="siteNotice">'+
             // '</div>'+
-            '<h5 id="firstHeading" class="firstHeading">'+marker.carData.model+'</h5>'+
+            '<img src="images/honda1.jpg" class="img-fluid rounded imgMarker">'+
             '<div id="bodyContent">'+
+            '<h3 >'+marker.carData.model+'</h3>'+
+            '<p class="h4 text-muted">$200.00/Day</p>'+
             '</div>'+
-            '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
+            '<button class="btn btnFind btn-block font-weight-bold text-uppercase" onclick="goBookPage('+marker.carData.id+')">Book now</button>'
             '</div>';
 
         let infowindow = new google.maps.InfoWindow({
