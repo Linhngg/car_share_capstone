@@ -36,4 +36,9 @@ class BookingController extends Controller
         $car->return();
         return redirect('home');
     }
+
+    public function returnCar()
+    {
+        return view('return');
+    }
 }

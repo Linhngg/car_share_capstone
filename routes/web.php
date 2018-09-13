@@ -25,3 +25,4 @@ Route::post('/confirm', 'BookingController@confirm')->name('confirm-booking');
 Route::post('/return', 'BookingController@return')->name('return');
 Route::get('/maps', 'AdminController@maps')->name('maps');
 Route::get('/bookings', 'AdminController@bookings')->name('bookings');
+Route::get('/return', 'BookingController@returnCar')->name('return');
