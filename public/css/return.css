@@ -1,0 +1,14 @@
+.btns {
+    background-color: #AF473C;
+    color: #ffffff;
+    margin-top: 8px;
+}
+
+.thead{
+    background-color: #626E60;
+    color: #ffffff;
+}
+.map iframe{
+    width:100%;
+    height:600px;
+}
