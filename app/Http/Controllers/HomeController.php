@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $cars = Car::all();
+        $cars = Car::where('status', 1)->get();
         $request->session()->put('cars', json_encode($cars));
         return view('home')->with('cars', $cars);
     }
