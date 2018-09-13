@@ -82,9 +82,10 @@ function initMap() {
         let contentString = '<div id="content">'+
             // '<div id="siteNotice">'+
             // '</div>'+
-
             '<h5 id="firstHeading" class="firstHeading">'+marker.carData.model+'</h5>'+
             '<div id="bodyContent">'+
+            '<h3 >'+marker.carData.model+'</h3>'+
+            '<p class="h4 text-muted">$200.00/Day</p>'+
             '</div>'+
             '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
         '</div>';

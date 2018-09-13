@@ -8,6 +8,14 @@
 /*margin: 0;*/
 /*padding: 0;*/
 /*}*/
+.btnFind{
+    background-color: #C06016;
+    color: #ffffff;
+}
+.imgMarker{
+    width: 240px;
+    height: 190px;
+}
 
 #searchBtn{
     border: none;
@@ -17,6 +25,7 @@
     cursor: pointer;
 
 }
+
 .mapBox{
     float: right;
 

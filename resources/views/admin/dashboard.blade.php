@@ -38,6 +38,8 @@
                         <th scope="col"> Car Make/Model</th>
                         <th scope="col">Location</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Odometer</th>
+                        <th scope="col">Service Status</th>
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">
@@ -45,7 +47,9 @@
                             <tr>
                                 <th scope="row">{{ $car->model  }}</th>
                                 <td>{{ $car->long }} - {{ $car->lat }}</td>
-                                <td>{{ $car->status }}</td>
+                                <td>{{ $car->readableStatus }}</td>
+                                <td>{{ $car->odometer }}</td>
+                                <td>{{ $car->serviceStatus }}</td>
                             </tr>
                         @endforeach
                     </tbody>
