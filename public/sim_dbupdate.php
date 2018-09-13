@@ -30,7 +30,7 @@ echo($lat);
 echo($lng);
 echo($id);
 
-$sql = "UPDATE cars SET lat = '$lat', long = '$lng' WHERE id = '$id'";
+$sql = "UPDATE cars SET lat = $lat, long = $lng WHERE id = $id";
 //$sql = "UPDATE cars SET lat = 10, long = 10 WHERE id = 1";
 if($conn->query($sql) == TRUE)
     echo("Car position updated");
