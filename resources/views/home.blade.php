@@ -171,7 +171,7 @@
                                 </div>
 
                             </div>
-                            <a href="#" class="btn btnFind btn-block font-weight-bold text-uppercase">Find cars</a>
+                            <a href="#" class="btn btnFind btn-block font-weight-bold text-uppercase my-button">Find cars</a>
                         </div>
                     </div>
                 </div>

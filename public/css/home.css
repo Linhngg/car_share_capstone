@@ -1,5 +1,5 @@
 #map {
-    height: 90vh;
+    height: 94vh;
     /*width: 100vw;*/
 }
 /* Optional: Makes the sample page fill the window. */
@@ -53,8 +53,9 @@
 
 
 .btnFind,.btnFind :hover{
-    background-color: #AF473C;
-    color: #ffffff;
+    /*background-color: #AF473C;*/
+    background-color: #F7F5E6;
+    color: #52658F;
     margin-top: 8px;
 }
 .imgMarker{
@@ -62,8 +63,10 @@
     height: 190px;
 }
 .divFind{
-    color: #ffffff;
-    background-color: #626E60;
+    /*color: #ffffff;*/
+    /*background-color: #626E60;*/
+    color: #F7F5E6;
+    background-color: #52658F;
     position: absolute;
     top: 100px;
     left: 100px;
@@ -79,6 +82,18 @@
 
 .btn-adv,.btn-adv:hover{
     /*color:#C06016;*/
-    color:#ffffff;
+    /*color:#ffffff;*/
+    color: #F7F5E6;
 }
 
+.divFind button {
+    background-color: #E8E8E8;
+}
+
+.divFind .form-control {
+    background-color: #E8E8E8;
+}
+
+.my-button {
+    background-color: #F7F5E6;
+}
