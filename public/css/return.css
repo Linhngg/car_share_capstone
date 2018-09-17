@@ -1,14 +1,88 @@
-.btns {
-    background-color: #AF473C;
-    color: #ffffff;
-    margin-top: 8px;
-}
+/*.btns {*/
+    /*background-color: #AF473C;*/
+    /*color: #ffffff;*/
+    /*margin-top: 8px;*/
+/*}*/
 
 .thead{
     background-color: #626E60;
     color: #ffffff;
 }
-.map iframe{
-    width:100%;
-    height:600px;
+#map {
+    height: 94vh;
+}
+
+.imgMarker{
+    width: 240px;
+    height: 190px;
+}
+
+#searchBtn{
+    border: none;
+    background-color: inherit;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.mapBox{
+    float: right;
+
+}
+.btn-dark{
+    width: 100%;
+    background: #1A1A1A;
+    color:#ffffff;
+}
+#resultBox{
+    height: 65vh;
+    overflow: scroll;
+    width: 100%;
+}
+
+.home {
+}
+
+.search-col {
+    height: 85vh;
+}
+
+.imgMarker{
+    width: 240px;
+    height: 190px;
+}
+.divFind{
+    color: #F7F5E6;
+    /*background-color: #52658F;*/
+    background-color: rgba(82,101,143, 0.9);
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    overflow: scroll;
+    height: 70vh;
+}
+
+.form-check{
+    padding-left: 2rem;
+}
+.divFind .dropdown{
+    margin-bottom:5px;
+}
+
+
+.btn-adv,.btn-adv:hover{
+    color: #F7F5E6;
+}
+
+.divFind button {
+    background-color: #E8E8E8;
+}
+
+.divFind .form-control {
+    background-color: #E8E8E8;
+}
+
+.my-button {
+    background-color: #F7F5E6;
 }

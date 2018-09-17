@@ -63,11 +63,13 @@ class Car extends Model
         return false;
     }
 
-    public function return()
+    public function return($car_park)
     {
         if ($this->status == 0) {
             $this->status = 1;
             $this->updated_at = date("Y-m-d H:i:s");
+            $this->lat = $car_park->lat;
+            $this->long = $car_park->long;
             $this->save();
             return true;
         }

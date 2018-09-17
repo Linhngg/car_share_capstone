@@ -53,3 +53,11 @@ html, body {
     left: 15px;
     top: 10px;
 }
+
+.my-nav {
+    background-color: #333A56;
+}
+
+.my-links > a{
+    color: #ffffff !important;
+}
