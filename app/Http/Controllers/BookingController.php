@@ -7,6 +7,7 @@ use Illuminate\Routing\Route;
 use App\Car;
 use App\Booking;
 use App\User;
+use App\Carpark;
 use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
@@ -33,12 +34,18 @@ class BookingController extends Controller
     {
         $id = $request->input('id');
         $car = Car::find($id);
-        $car->return();
-        return redirect('home');
+        $car_parks = Carpark::all();
+        $request->session()->put('car_parks', json_encode($car_parks));
+        return view('return')->with('car', $car)->with('car_parks', $car_parks);
     }
 
-    public function returnCar()
+    public function post_return(Request $request)
     {
-        return view('return');
+        $car_id = $request->input('car_id');
+        $carpark_id = $request->input('carpark_id');
+        $car = Car::find($car_id);
+        $carpark = Carpark::find($carpark_id);
+        $car->return($carpark);
+        return redirect('home');
     }
 }
