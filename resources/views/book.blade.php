@@ -173,7 +173,7 @@
             {{--Slide images--}}
             <div class="col-md-5 col-sm-4 col-3" id="slide">
                 <div class="row">
-                    <div class="col-md-9" style="padding-right: 0px!important;">
+                    <div class="col-md-10" style="padding-right: 0px!important;">
                         <div id="carousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel" data-slide-to="0" class="active"></li>

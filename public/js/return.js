@@ -43,7 +43,3 @@ function initMap() {
         });
     }
 }
-
-function returnCar () {
-
-}

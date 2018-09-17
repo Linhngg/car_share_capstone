@@ -23,8 +23,8 @@ html, body {
 
 .top-right {
     position: absolute;
-    right: 10px;
-    top: 18px;
+    right: 20px;
+    top: 25px;
 }
 
 .content {
@@ -52,10 +52,13 @@ html, body {
     position: relative;
     left: 15px;
     top: 10px;
+    margin-bottom:10px;
+    width:300px;
 }
 
 .my-nav {
     background-color: #333A56;
+    margin-bottom: 10px;
 }
 
 .my-links > a{

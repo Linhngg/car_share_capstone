@@ -5,9 +5,19 @@
 /*}*/
 
 .thead{
-    background-color: #626E60;
+    background-color: #52658F;
     color: #ffffff;
 }
+.table{
+    max-height: 740px;
+}
+.thead th {
+    position: sticky;
+    top: 0;
+    background-color: #52658F;
+
+}
+
 #map {
     height: 94vh;
 }
