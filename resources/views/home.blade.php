@@ -4,6 +4,8 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>--}}
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPWvU7gcEWfLVo5nFPBbM9AL3KfYHqTaU&callback=initMap">
     </script>

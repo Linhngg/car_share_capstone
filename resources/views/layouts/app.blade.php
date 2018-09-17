@@ -28,7 +28,7 @@
         <nav class="container-fluid">
             <div class="row my-nav">
                 <div class="col-md-4">
-                    <img class="img-fluid logo" src="{{url('/images/logo2.png')}}" alt="Image logo"/>
+                    <img class="img-fluid logo" src="{{url('/images/logo3.png')}}" alt="Image logo"/>
                 </div>
                 <div class="col-md-8">
                     @if (Route::has('login'))

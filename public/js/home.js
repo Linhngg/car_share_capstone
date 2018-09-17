@@ -55,12 +55,17 @@ var mapStyleString4 = '[{"featureType":"administrative","elementType":"all","sty
 var mapStyleString5 = '[{"elementType":"geometry","stylers":[{"hue":"#ff4400"},{"saturation":-68},{"lightness":-4},{"gamma":0.72}]},{"featureType":"road","elementType":"labels.icon"},{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"hue":"#0077ff"},{"gamma":3.1}]},{"featureType":"water","stylers":[{"hue":"#00ccff"},{"gamma":0.44},{"saturation":-33}]},{"featureType":"poi.park","stylers":[{"hue":"#44ff00"},{"saturation":-23}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"hue":"#007fff"},{"gamma":0.77},{"saturation":65},{"lightness":99}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"gamma":0.11},{"weight":5.6},{"saturation":99},{"hue":"#0091ff"},{"lightness":-86}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"lightness":-48},{"hue":"#ff5e00"},{"gamma":1.2},{"saturation":-23}]},{"featureType":"transit","elementType":"labels.text.stroke","stylers":[{"saturation":-64},{"hue":"#ff9100"},{"lightness":16},{"gamma":0.47},{"weight":2.7}]}]';
 var mapStyleString6 = '[{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#C6E2FF"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#C5E3BF"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#D1D1B8"}]}]'
 
+var carMarkers = []
+var clusterInfoWindows = []
+var markerCluster = null
+var map = null
+
 // Initialize and add the map
 function initMap() {
     var cars = JSON.parse(document.getElementById('content').dataset.cars);
 
     //Init the map, centered at Melb CBD: -37.814, 144.96332
-    var map = new google.maps.Map(
+    map = new google.maps.Map(
         document.getElementById('map'),
         {
             zoom: 15,
@@ -69,8 +74,9 @@ function initMap() {
         });
 
     //Init car markers
-    var markers = cars.map(function(car, i) {
+    carMarkers = cars.map(function(car, i) {
         return new google.maps.Marker({
+            id: car.id,
             position: {lat: car.lat, lng: car.long},
             map: map,
             animation: google.maps.Animation.DROP,
@@ -78,7 +84,17 @@ function initMap() {
             title: car.model
         });
     });
-    for (let marker of markers) {
+    markerCluster = new MarkerClusterer(map, carMarkers,
+        {
+            imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+            zoomOnClick: false
+        });
+
+    google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
+        openClusterMarker(cluster)
+    });
+
+    for (let marker of carMarkers) {
         let contentString = '<div id="content">'+
             // '<div id="siteNotice">'+
             // '</div>'+
@@ -90,12 +106,14 @@ function initMap() {
             '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
         '</div>';
 
-        let infowindow = new google.maps.InfoWindow({
+        marker.infoWindow = new google.maps.InfoWindow({
+            id: marker.id,
             content: contentString
         });
 
         marker.addListener('click', function() {
-            infowindow.open(map, marker);
+            // marker.infoWindow.open(map, marker);
+            openCarMarker(marker.id)
         });
     }
 
@@ -107,22 +125,12 @@ function initMap() {
                 lng: position.coords.longitude
             };
             var image = 'images/icons/you-are-here-2.png';
-            // let contentString = '<div id="content">'+
-            //     '<h5 id="firstHeading" class="firstHeading">You are here.</h5>'+
-            // '</div>';
-            //
-            // let infoWindow = new google.maps.InfoWindow({
-            //     content: contentString
-            // });
             var userMarker = new google.maps.Marker({
                 position: pos,
                 map: map,
                 animation: google.maps.Animation.BOUNCE,
                 icon: image
             });
-            // infoWindow.setPosition(pos);
-            // infoWindow.open(map);
-
             setTimeout(function (){
                 userMarker.setAnimation(google.maps.Animation.NONE);
                 // infoWindow.close();
@@ -136,4 +144,46 @@ function initMap() {
 function goBookPage(carId) {
     window.location.replace('book/'+carId);
     console.log(carId)
+}
+
+function openCarMarker (carId) {
+    for (let marker of carMarkers) {
+        marker.infoWindow.close()
+    }
+    let tobeOpenMarker = carMarkers.find(marker => marker.id === carId);
+    tobeOpenMarker.infoWindow.open(map, tobeOpenMarker);
+}
+
+function openClusterMarker (cluster) {
+    for (let marker of carMarkers) {
+        marker.infoWindow.close()
+    }
+    for (let clusterInfoWindow of clusterInfoWindows) {
+        clusterInfoWindow.close()
+    }
+    var contentString = '<div id="content">'+
+        '<h5 id="firstHeading" class="firstHeading">Cars in here:</h5>'+
+        '<div id="bodyContent">'+
+        '<ul class="list-group list-group-flush">';
+
+    for (let marker of cluster.getMarkers()){
+        console.log(marker)
+        contentString += '<li class="list-group-item d-flex justify-content-between align-items-center" onclick="goBookPage('+marker.carData.id+')">'+
+            marker.carData.model+
+            '<span class="badge badge-primary badge-pill">$10/hrs</span></li>'
+    }
+
+    contentString += '</ul>'+
+                '</div>'+
+        '</div>';
+
+    let infoWindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    clusterInfoWindows.push(infoWindow)
+
+    console.log(cluster.getCenter().lat(), cluster.getCenter().lng())
+    infoWindow.setPosition(new google.maps.LatLng(cluster.getCenter().lat(), cluster.getCenter().lng()))
+    infoWindow.open(map)
 }
