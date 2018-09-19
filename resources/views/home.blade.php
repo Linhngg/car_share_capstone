@@ -26,53 +26,47 @@
                                 Advance Options
                             </a>
                             <div class="collapse" id="collapseAdv">
-                                <div class="dropdown card-text">
-                                    <button class="btn dropdown-toggle form-control text-left" type="button" id="dropCartype" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Car Type
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropCartype">
-                                        <button class="dropdown-item" type="button">Nissan</button>
-                                        <button class="dropdown-item" type="button">Ford</button>
-                                        <button class="dropdown-item" type="button">Toyota</button>
-                                        <button class="dropdown-item" type="button">Mercedes</button>
-                                        <button class="dropdown-item" type="button">Hyundai</button>
-                                        <button class="dropdown-item" type="button">Mazda</button>
-                                        <button class="dropdown-item" type="button">Holden</button>
-                                        <button class="dropdown-item" type="button">Jeep</button>
-                                        <button class="dropdown-item" type="button">BMW</button>
-
-                                    </div>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" id="carType">
+                                        <option value="default" selected>Car Type...</option>
+                                        <option value="nissan">Nissan</option>
+                                        <option value="ford">Ford</option>
+                                        <option value="toyota">Toyota</option>
+                                        <option value="mercedes">Mercedes</option>
+                                        <option value="hyundai">Hyundai</option>
+                                        <option value="mazda">Mazda</option>
+                                        <option value="holden">Holden</option>
+                                        <option value="jeep">Jeep</option>
+                                        <option value="bwm">BMW</option>
+                                    </select>
                                 </div>
 
-                                <div class="dropdown card-text">
-                                    <button class="btn dropdown-toggle form-control text-left" type="button" id="dropSeats" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Number of seats
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropSeats">
-                                        <button class="dropdown-item" type="button">2</button>
-                                        <button class="dropdown-item" type="button">5</button>
-                                        <button class="dropdown-item" type="button">7</button>
-
-                                    </div>
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" id="numberOfSeat">
+                                        <option value="default" selected>Number of seats...</option>
+                                        <option value="2">2</option>
+                                        <option value="5">5</option>
+                                        <option value="7">7</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-control border-0 form-check check">
-                                    <input type="checkbox" id="checkboxChild" class="form-check-input" aria-label="Checkbox for Child seat" value="child seat">
+                                    <input type="checkbox" class="form-check-input" name="carFeatures" value="child-seat">
                                     <label class="form-check-label" for="checkboxChild">Child seat</label><br>
-                                    <input type="checkbox" class="form-check-input" id="checkboxNav" aria-label="Checkbox for Navigation system" value="navigation system">
+                                    <input type="checkbox" class="form-check-input" name="carFeatures" value="gps">
                                     <label class="form-check-label"  for="checkboxNav">Navigation system</label><br>
-                                    <input type="checkbox" class="form-check-input" id="checkboxBike" aria-label="Checkbox for Bike rack" value="bike rack">
+                                    <input type="checkbox" class="form-check-input" name="carFeatures" value="bike-rack">
                                     <label class="form-check-label" for="checkboxBike">Bike rack</label><br>
-                                    <input type="checkbox" class="form-check-input" id="checkboxChair" aria-label="Checkbox for Wheelchair accessible" value="wheelchair accessible">
+                                    <input type="checkbox" class="form-check-input" name="carFeatures" value="wheelchair">
                                     <label class="form-check-label" for="checkboxChair">Wheelchair accessible</label><br>
-                                    <input type="checkbox" class="form-check-input" id="checkboxCruise" aria-label="Checkbox for Cruise control" value="cruise control">
+                                    <input type="checkbox" class="form-check-input" name="carFeatures" value="cruise-control">
                                     <label class="form-check-label" for="checkboxCruise">Cruise control</label><br>
-                                    <input type="checkbox" class="form-check-input" id="checkboxRack" aria-label="Checkbox for Roof rack" value="roof rack">
+                                    <input type="checkbox" class="form-check-input" name="carFeatures" value="roof-rack">
                                     <label class="form-check-label" for="checkboxRack">Roof rack</label><br>
                                 </div>
 
                             </div>
-                            <a href="#" class="btn btnFind btn-block font-weight-bold text-uppercase my-button">Find cars</a>
+                            <button class="btn btnFind btn-block font-weight-bold text-uppercase my-button" onclick="filterCars()">Find cars</button>
                         </div>
                     </div>
                 </div>
