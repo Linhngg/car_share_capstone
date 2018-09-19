@@ -27,7 +27,7 @@
                                         </thead>
                                         <tbody class="font-weight-bold ">
                                         @foreach ($car_parks as $car_park)
-                                            <tr>
+                                            <tr onclick="recenterMap({{$car_park->lat}},{{$car_park->long}}) ">
                                                 <td>{{ $car_park->name }}</td>
                                                 <td>{{ $car_park->address }} {{ $car_park->id }}</td>
                                                 <td>
