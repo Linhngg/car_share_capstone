@@ -19,6 +19,8 @@
  */
 ?>
 <script type = "text/javascript">
+
+
     //Cars object constructor
     function car(id, make, lat, lng, dlat, dlng){
         this.id = id;

@@ -52,6 +52,11 @@ class Car extends Model
         return $readableStatus;
     }
 
+    public function iDontUnderStandThis(){
+        $needService = ($this->lastServiceOdometer + $this->serviceInterval) - $this->odometer;
+        return $needService;
+    }
+
     public function book()
     {
         if ($this->status == 1) {

@@ -22,4 +22,8 @@ class AdminController extends Controller
         $bookings = Booking::with(['user', 'car'])->get();
         return view('admin/bookings')->with('bookings', $bookings);
     }
+    public function service(){
+        $cars = Car::all();
+        return view('admin/service')->with('cars', $cars);
+    }
 }

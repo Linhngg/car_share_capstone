@@ -1,11 +1,39 @@
 //Javascript for car simulation
 //Curtis Maunder
+var map;
 
-//Get user's location (just for the sake of centering the map)
 window.onload = function() {
+    var mapOptions = {
+    zoom: 16,
+    center: new google.maps.LatLng(-37.836711, 144.914824),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+// Generate the map and add the user marker
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
     carPaths();
     showMap();
 }
+
+/*
+(function($) {
+    function initialize() {
+            var mapOptions = {
+    zoom: 16,
+    center: new google.maps.LatLng(-37.836711, 144.914824),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+// Generate the map and add the user marker
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        carPaths();
+        showMap();
+    }
+    $(document).ready(initialize);
+})(jQuery)
+*/
+
 
 // Initialize the cars paths and set them to their first node
 function carPaths(){

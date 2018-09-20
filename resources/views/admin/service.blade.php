@@ -1,3 +1,11 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Curtis
+ * Date: 18/09/2018
+ * Time: 11:30 AM
+ */
+?>
 @extends('layouts.app')
 
 @section('assets')
@@ -6,8 +14,6 @@
     <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('https://use.fontawesome.com/releases/v5.2.0/js/all.js') }}"></script>
-
-
 
 @endsection
 
@@ -41,18 +47,21 @@
                         <th scope="col">Status</th>
                         <th scope="col">Odometer</th>
                         <th scope="col">Service Status</th>
+                        <th scope="col">Send to service</th>
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">
-                        @foreach ($cars as $car)
+                    @foreach ($cars as $car)
+                        @if( $car->needService > 0)
                             <tr>
                                 <th scope="row">{{ $car->model  }}</th>
                                 <td>{{ $car->long }} - {{ $car->lat }}</td>
                                 <td>{{ $car->readableStatus }}</td>
                                 <td>{{ $car->odometer }}</td>
-                                <td>{{ $car->serviceStatus }}</td>
+                                <td><button onclick="submitForm()">Click me</button></td>
                             </tr>
-                        @endforeach
+                         @endif
+                    @endforeach
                     </tbody>
                 </table>
             </main>
@@ -64,3 +73,4 @@
 @section('assets')
     <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
 @endsection
+
