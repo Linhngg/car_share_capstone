@@ -29,15 +29,19 @@
                                 <div class="input-group mb-3">
                                     <select class="custom-select" id="carType">
                                         <option value="default" selected>Car Type...</option>
-                                        <option value="nissan">Nissan</option>
-                                        <option value="ford">Ford</option>
-                                        <option value="toyota">Toyota</option>
-                                        <option value="mercedes">Mercedes</option>
-                                        <option value="hyundai">Hyundai</option>
-                                        <option value="mazda">Mazda</option>
-                                        <option value="holden">Holden</option>
-                                        <option value="jeep">Jeep</option>
-                                        <option value="bwm">BMW</option>
+                                        <option value="Holden">Holden</option>
+                                        <option value="Ford">Ford</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Mercedes-Benz">Mercedes</option>
+                                        <option value="Hyundai">Hyundai</option>
+                                        <option value="Mazda">Mazda</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Jeep">Jeep</option>
+                                        <option value="Volkswagen">Volkswagen</option>
+                                        <option value="Porsche">Porsche</option>
+                                        <option value="BMW">BMW</option>
+                                        <option value="Subaru">Subaru</option>
+                                        <option value="Kia">Kia</option>
                                     </select>
                                 </div>
 

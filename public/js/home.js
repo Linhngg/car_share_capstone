@@ -90,11 +90,11 @@ var carFeatures = [
 function loadCars(){
     allCars = JSON.parse(document.getElementById('content').dataset.cars);
     for (let car of allCars) {
-        car.type = car.model.split(' ')[0]
-        car.features = []
-        car.features.push(carFeatures[1])
+        car.features = JSON.parse(car.features)
+        car.features = Object.keys(car.features).map(function(key) {
+            return car.features[key];
+        });
     }
-    // console.log(cars)
 }
 
 function filterCars() {
@@ -109,10 +109,27 @@ function filterCars() {
     }
     //FILTER CAR TYPE
     var filteredCar = allCars.filter(car => {
-        if (selectedType !== 'default' && car.type.toLocaleLowerCase() !== selectedType) return false;
+        if (selectedType !== 'default' && car.brand !== selectedType) return false;
         return true;
     })
-    //FILTER NUMBER OF SEAT, FEATUREs, TO BE IMPLEMENTED
+    //FILTER CAR SEATS
+    filteredCar = filteredCar.filter(car => {
+        if (selectedSeats !== 'default' && Number(selectedSeats) !== car.seats) return false;
+        return true;
+    })
+    //FILTER CAR FEATURES
+    filteredCar = filteredCar.filter(car => {
+        var satisfied = true;
+        for (let feature of selectedFeatures) {
+            if (car.features.indexOf(feature) === -1) {
+                satisfied = false;
+                break;
+            }
+        }
+        return satisfied;
+    })
+    console.log(selectedFeatures)
+    console.log(filteredCar)
     refreshMap(filteredCar)
 }
 
