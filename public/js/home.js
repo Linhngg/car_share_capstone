@@ -163,10 +163,10 @@ function initCarMarker (cars) {
         let contentString = '<div id="content">'+
             // '<div id="siteNotice">'+
             // '</div>'+
-            '<h5 id="firstHeading" class="firstHeading">'+marker.carData.model+'</h5>'+
+
             '<div id="bodyContent">'+
             '<h3 >'+marker.carData.model+'</h3>'+
-            '<p class="h4 text-muted">$200.00/Day</p>'+
+            '<p class="h4 text-muted">$10.00/hour</p>'+
             '</div>'+
             '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
         '</div>';
@@ -228,7 +228,7 @@ function openClusterMarker (cluster) {
         clusterInfoWindow.close()
     }
     var contentString = '<div id="content">'+
-        '<h5 id="firstHeading" class="firstHeading">Cars in here:</h5>'+
+        '<h4 id="firstHeading" class="firstHeading">Cars in here:</h4>'+
         '<div id="bodyContent">'+
         '<ul class="list-group list-group-flush">';
 

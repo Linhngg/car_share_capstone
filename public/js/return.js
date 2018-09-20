@@ -33,7 +33,7 @@ function initMap() {
             '<div id="bodyContent">'+
             '<h3 >'+marker.carParkData.address+'</h3>'+
             '</div>'+
-            '<button onclick="returnCar('+marker.carParkData.id+')">Return</button>'
+           /* '<button onclick="returnCar('+marker.carParkData.id+')">Return</button>'*/
         '</div>';
 
         let infowindow = new google.maps.InfoWindow({
@@ -47,5 +47,7 @@ function initMap() {
 }
 function recenterMap(lat,long) {
     var center = new google.maps.LatLng(lat,long);
+    map.setZoom(17);
     map.panTo(center);
 }
+
