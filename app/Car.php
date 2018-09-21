@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     protected $fillable = [
-        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate'
+        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate', 'brand', 'features', 'seats'
     ];
 
     public function getReadableStatusAttribute()
@@ -54,6 +54,7 @@ class Car extends Model
 
     public function book()
     {
+        date_default_timezone_set('Australia/Melbourne');
         if ($this->status == 1) {
             $this->status = 0;
             $this->updated_at = date("Y-m-d H:i:s");
@@ -63,11 +64,14 @@ class Car extends Model
         return false;
     }
 
-    public function return()
+    public function return($car_park)
     {
+        date_default_timezone_set('Australia/Melbourne');
         if ($this->status == 0) {
             $this->status = 1;
             $this->updated_at = date("Y-m-d H:i:s");
+            $this->lat = $car_park->lat;
+            $this->long = $car_park->long;
             $this->save();
             return true;
         }

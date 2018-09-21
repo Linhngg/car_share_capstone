@@ -1,18 +1,41 @@
+.btns {
+    background-color: #F7F5E6;
+
+}
+
+.thead{
+    background-color: #52658F;
+    color: #ffffff;
+}
+.table{
+    max-height:80vh;
+    margin-bottom:5px;
+
+}
+.thead th {
+    position: sticky;
+    top: 0;
+    background-color: #52658F;
+}
 #map {
-    height: 89vh;
+    height: 81vh;
+    margin-right: 15px;
 }
 
 .imgMarker{
     width: 240px;
     height: 190px;
 }
+
 #searchBtn{
     border: none;
     background-color: inherit;
     padding: 14px;
     font-size: 16px;
     cursor: pointer;
+
 }
+
 .mapBox{
     float: right;
 
@@ -23,72 +46,63 @@
     color:#ffffff;
 }
 #resultBox{
-    /*display:none;*/
     height: 65vh;
     overflow: scroll;
     width: 100%;
 }
+
 .home {
-    /*padding: 0 !important;*/
+    margin-top: 5px;
 }
+.titlePage{
+    margin: 0 10px 5px 20px;
+
+}
+
 .search-col {
     height: 85vh;
-    /*padding: 15px !important;*/
 }
-.btnFind,.btnFind :hover{
-    /*background-color: #AF473C;*/
-    background-color: #F7F5E6;
-    color: #52658F;
-    margin-top: 8px;
-}
+
 .imgMarker{
     width: 240px;
     height: 190px;
 }
 .divFind{
     color: #F7F5E6;
-        background-color: #52658F;
+    /*background-color: #52658F;*/
+    background-color: rgba(82,101,143, 0.9);
     position: absolute;
     top: 100px;
     left: 100px;
+    overflow: scroll;
+    height: 70vh;
 }
 
 .form-check{
     padding-left: 2rem;
 }
 .divFind .dropdown{
-  margin-bottom:5px;
+    margin-bottom:5px;
 }
 
 
 .btn-adv,.btn-adv:hover{
     color: #F7F5E6;
 }
+
 .divFind button {
     background-color: #E8E8E8;
 }
-/*.divFind .form-control {*/
-    /*background-color: #E8E8E8;*/
-/*}*/
+
+.divFind .form-control {
+    background-color: #E8E8E8;
+}
+
 .my-button {
     background-color: #F7F5E6;
 }
-.divFind a {
-    text-decoration: underline;
-}
+.returnDisplay{
 
-.list-group .list-group-item{
-    cursor: pointer;
-}
-.list-group .list-group-item:hover{
-    background-color:#F7F5E6;
-    color: #52658F;
-
-}
-#content{
-    color:#52658F;
-
-}
-#content button{
-    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
 }

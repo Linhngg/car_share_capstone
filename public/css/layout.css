@@ -23,8 +23,8 @@ html, body {
 
 .top-right {
     position: absolute;
-    right: 10px;
-    top: 18px;
+    right: 20px;
+    top: 25px;
 }
 
 .content {
@@ -34,7 +34,6 @@ html, body {
 .title {
     font-size: 84px;
 }
-
 .links > a {
     color: #636b6f;
     padding: 0 25px;
@@ -48,8 +47,24 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
-.logo {
+.logo ,logo p{
     position: relative;
     left: 15px;
     top: 10px;
+    margin-bottom:10px;
+    font-family: michroma;
+    font-size:40px;
+    color: #F7F5E6;
+}
+.logo img{
+    width: 28%;
+}
+
+.my-nav {
+    background-color: #333A56;
+
+}
+
+.my-links > a{
+    color: #F7F5E6 !important;
 }
