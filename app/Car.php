@@ -52,9 +52,48 @@ class Car extends Model
         return $readableStatus;
     }
 
-    public function iDontUnderStandThis(){
-        $needService = ($this->lastServiceOdometer + $this->serviceInterval) - $this->odometer;
-        return $needService;
+    public function getNeedServiceAttribute(){
+        $nextService = $this->lastServiceOdometer + $this->serviceInterval;
+        $different = $nextService - $this->odometer;
+        $readableStatus = 'Default';
+        switch ($different) {
+            case ($different < 0):
+                $readableStatus = true;
+                break;
+            case ($different > 0):
+                $readableStatus = false;
+                break;
+            default:
+        };
+        return $readableStatus;
+    }
+
+    public function service(){
+        if($this->status != 2){
+            $this->status = 2;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function release(){
+        if($this->status == 2){
+            $this->status = 1;
+            $this->lastServiceOdometer = $this->odometer;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function retire(){
+        if($this->status != 3){
+            $this->status = 3;
+            $this->save();
+            return true;
+        }
+        return false;
     }
 
     public function book()

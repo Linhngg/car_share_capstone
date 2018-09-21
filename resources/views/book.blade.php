@@ -139,7 +139,7 @@
                         <ul class="list-inline infoCar">
                             <li class="list-inline-item"> <img class="img-thumbnail " src="{{url('/images/icons/bluetooth.png')}}" alt="Image gear"/></li>
                             <li class="list-inline-item"> <p class="font-weight-bold">Bluetooth connection</p></li>
-                        </ul>
+                        </ul>confirm-booking
                     </div>
                     <div class="col-md-4"><br>
                         <h3 class="display-5">Pricing</h3>
@@ -160,7 +160,7 @@
                             <p class="font-weight-bold">Family car</p>
                         </div>
                         <br>
-                        {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => '', ]) !!}
                         {{ Form::hidden('id', $car->id) }}
                         <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Confirm</button>
                         {!! Form::close() !!}

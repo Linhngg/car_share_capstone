@@ -38,7 +38,7 @@
             {{--main content--}}
             <main class="col-md-10 float-left">
                 <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
-                <h1>dashboard</h1>
+                <h1>Service</h1>
                 <table class="table table-hover rounded table-bordered ">
                     <thead class="thead-dark">
                     <tr>
@@ -46,28 +46,61 @@
                         <th scope="col">Location</th>
                         <th scope="col">Status</th>
                         <th scope="col">Odometer</th>
-                        <th scope="col">Service Status</th>
                         <th scope="col">Send to service</th>
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">
                     @foreach ($cars as $car)
-                        @if( $car->needService > 0)
+                        @if( $car->needService)
                             <tr>
                                 <th scope="row">{{ $car->model  }}</th>
                                 <td>{{ $car->long }} - {{ $car->lat }}</td>
                                 <td>{{ $car->readableStatus }}</td>
                                 <td>{{ $car->odometer }}</td>
-                                <td><button onclick="submitForm()">Click me</button></td>
+                                <td>
+                                    {!! Form::open(['method' => 'POST', 'route' => 'sendService', ]) !!}
+                                    {{ Form::hidden('id', $car->id) }}
+                                    <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Service</button>
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
                          @endif
                     @endforeach
                     </tbody>
                 </table>
+                <h1>In Service</h1>
+                <table class="table table-hover rounded table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Car Make/Model</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Odometer</th>
+                            <th scope="col">Return</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-weight-bold">
+                        @foreach($cars as $car)
+                            @if($car->status == 2)
+                                <tr>
+                                    <th scope="row">{{$car->model}}</th>
+                                    <td>{{$car->long}} - {{$car->lat}}</td>
+                                    <td>{{$car->readableStatus}}</td>
+                                    <td>{{$car->odometer}}</td>
+                                    <td>
+                                        {!! Form::open(['method' => 'POST', 'route' => 'releaseService', ]) !!}
+                                        {{ Form::hidden('id', $car->id) }}
+                                        <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Release</button>
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
             </main>
         </div>
     </div>
-
 
 @endsection
 @section('assets')

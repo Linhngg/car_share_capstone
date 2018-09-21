@@ -3,9 +3,12 @@
 @section('assets')
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/simulation.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script type="text/javascript" src="{{ asset('js/simdata.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/carsim.js') }}"></script>
+    <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -17,7 +20,32 @@
      * Date: 17/08/2018
      * Time: 4:10 PM
      */
+    $i = 0;
     ?>
+    <div class="container-fluid">
+        <div class="row d-flex d-md-block flex-nowrap wrapper">
+            {{--side navbar --}}
+            <div id="sidebar" class="col-md-2 float-left pl-0 pr-0 collapse width show rounded nav" >
+                <div class="list-group border-0 card text-md-left" id="listgroup-span">
+                    <div id="sidebarTitle" class=" d-inline-block ">
+                        {{--  <i  class="fas fa-car-side fa-2x text-light"></i>--}} <h4 class="text-light text-center font-weight-bold" >Admin Dashboard</h4>
+                    </div>
+                    <div id="sidebarTitleCollapse" class="d-inline-block ">
+                        {{--<i  class="fas fa-car-side fa-lg text-light"></i>--}} <h5 class="text-light font-weight-bold">Admin</h5>
+                    </div>
+                    <a href="{{ route('dashboard') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-warning font-weight-bold"><i class="fas fa-home fa-lg img-fluid"></i> <span class="text-left">Dashboard</span></a>
+                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left">&nbsp;Map</span></a>
+                    <a href="{{ route('bookings') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Bookings</span></a>
+                    <a href="{{ route('service') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Service</span></a>
+                </div>
+            </div>
+            {{--main content--}}
+            <main class="col-md-10 float-left">
+                <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
+                <h1>Simulation</h1>
+            </main>
+        </div>
+    </div>
     <script type = "text/javascript">
 
 
@@ -35,6 +63,7 @@
             this.nodesVisited = 0;
             this.running = false;
             this.finished = false;
+            this.distance = 1;
         };
 
         var cars = [];
@@ -65,62 +94,20 @@
 
         var controlBoxes = [];
     </script>
-    <?php
-    $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "";
-    $dbname = "car_share";
+    @foreach($cars as $car)
+        @if($car->status == 0)
+            <script type= "text/javascript">
+                var i = {{$i}};
+                var cid = {{$car->id}};
+                var cmake = "{{$car->model}}";
+                var clat = {{$car->lat}};
+                var clng = {{$car->long}};
 
-
-    // Create connection
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT * FROM cars WHERE status = 1";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-    // Create javascript objects for each result
-    $i = 0;
-    while($row = $result->fetch_assoc()) {
-    $cid = $row["id"];
-    $cmake = $row["model"];
-    $clat = $row["lat"];
-    $clng = $row["long"];
-    $cstatus = $row["status"];
-
-    if($cstatus == 0)
-        $cstatus = true;
-    else
-        $cstatus = false;
-    ?>
-    <script type= "text/javascript">
-        var i = <?php echo $i ?>;
-        var cid = <?php echo $cid ?>;
-        var cmake = "<?php echo $cmake ?>";
-        var clat = <?php echo $clat ?>;
-        var clng = <?php echo $clng ?>;
-        var cincrement = "<?php echo $i ?>";
-
-        if(cstatus = 0)
-            cstatus = false;
-        else
-            cstatus = true;
-
-        cars[i] = new car(cid, cmake, clat, clng, 0, 0);
-    </script>
-    <?php
-    $i++;
-    }
-    } else {
-        echo "0 results";
-    }
-
-    $conn->close();
-    ?>
+                cars[i] = new car(cid, cmake, clat, clng, 0, 0);
+            </script>
+            <?php $i++ ?>
+        @endif
+    @endforeach
     <!DOCTYPE html>
     <head>
         <title>Car Simulation</title>
@@ -132,6 +119,7 @@
     </div>
 
     <button onclick="submitForm()">Click me</button>
+
     <script type = "text/javascript">
         //Dynamically generate control panel for each car on the map
         for(var i = 0; i < cars.length; i++){
@@ -139,7 +127,7 @@
             var tmpIndex = controlBoxes[i].index;
             var tmpViewNodeId = "viewNode" + tmpIndex;
             var tmpViewEndId = "viewEnd" + tmpIndex;
-            controlBoxes[i].start.innerHTML = "<button onclick=\"startSimulation(" + tmpIndex + ")\">Start</button>";
+            controlBoxes[i].start.innerHTML = "</br><button onclick=\"startSimulation(" + tmpIndex + ")\">Start</button>";
             controlBoxes[i].viewNodes.innerHTML = "</br>View Nodes: <input type=\"checkbox\"  id =\"" + tmpViewNodeId + "\" onclick=\"viewNodes(" + tmpIndex + ")\">";
             controlBoxes[i].viewEnd.innerHTML = "</br>View End: <input type=\"checkbox\" id=\"" + tmpViewEndId + "\" onclick=\"viewEnd(" + tmpIndex + ")\">";
             document.getElementById('control_panel').appendChild(controlBoxes[i].boxDiv);
