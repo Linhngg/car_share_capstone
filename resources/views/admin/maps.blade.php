@@ -118,7 +118,7 @@
         <div id="control_panel"></div>
     </div>
 
-    <button onclick="submitForm()">Click me</button>
+    <button id = "ajaxsubmit">Click me</button>
 
     <script type = "text/javascript">
         //Dynamically generate control panel for each car on the map
@@ -140,6 +140,27 @@
 
         //Asynchronous form submission to change the database
         //Uses AJAX as to not disrupt the simulation
+        jQuery(document).ready(function(){
+            jQuery('#ajaxsubmit').click(function(e){
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                jQuery.ajax({
+                    url: "{{url('/simupdate')}}",
+                    method: 'post',
+                    data: {
+
+                    },
+                    success: function(result){
+                        console.log(result);
+                    }
+                })
+            });
+        });
+
         function submitForm() {
             var http = new XMLHttpRequest();
             http.open("POST", "./sim_dbupdate.php", true);

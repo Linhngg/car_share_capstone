@@ -71,6 +71,8 @@ class Car extends Model
     public function service(){
         if($this->status != 2){
             $this->status = 2;
+            $this->lastServiceOdometer = $this->odometer;
+            $this->lastServiceDate = date("Y-m-d");
             $this->save();
             return true;
         }
@@ -80,7 +82,6 @@ class Car extends Model
     public function release(){
         if($this->status == 2){
             $this->status = 1;
-            $this->lastServiceOdometer = $this->odometer;
             $this->save();
             return true;
         }
@@ -118,5 +119,13 @@ class Car extends Model
             return true;
         }
         return false;
+    }
+
+    public function update($lat, $long, $distance){
+        $this->lat =  $lat;
+        $this->long = $long;
+        $this->odometer += $distance;
+        $this->save();
+        return true;
     }
 }

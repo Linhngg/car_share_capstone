@@ -43,4 +43,14 @@ class AdminController extends Controller
         $cars = Car::all();
         return view('admin/service')->with('cars', $cars);
     }
+
+    public function simUpdate(Request $request){
+        $id = $request->input('id');
+        $car = Car::find($id);
+        $lat = $request->lat;
+        $long = $request->long;
+        $distance = $request->distance;
+        $car->update($lat, $long, $distance);
+        return 1;
+    }
 }
