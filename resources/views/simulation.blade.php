@@ -19,6 +19,8 @@
  */
 ?>
 <script type = "text/javascript">
+
+
     //Cars object constructor
     function car(id, make, lat, lng, dlat, dlng){
         this.id = id;
@@ -128,6 +130,21 @@ $conn->close();
         <div id="map"></div>
         <div id="control_panel"></div>
     </div>
+
+    @foreach ($cars as $car)
+        @if( $car->needService)
+            <tr>
+                <th scope="row">{{ $car->model  }}</th>
+                <td>{{ $car->long }} - {{ $car->lat }}</td>
+                <td>{{ $car->readableStatus }}</td>
+                <td>{{ $car->odometer }}</td>
+                {!! Form::open(['method' => 'POST', 'route' => 'sendService']) !!}
+                {{ Form::hidden('id', $car->id) }}
+                <td>{{ Form::button ('Am I dead yet?') }}</td>
+                {!! Form::close() !!}
+            </tr>
+        @endif
+    @endforeach
 
     <button onclick="submitForm()">Click me</button>
     <script type = "text/javascript">

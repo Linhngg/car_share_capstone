@@ -1,13 +1,6 @@
 //Cars
 // Map Options
-var mapOptions = {
-    zoom: 16,
-    center: new google.maps.LatLng(-37.836711, 144.914824),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
 
-// Generate the map and add the user marker
-var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 

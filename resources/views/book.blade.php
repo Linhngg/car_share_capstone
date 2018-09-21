@@ -163,19 +163,12 @@
                             <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/wheelchair.png')}}" alt="Image car top"/></li>
                             <li class="list-inline-item"> <p class="font-weight-bold">Wheelchair accessible </p></li>
                         </ul>
-
                     </div>
                     <div class="col-md-4">
                         <div class="">
                             <h3 class="display-5">Car type</h3>
                             <p class="font-weight-bold">Toyota</p>
                         </div>
-
-
-
-                    </div>
-
-
                 </div>
                 {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
                 {{ Form::hidden('id', $car->id) }}
