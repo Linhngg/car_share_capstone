@@ -30,5 +30,5 @@ Route::post('/releaseService', 'AdminController@releaseService')->name('releaseS
 Route::post('/return', 'BookingController@return')->name('return');
 Route::post('/postreturn', 'BookingController@post_return')->name('post_return');
 Route::get('/u/', 'UserDashboardController@index')->name('user');
-Route::get('/u/bookings', 'UserDashboardController@history')->name('bookings');
+Route::get('/u/bookings', 'UserDashboardController@history')->name('user-bookings');
 //Route::post('/simupdate', 'AdminController@simUpdate')->name('simupdate');

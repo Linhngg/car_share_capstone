@@ -17,6 +17,7 @@ class Booking extends Model
         $this->car_id = $car_id;
         $this->start =  date("Y-m-d H:i:s");
 //        $this->end =  date("Y-m-d H:i:s", strtotime('+2 hours'));
+        $this->end = date("Y-m-d H:i:s");
 
         $this->created_at =  date("Y-m-d H:i:s");
         $this->updated_at =  date("Y-m-d H:i:s");
