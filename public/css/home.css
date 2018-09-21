@@ -1,31 +1,18 @@
 #map {
-    height: 94vh;
-    /*width: 100vw;*/
+    height: 89vh;
 }
-/* Optional: Makes the sample page fill the window. */
-/*html, body {*/
-/*height: 100%;*/
-/*margin: 0;*/
-/*padding: 0;*/
-/*}*/
-.btnFind{
-    background-color: #C06016;
-    color: #ffffff;
-}
+
 .imgMarker{
     width: 240px;
     height: 190px;
 }
-
 #searchBtn{
     border: none;
     background-color: inherit;
     padding: 14px;
     font-size: 16px;
     cursor: pointer;
-
 }
-
 .mapBox{
     float: right;
 
@@ -41,17 +28,13 @@
     overflow: scroll;
     width: 100%;
 }
-
 .home {
     /*padding: 0 !important;*/
 }
-
 .search-col {
     height: 85vh;
     /*padding: 15px !important;*/
 }
-
-
 .btnFind,.btnFind :hover{
     /*background-color: #AF473C;*/
     background-color: #F7F5E6;
@@ -63,10 +46,8 @@
     height: 190px;
 }
 .divFind{
-    /*color: #ffffff;*/
-    /*background-color: #626E60;*/
     color: #F7F5E6;
-    background-color: #52658F;
+        background-color: #52658F;
     position: absolute;
     top: 100px;
     left: 100px;
@@ -81,19 +62,33 @@
 
 
 .btn-adv,.btn-adv:hover{
-    /*color:#C06016;*/
-    /*color:#ffffff;*/
     color: #F7F5E6;
 }
-
 .divFind button {
     background-color: #E8E8E8;
 }
-
-.divFind .form-control {
-    background-color: #E8E8E8;
-}
-
+/*.divFind .form-control {*/
+    /*background-color: #E8E8E8;*/
+/*}*/
 .my-button {
     background-color: #F7F5E6;
+}
+.divFind a {
+    text-decoration: underline;
+}
+
+.list-group .list-group-item{
+    cursor: pointer;
+}
+.list-group .list-group-item:hover{
+    background-color:#F7F5E6;
+    color: #52658F;
+
+}
+#content{
+    color:#52658F;
+
+}
+#content button{
+    cursor: pointer;
 }
