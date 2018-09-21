@@ -26,3 +26,7 @@ Route::get('/maps', 'AdminController@maps')->name('maps');
 Route::get('/bookings', 'AdminController@bookings')->name('bookings');
 Route::post('/return', 'BookingController@return')->name('return');
 Route::post('/postreturn', 'BookingController@post_return')->name('post_return');
+
+//User
+Route::get('/u/', 'UserDashboardController@index')->name('user');
+Route::get('/u/bookings', 'UserDashboardController@history')->name('bookings');
