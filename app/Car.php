@@ -54,6 +54,7 @@ class Car extends Model
 
     public function book()
     {
+        date_default_timezone_set('Australia/Melbourne');
         if ($this->status == 1) {
             $this->status = 0;
             $this->updated_at = date("Y-m-d H:i:s");
@@ -65,6 +66,7 @@ class Car extends Model
 
     public function return($car_park)
     {
+        date_default_timezone_set('Australia/Melbourne');
         if ($this->status == 0) {
             $this->status = 1;
             $this->updated_at = date("Y-m-d H:i:s");
