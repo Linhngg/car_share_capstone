@@ -34,7 +34,6 @@
                                                 <td>{{ $car_park->address }} {{ $car_park->id }}</td>
                                                 <td>
                                                     {!! Form::open(['method' => 'POST', 'route' => 'post_return']) !!}
-                                                    {{ Form::hidden('car_id', $car->id) }}
                                                     {{ Form::hidden('carpark_id', $car_park->id) }}
                                                     <button stype="submit" class="btn btns font-weight-bold">return</button>
                                                     {!! Form::close() !!}
