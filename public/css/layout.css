@@ -43,11 +43,15 @@ html, body {
     text-decoration: none;
     text-transform: uppercase;
 }
+.dropdown-menu > a:hover, .dropdown-menu > a:active{
+    background-color: #F7F5E6;
+    color:#333A56
+}
 
 .m-b-md {
     margin-bottom: 30px;
 }
-.logo ,logo p{
+.logo{
     position: relative;
     left: 15px;
     top: 10px;
@@ -56,9 +60,7 @@ html, body {
     font-size:40px;
     color: #F7F5E6;
 }
-.logo img{
-    width: 28%;
-}
+
 
 .my-nav {
     background-color: #333A56;

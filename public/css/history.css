@@ -1,0 +1,17 @@
+.thead{
+    background-color: #52658F;
+    color: #ffffff;
+}
+.table{
+    max-height:80vh;
+    margin-bottom:5px;
+}
+.thead th {
+    position: sticky;
+    top: 0;
+    background-color: #52658F;
+}
+.titlePage{
+    margin: 10px 10px 5px 20px;
+
+}

@@ -19,7 +19,10 @@
     color: #F7F5E6;
     border: #52658F;
 }
-
+.btnModal{
+    background-color: #52658F;
+    color: #F7F5E6;
+}
 .gmap_canvas iframe {
     width: 100%;
     height: 35vh;
@@ -77,3 +80,18 @@
 }
 */
 
+body.modal-open .main{
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+
+}
+
+.modal-dialog{
+    position: relative;
+    top:20vh;
+
+
+}

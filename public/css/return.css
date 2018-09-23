@@ -2,7 +2,9 @@
     background-color: #F7F5E6;
 
 }
-
+.btns:hover{
+    background-color: #f5eeba;
+}
 .thead{
     background-color: #52658F;
     color: #ffffff;
@@ -105,4 +107,9 @@
 
     padding-left: 10px;
     padding-right: 10px;
+}
+.links{
+    color: #52658F;
+    cursor: pointer;
+
 }
