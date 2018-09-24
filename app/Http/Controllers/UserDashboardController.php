@@ -11,7 +11,7 @@ class UserDashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-//        $currentBooking = Booking::where('user_id', $user->id);
+        $currentBooking = Booking::find($user->current_booking_id);
         return view('user/index')->with('user', $user);
     }
 

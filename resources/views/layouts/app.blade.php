@@ -39,9 +39,9 @@
                         <div class="top-right links my-links">
                             @auth
                                 <a href="{{ url('/home') }}">Home</a>
-                                <div class="links my-links dropdown float-right align-middle">
+                                <div class="links my-links float-right align-middle">
                                     <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Khairi Anuar    {{-- $user->name --}}
+                                        Account  {{-- $user->name --}}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="{{ route('user') }}">My Bookings</a>
@@ -54,11 +54,8 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
-
                                     </div>
                                 </div>
-
-
                             @else
                                 <a href="{{ route('login') }}">Login</a>
                                 <a href="{{ route('register') }}">Register</a>

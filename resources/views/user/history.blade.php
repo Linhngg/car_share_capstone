@@ -18,9 +18,12 @@
             <tr>
                 <th>Id</th>
                 <th>Car</th>
-                <th>Book Time</th>
+                <th>Book Date</th>
+                <th>Start Time</th>
+                <th>Return Date</th>
                 <th>Return Time</th>
-                <th>Fee</th>
+                <th>Total Time</th>
+                <th>Total Fee</th>
             </tr>
             </thead>
             <tbody>
@@ -28,7 +31,12 @@
                     <tr>
                         <td class="font-weight-bold"> {{ $booking->id }}</td>
                         <td class="font-weight-bold"> {{ $booking->car->model }}</td>
-                        <td class="font-weight-bold"> {{ $booking->start }}</td>
+                        <td class="font-weight-bold"> {{ date("d / m / y",strtotime($booking->start)) }}</td>
+                        <td class="font-weight-bold"> {{ date("H:i",strtotime($booking->start)) }}</td>
+                        <td class="font-weight-bold"> {{ date("d / m / y",strtotime($booking->end)) }}</td>
+                        <td class="font-weight-bold"> {{ date("H:i",strtotime($booking->end)) }}</td>
+                        <td class="font-weight-bold"> {{ date_diff(new DateTime($booking->start), new DateTime($booking->end))->format('%hh %im %ss') }}</td>
+                        <td class="font-weight-bold"> AUD {{ round( abs((new \DateTime($booking->start))->getTimestamp() - (new \DateTime($booking->end))->getTimestamp()) / 60 * 0.5, 2)}}</td>
                     </tr>
                 @endforeach
             </tbody>
