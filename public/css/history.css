@@ -15,3 +15,29 @@
     margin: 10px 10px 5px 20px;
 
 }
+#map {
+    height: 67vh;
+}
+
+.full-height {
+    height: 80vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 36px;
+    padding: 20px;
+}

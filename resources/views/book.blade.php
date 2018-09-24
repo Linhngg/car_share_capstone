@@ -170,11 +170,7 @@
 
 
                 </div>
-
-                {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
-                {{ Form::hidden('id', $car->id) }}
                 <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Confirm</button>
-                {!! Form::close() !!}
             </div>
             {{--Slide images--}}
             <div class="col-md-4 col-sm-4 col-3" id="slide">
@@ -247,20 +243,16 @@
                         </button>
                     </div>
                     <div class="modal-footer">
-
-                        <button type="submit" class="btn btnModal" data-dismiss="modal">Close</button>
-
-
-
+                        {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
+                        {{ Form::hidden('id', $car->id) }}
+                        <button type="submit" class="btn btnModal">Close</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    {{--    <script type="text/javascript" src="{{ asset('https://code.jquery.com/jquery-3.3.1.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/wickedpicker.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/book.js') }}"></script>--}}
+    </div>\
 @endsection
 @section('assets')
 

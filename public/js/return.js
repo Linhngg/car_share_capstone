@@ -52,8 +52,8 @@ function recenterMap(lat,long) {
     map.panTo(center);
 }
 
-function setActive() {
-    $('tr').click(function () {
-        $(this).addClass('table-primary').siblings().removeClass('table-primary');
-    });
+function setActive(ele) {
+    $('tr').removeClass('table-primary');
+    document.getElementById(ele).classList.add('table-primary');
+
 }

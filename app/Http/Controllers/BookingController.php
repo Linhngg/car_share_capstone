@@ -25,7 +25,7 @@ class BookingController extends Controller
 
         $booking = new Booking;
         $booking->make($car_id, $user->id);
-        return view('driving');
+        return redirect()->route('user');
     }
 
     public function return(Request $request)
@@ -38,8 +38,6 @@ class BookingController extends Controller
     public function post_return(Request $request)
     {
         $carpark_id = $request->input('carpark_id');
-
-
         $user = Auth::user();
         $booking = Booking::find($user->current_booking_id);
         $booking->finish($carpark_id);
