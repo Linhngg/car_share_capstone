@@ -58,7 +58,7 @@
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="child-seat">
                                     <label class="form-check-label" for="checkboxChild">Child seat</label><br>
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="gps">
-                                    <label class="form-check-label"  for="checkboxNav">Navigation system</label><br>
+                                    <label class="form-check-label"  for="checkboxNav">GPS system</label><br>
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="bike-rack">
                                     <label class="form-check-label" for="checkboxBike">Bike rack</label><br>
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="wheelchair">

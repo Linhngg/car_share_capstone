@@ -1,15 +1,27 @@
-/*.btns {*/
-    /*background-color: #AF473C;*/
-    /*color: #ffffff;*/
-    /*margin-top: 8px;*/
-/*}*/
+.btns {
+    background-color: #F7F5E6;
 
+}
+.btns:hover{
+    background-color: #f5eeba;
+}
 .thead{
-    background-color: #626E60;
+    background-color: #52658F;
     color: #ffffff;
 }
+.table{
+    max-height:80vh;
+    margin-bottom:5px;
+
+}
+.thead th {
+    position: sticky;
+    top: 0;
+    background-color: #52658F;
+}
 #map {
-    height: 94vh;
+    height: 81vh;
+    margin-right: 15px;
 }
 
 .imgMarker{
@@ -42,6 +54,11 @@
 }
 
 .home {
+    margin-top: 5px;
+}
+.titlePage{
+    margin: 0 10px 5px 20px;
+
 }
 
 .search-col {
@@ -85,4 +102,14 @@
 
 .my-button {
     background-color: #F7F5E6;
+}
+.returnDisplay{
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.links{
+    color: #52658F;
+    cursor: pointer;
+
 }

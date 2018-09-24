@@ -52,6 +52,51 @@ class Car extends Model
         return $readableStatus;
     }
 
+    public function getNeedServiceAttribute(){
+        $nextService = $this->lastServiceOdometer + $this->serviceInterval;
+        $different = $nextService - $this->odometer;
+        $readableStatus = 'Default';
+        switch ($different) {
+            case ($different < 0):
+                $readableStatus = true;
+                break;
+            case ($different > 0):
+                $readableStatus = false;
+                break;
+            default:
+        };
+        return $readableStatus;
+    }
+
+    public function service(){
+        if($this->status != 2){
+            $this->status = 2;
+            $this->lastServiceOdometer = $this->odometer;
+            $this->lastServiceDate = date("Y-m-d");
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function release(){
+        if($this->status == 2){
+            $this->status = 1;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function retire(){
+        if($this->status != 3){
+            $this->status = 3;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
     public function book()
     {
         date_default_timezone_set('Australia/Melbourne');
@@ -77,4 +122,12 @@ class Car extends Model
         }
         return false;
     }
+
+//    public function update($lat, $long, $distance){
+//        $this->lat =  $lat;
+//        $this->long = $long;
+//        $this->odometer += $distance;
+//        $this->save();
+//        return true;
+//    }
 }

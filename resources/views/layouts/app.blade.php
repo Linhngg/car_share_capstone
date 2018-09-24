@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
@@ -28,21 +28,34 @@
         <nav class="container-fluid">
             <div class="row my-nav">
                 <div class="col-md-4">
-                    <img class="img-fluid logo" src="{{url('/images/logo3.png')}}" alt="Image logo"/>
+                    <div class="logo">
+                        <a href="{{ url('/home') }}" >
+                          <img class="img-fluid" src="{{url('/images/logofinal.png')}}" alt="Image logo"/>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     @if (Route::has('login'))
                         <div class="top-right links my-links">
                             @auth
                                 <a href="{{ url('/home') }}">Home</a>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                                <div class="links my-links float-right align-middle">
+                                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Account  {{-- $user->name --}}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="{{ route('user') }}">My Bookings</a>
+                                        <a class="dropdown-item" href="{{ route('user-bookings') }}">My Past Bookings</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
                             @else
                                 <a href="{{ route('login') }}">Login</a>
                                 <a href="{{ route('register') }}">Register</a>

@@ -15,11 +15,42 @@ class AdminController extends Controller
     }
     public function maps()
     {
-        return view('admin/maps');
+        $cars = Car::all();
+        return view('admin/maps')->with('cars', $cars);
     }
     public function bookings()
     {
         $bookings = Booking::with(['user', 'car'])->get();
         return view('admin/bookings')->with('bookings', $bookings);
+    }
+    public function service(){
+        $cars = Car::all();
+        return view('admin/service')->with('cars', $cars);
+    }
+
+    public function sendService(Request $request){
+        $id = $request->input('id');
+        $car = Car::find($id);
+        $car->service();
+        $cars = Car::all();
+        return view('admin/service')->with('cars', $cars);
+    }
+
+    public function releaseService(Request $request){
+        $id = $request->input('id');
+        $car = Car::find($id);
+        $car->release();
+        $cars = Car::all();
+        return view('admin/service')->with('cars', $cars);
+    }
+
+    public function simUpdate(Request $request){
+        $id = $request->input('id');
+        $car = Car::find($id);
+        $lat = $request->lat;
+        $long = $request->long;
+        $distance = $request->distance;
+        $car->update($lat, $long, $distance);
+        return 1;
     }
 }
