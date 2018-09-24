@@ -22,30 +22,27 @@ class BookingController extends Controller
     {
         $car_id = $request->input('id');
         $user = Auth::user();
-        $car = Car::find($car_id);
-        $car->book();
 
         $booking = new Booking;
-        $booking->make($car->id, $user->id);
-        return view('driving')->with('car', $car);
+        $booking->make($car_id, $user->id);
+        return view('driving');
     }
 
     public function return(Request $request)
     {
-        $id = $request->input('id');
-        $car = Car::find($id);
         $car_parks = Carpark::all();
         $request->session()->put('car_parks', json_encode($car_parks));
-        return view('return')->with('car', $car)->with('car_parks', $car_parks);
+        return view('return')->with('car_parks', $car_parks);
     }
 
     public function post_return(Request $request)
     {
-        $car_id = $request->input('car_id');
         $carpark_id = $request->input('carpark_id');
-        $car = Car::find($car_id);
-        $carpark = Carpark::find($carpark_id);
-        $car->return($carpark);
+
+
+        $user = Auth::user();
+        $booking = Booking::find($user->current_booking_id);
+        $booking->finish($carpark_id);
         return redirect('home');
     }
 }
