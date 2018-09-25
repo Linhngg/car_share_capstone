@@ -36,7 +36,7 @@
                             <td class="font-weight-bold"> {{ $carpark->name }} - {{ $carpark->address }}</td>
                             <td class="font-weight-bold">
                                 {!! Form::open(['method' => 'POST', 'route' => 'return']) !!}
-                                <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Finish</button>
+                                <button type="submit" class="btn btn-lg d-block font-weight-bold" id="bookBtn">Finish</button>
                                 {!! Form::close() !!}
                             </td>
                         </tr>

@@ -1,10 +1,17 @@
 .thead{
     background-color: #52658F;
-    color: #ffffff;
+    color: #F7F5E6;
 }
 .table{
     max-height:80vh;
     margin-bottom:5px;
+}
+#bookBtn{
+    background-color: #F7F5E6;
+
+}
+#bookBtn:hover{
+    background-color: #f5eeba;
 }
 .thead th {
     position: sticky;

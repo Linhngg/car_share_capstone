@@ -170,7 +170,7 @@
 
 
                 </div>
-                <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Confirm</button>
+                <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Book</button>
             </div>
             {{--Slide images--}}
             <div class="col-md-4 col-sm-4 col-3" id="slide">
@@ -236,23 +236,23 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header border-bottom-0">
                         <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Booking Confirmed <i class="fas fa-check-circle text-success"></i></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-top-0">
                         {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
                         {{ Form::hidden('id', $car->id) }}
-                        <button type="submit" class="btn btnModal">Close</button>
+                        <button type="submit" class="btn btnModal">Confirm</button>
                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>\
+    </div>
 @endsection
 @section('assets')
 
