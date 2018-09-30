@@ -29,4 +29,4 @@ Route::post('/sendService', 'AdminController@sendService')->name('sendService');
 Route::post('/releaseService', 'AdminController@releaseService')->name('releaseService');
 Route::post('/return', 'BookingController@return')->name('return');
 Route::post('/postreturn', 'BookingController@post_return')->name('post_return');
-//Route::post('/simupdate', 'AdminController@simUpdate')->name('simupdate');
+Route::post('/simupdate', 'AdminController@simUpdate')->name('simupdate');

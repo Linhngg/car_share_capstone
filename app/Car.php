@@ -121,7 +121,8 @@ class Car extends Model
         return false;
     }
 
-    public function update($lat, $long, $distance){
+
+    public function simulationUpdate($lat, $long, $distance){
         $this->lat =  $lat;
         $this->long = $long;
         $this->odometer += $distance;

@@ -9,32 +9,40 @@ window.onload = function() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
+
 // Generate the map and add the user marker
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     carPaths();
     showMap()
-    haversine(nodes[1], nodes[2]);
-}
+    haversine(nodes[1], nodes[2])
 
-/*
-(function($) {
-    function initialize() {
-            var mapOptions = {
-    zoom: 16,
-    center: new google.maps.LatLng(-37.836711, 144.914824),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    $(document).ready(function(){
+        $('.ajaxsubmit').click(function(e){
+            e.preventDefault();
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: window.aboutUsLink,
+                method: 'post',
+                data: {
+                    id: activeCar.id,
+                    lat: activeCar.lat,
+                    long: activeCar.lng,
+                    distance: activeCar.distance
+                },
+                success: function(result) {
+                    alert('Success');
+                },
+                error: function(jqxhr, status, exception) {
+                    alert('Exception:', exception, jqxhr, status);
+                }
+            })
+        });
+    });
 };
-
-// Generate the map and add the user marker
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-        carPaths();
-        showMap();
-    }
-    $(document).ready(initialize);
-})(jQuery)
-*/
-
 
 // Initialize the cars paths and set them to their first node
 function carPaths(){
@@ -80,9 +88,8 @@ function nextNode(car, node){
     else if(distance >= 5000)
         ticks = 1000;
 
-    cars[car].dLat = (cars[car].path[node].lat() - cars[car].lat) / 1000;
-    cars[car].dLng = (cars[car].path[node].lng() - cars[car].lng) / 1000;
-    console.log(distance);
+    cars[car].dLat = (cars[car].path[node].lat() - cars[car].lat) / ticks;
+    cars[car].dLng = (cars[car].path[node].lng() - cars[car].lng) / ticks;
 }
 
 // Use the DOM setInterval() function to change the offset of the symbol
@@ -110,8 +117,6 @@ function animateCars() {;
                     cars[i].finished = true;
                     cars[i].running = false;
                 }
-
-                console.log("Car id" + cars[i].id + "Nodes: " + cars[i].nodesVisited);
             }
         }
     }, 1);
@@ -137,16 +142,15 @@ function viewNodes(index){
 
 function viewEnd(index){
     var tmpId = "viewEnd" + index;
-    console.log(cars[index].pathMarkers[0]);
     if(document.getElementById(tmpId).checked){
-        cars[index].pathMarkers[5] = new google.maps.Marker({
-            position: new google.maps.LatLng(cars[index].path[5].lat(), cars[index].path[5].lng()),
+        cars[index].pathMarkers[10] = new google.maps.Marker({
+            position: new google.maps.LatLng(cars[index].path[10].lat(), cars[index].path[10].lng()),
             map: map,
             icon: image,
             title: "Car: " + index + ", End",
         });
     }else{
-        cars[index].pathMarkers[5].setMap(null);
+        cars[index].pathMarkers[11].setMap(null);
     }
 }
 
@@ -169,4 +173,19 @@ function haversine(node1, node2){
     var d = r * c;
 
     return d;
+}
+
+function setActive(index){
+    activeCar = cars[index];
+}
+
+function forceEnd(index){
+    if(!cars[index].running)
+        return;
+    cars[index].lat = cars[index].path[10].lat();
+    cars[index].lng = cars[index].path[10].lng();
+    cars[index].nodesVisited = 11;
+    cars[index].finished = true;
+    cars[index].running = false;
+    carMarkers[index].setPosition(new google.maps.LatLng(cars[index].lat, cars[index].lng));
 }

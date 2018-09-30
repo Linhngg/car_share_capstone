@@ -47,10 +47,10 @@ class AdminController extends Controller
     public function simUpdate(Request $request){
         $id = $request->input('id');
         $car = Car::find($id);
-        $lat = $request->lat;
-        $long = $request->long;
-        $distance = $request->distance;
-        $car->update($lat, $long, $distance);
+        $lat = $request->input('lat');
+        $long = $request->input('long');
+        $distance = $request->input('distance');
+        $car->simulationUpdate($lat, $long, $distance);
         return 1;
     }
 }
