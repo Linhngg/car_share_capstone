@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
@@ -28,7 +28,9 @@
         <nav class="container-fluid">
             <div class="row my-nav">
                 <div class="col-md-4">
-                    <img class="img-fluid logo" src="{{url('/images/logo3.png')}}" alt="Image logo"/>
+                    <div class="logo">
+                    <p class="display-5">Imperial <img class="img-fluid" src="{{url('/images/logowhitegrey.png')}}" alt="Image logo"/><p>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     @if (Route::has('login'))
@@ -37,7 +39,7 @@
                                 <a href="{{ url('/home') }}">Home</a>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
+                                   document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

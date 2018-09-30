@@ -29,4 +29,10 @@ Route::post('/sendService', 'AdminController@sendService')->name('sendService');
 Route::post('/releaseService', 'AdminController@releaseService')->name('releaseService');
 Route::post('/return', 'BookingController@return')->name('return');
 Route::post('/postreturn', 'BookingController@post_return')->name('post_return');
+<<<<<<< HEAD
 Route::post('/simupdate', 'AdminController@simUpdate')->name('simupdate');
+=======
+Route::get('/u/', 'UserDashboardController@index')->name('user');
+Route::get('/u/bookings', 'UserDashboardController@history')->name('bookings');
+//Route::post('/simupdate', 'AdminController@simUpdate')->name('simupdate');
+>>>>>>> 0205ca86a184b55168b1a3ec5c3df8be66201ab4

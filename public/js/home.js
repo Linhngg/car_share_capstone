@@ -59,10 +59,88 @@ var carMarkers = []
 var clusterInfoWindows = []
 var markerCluster = null
 var map = null
+var allCars = null
+var carFeatures = [
+    {
+        type: 'child-seat',
+        display: 'Child seat'
+    },
+    {
+        type: 'gps',
+        display: 'GPS system'
+    },
+    {
+        type: 'bike-rack',
+        display: 'Bike rack'
+    },
+    {
+        type: 'wheelchair',
+        display: 'Wheelchair accessible'
+    },
+    {
+        type: 'cruise-control',
+        display: 'Cruise control'
+    },
+    {
+        type: 'roof-rack',
+        display: 'Roof rack'
+    },
+]
+
+function loadCars(){
+    allCars = JSON.parse(document.getElementById('content').dataset.cars);
+    for (let car of allCars) {
+        car.features = JSON.parse(car.features)
+        car.features = Object.keys(car.features).map(function(key) {
+            return car.features[key];
+        });
+    }
+}
+
+function filterCars() {
+    var selectedType = document.getElementById('carType').value
+    var selectedSeats = document.getElementById('numberOfSeat').value
+    var eles = document.getElementsByName('carFeatures')
+    var selectedFeatures = []
+    for (let ele of eles) {
+        if (ele.checked) {
+            selectedFeatures.push(ele.value)
+        }
+    }
+    //FILTER CAR TYPE
+    var filteredCar = allCars.filter(car => {
+        if (selectedType !== 'default' && car.brand !== selectedType) return false;
+        return true;
+    })
+    //FILTER CAR SEATS
+    filteredCar = filteredCar.filter(car => {
+        if (selectedSeats !== 'default' && Number(selectedSeats) !== car.seats) return false;
+        return true;
+    })
+    //FILTER CAR FEATURES
+    filteredCar = filteredCar.filter(car => {
+        var satisfied = true;
+        for (let feature of selectedFeatures) {
+            if (car.features.indexOf(feature) === -1) {
+                satisfied = false;
+                break;
+            }
+        }
+        return satisfied;
+    })
+    console.log(selectedFeatures)
+    console.log(filteredCar)
+    refreshMap(filteredCar)
+}
+
+function refreshMap (filteredCar) {
+    markerCluster.clearMarkers()
+    initCarMarker(filteredCar)
+}
 
 // Initialize and add the map
 function initMap() {
-    var cars = JSON.parse(document.getElementById('content').dataset.cars);
+    loadCars()
 
     //Init the map, centered at Melb CBD: -37.814, 144.96332
     map = new google.maps.Map(
@@ -72,7 +150,11 @@ function initMap() {
             center: {lat: -37.814, lng: 144.96332},
             styles: JSON.parse(mapStyleString5)
         });
+    initCarMarker(allCars)
+    initUserMarker()
+}
 
+function initCarMarker (cars) {
     //Init car markers
     carMarkers = cars.map(function(car, i) {
         return new google.maps.Marker({
@@ -98,10 +180,10 @@ function initMap() {
         let contentString = '<div id="content">'+
             // '<div id="siteNotice">'+
             // '</div>'+
-            '<h5 id="firstHeading" class="firstHeading">'+marker.carData.model+'</h5>'+
+
             '<div id="bodyContent">'+
             '<h3 >'+marker.carData.model+'</h3>'+
-            '<p class="h4 text-muted">$200.00/Day</p>'+
+            '<p class="h4 text-muted">$10.00/hour</p>'+
             '</div>'+
             '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
         '</div>';
@@ -116,7 +198,9 @@ function initMap() {
             openCarMarker(marker.id)
         });
     }
+}
 
+function initUserMarker () {
     //Init User Marker
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -143,7 +227,6 @@ function initMap() {
 
 function goBookPage(carId) {
     window.location.replace('book/'+carId);
-    console.log(carId)
 }
 
 function openCarMarker (carId) {
@@ -162,12 +245,11 @@ function openClusterMarker (cluster) {
         clusterInfoWindow.close()
     }
     var contentString = '<div id="content">'+
-        '<h5 id="firstHeading" class="firstHeading">Cars in here:</h5>'+
+        '<h4 id="firstHeading" class="firstHeading">Cars in here:</h4>'+
         '<div id="bodyContent">'+
         '<ul class="list-group list-group-flush">';
 
     for (let marker of cluster.getMarkers()){
-        console.log(marker)
         contentString += '<li class="list-group-item d-flex justify-content-between align-items-center" onclick="goBookPage('+marker.carData.id+')">'+
             marker.carData.model+
             '<span class="badge badge-primary badge-pill">$10/hrs</span></li>'
@@ -183,7 +265,6 @@ function openClusterMarker (cluster) {
 
     clusterInfoWindows.push(infoWindow)
 
-    console.log(cluster.getCenter().lat(), cluster.getCenter().lng())
     infoWindow.setPosition(new google.maps.LatLng(cluster.getCenter().lat(), cluster.getCenter().lng()))
     infoWindow.open(map)
 }
