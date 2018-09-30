@@ -1,3 +1,11 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Curtis
+ * Date: 18/09/2018
+ * Time: 11:30 AM
+ */
+?>
 @extends('layouts.app')
 
 @section('assets')
@@ -6,8 +14,6 @@
     <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('https://use.fontawesome.com/releases/v5.2.0/js/all.js') }}"></script>
-
-
 
 @endsection
 
@@ -33,35 +39,38 @@
             {{--main content--}}
             <main class="col-md-10 float-left">
                 <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
-                <h1>dashboard</h1>
-                <table class="table table-hover rounded table-bordered ">
+                <h1>Retire</h1>
+                <table class="table table-hover rounded table-bordered">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col"> Car Make/Model</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Odometer</th>
-                        <th scope="col">Service Status</th>
+                        <th scope="col">Car Make/Model</th>
+                        <th scope="col">Date added</th>
+                        <th scope="col">Retire</th>
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">
-                        @foreach ($cars as $car)
+                    @foreach($cars as $car)
+                        @if($car->retireRange && $car->status != 3)
                             <tr>
-                                <th scope="row">{{ $car->model  }}</th>
-                                <td>{{ $car->long }} - {{ $car->lat }}</td>
-                                <td>{{ $car->readableStatus }}</td>
-                                <td>{{ $car->odometer }}</td>
-                                <td>{{ $car->serviceStatus }}</td>
+                                <th scope="row">{{$car->model}}</th>
+                                <th scope="row">{{$car->created_at}}</th>
+                                <td>
+                                    {!! Form::open(['method' => 'POST', 'route' => 'retireCar', ]) !!}
+                                    {{ Form::hidden('id', $car->id) }}
+                                    <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Retire</button>
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
-                        @endforeach
+                        @endif
+                    @endforeach
                     </tbody>
                 </table>
             </main>
         </div>
     </div>
 
-
 @endsection
 @section('assets')
     <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
 @endsection
+

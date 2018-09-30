@@ -28,6 +28,19 @@ class AdminController extends Controller
         return view('admin/service')->with('cars', $cars);
     }
 
+    public function retire(){
+        $cars = Car::all();
+        return view('admin/retire')->with('cars', $cars);
+    }
+
+    public function retireCar(Request $request){
+        $id = $request->input('id');
+        $car = Car::find($id);
+        $car->retire();
+        $cars = Car::all();
+        return view('admin/retire')->with('cars', $cars);
+    }
+
     public function sendService(Request $request){
         $id = $request->input('id');
         $car = Car::find($id);

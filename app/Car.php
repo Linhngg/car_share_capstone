@@ -68,6 +68,18 @@ class Car extends Model
         return $readableStatus;
     }
 
+    public function getRetireRangeAttribute(){
+        $createdYear = $this->created_at->format('Y');
+        $curYear  = date("Y");
+        $readableStatus = 'default';
+        if($curYear - $createdYear >= 5)
+            $readableStatus = true;
+        else
+            $readableStatus = false;
+
+        return $readableStatus;
+    }
+
     public function service(){
         if($this->status != 2){
             $this->status = 2;
