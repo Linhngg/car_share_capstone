@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     protected $fillable = [
-        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate'
+        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate',
+        'brand', 'features', 'seats', 'price_rate'
     ];
 
     public function getReadableStatusAttribute()
@@ -52,8 +53,66 @@ class Car extends Model
         return $readableStatus;
     }
 
+    public function getNeedServiceAttribute(){
+        $nextService = $this->lastServiceOdometer + $this->serviceInterval;
+        $different = $nextService - $this->odometer;
+        $readableStatus = 'Default';
+        switch ($different) {
+            case ($different < 0):
+                $readableStatus = true;
+                break;
+            case ($different > 0):
+                $readableStatus = false;
+                break;
+            default:
+        };
+        return $readableStatus;
+    }
+
+    public function getRetireRangeAttribute(){
+        $createdYear = $this->created_at->format('Y');
+        $curYear  = date("Y");
+        $readableStatus = 'default';
+        if($curYear - $createdYear >= 5)
+            $readableStatus = true;
+        else
+            $readableStatus = false;
+
+        return $readableStatus;
+    }
+
+    public function service(){
+        if($this->status != 2){
+            $this->status = 2;
+            $this->lastServiceOdometer = $this->odometer;
+            $this->lastServiceDate = date("Y-m-d");
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function release(){
+        if($this->status == 2){
+            $this->status = 1;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    public function retire(){
+        if($this->status != 3){
+            $this->status = 3;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
     public function book()
     {
+        date_default_timezone_set('Australia/Melbourne');
         if ($this->status == 1) {
             $this->status = 0;
             $this->updated_at = date("Y-m-d H:i:s");
@@ -63,14 +122,25 @@ class Car extends Model
         return false;
     }
 
-    public function return()
+    public function return($car_park)
     {
+        date_default_timezone_set('Australia/Melbourne');
         if ($this->status == 0) {
             $this->status = 1;
             $this->updated_at = date("Y-m-d H:i:s");
+            $this->lat = $car_park->lat;
+            $this->long = $car_park->long;
             $this->save();
             return true;
         }
         return false;
+    }
+
+    public function simulationUpdate($lat, $long, $distance){
+        $this->lat =  $lat;
+        $this->long = $long;
+        $this->odometer += $distance;
+        $this->save();
+        return true;
     }
 }

@@ -2,7 +2,8 @@
     margin-top: 10px;
 }
 #outerInputBox{
-    padding-left: 35px;
+    padding: 0;
+    color: #52658F;
 }
 .img-thumbnail{
     width: 34px;
@@ -11,28 +12,88 @@
 .infoCar{
     margin-bottom: 2px;
 }
-/*#bookBtn{*/
-    /*margin-right: 20px;*/
-    /*margin-bottom: 10px;*/
-/*}*/
-
+#bookBtn{
+    padding:14px 30px 14px 30px;
+    font-size:1.2rem;
+    background-color: #52658F;
+    color: #F7F5E6;
+    border: #52658F;
+}
+.btnModal{
+    background-color: #52658F;
+    color: #F7F5E6;
+}
 .gmap_canvas iframe {
     width: 100%;
     height: 35vh;
     padding-top: 10px;
-}
 
+}
+#slideSmall{
+    padding-left: 4px;
+}
 #slideSmall img{
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
 }
 
-/*.carousel-indicators,.input-group-prepend {*/
-    /*cursor: pointer;*/
-/*}*/
-/*.priceDisplay{*/
-    /*padding-left: 0px;*/
-/*}*/
-/*.todayDate{*/
-    /*padding-right: 0;*/
-/*}*/
+
+.carousel-indicators,.input-group-prepend {
+    cursor: pointer;
+}
+.priceDisplay{
+    padding-left: 0px;
+
+}
+.priceDisplay h2{
+    margin-left: 15px;
+
+}
+.todayDate{
+    padding-right: 0;
+}
+
+.locationDisplay{
+    margin-top:15px;
+    margin-bottom: 15px;
+    color: #52658F;
+}
+.titleCar{
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.carDesc{
+
+
+}
+
+/*Breadcrumb nav*/
+/*
+.breadcrumb{
+    background-color: inherit;
+    color: #52658F;
+}
+.breadcrumb-item + .breadcrumb-item::before{
+    content:">";
+}
+*/
+
+body.modal-open .main{
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+
+}
+
+.modal-dialog{
+    position: relative;
+    top:20vh;
+}
+
+.car-info {
+    background-color: #F7F5E6;
+}

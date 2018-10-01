@@ -1,0 +1,115 @@
+.btns {
+    background-color: #F7F5E6;
+
+}
+.btns:hover{
+    background-color: #f5eeba;
+}
+.thead{
+    background-color: #52658F;
+    color: #ffffff;
+}
+.table{
+    max-height:80vh;
+    margin-bottom:5px;
+
+}
+.thead th {
+    position: sticky;
+    top: 0;
+    background-color: #52658F;
+}
+#map {
+    height: 81vh;
+    margin-right: 15px;
+}
+
+.imgMarker{
+    width: 240px;
+    height: 190px;
+}
+
+#searchBtn{
+    border: none;
+    background-color: inherit;
+    padding: 14px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.mapBox{
+    float: right;
+
+}
+.btn-dark{
+    width: 100%;
+    background: #1A1A1A;
+    color:#ffffff;
+}
+#resultBox{
+    height: 65vh;
+    overflow: scroll;
+    width: 100%;
+}
+
+.home {
+    margin-top: 5px;
+}
+.titlePage{
+    margin: 0 10px 5px 20px;
+
+}
+
+.search-col {
+    height: 85vh;
+}
+
+.imgMarker{
+    width: 240px;
+    height: 190px;
+}
+.divFind{
+    color: #F7F5E6;
+    /*background-color: #52658F;*/
+    background-color: rgba(82,101,143, 0.9);
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    overflow: scroll;
+    height: 70vh;
+}
+
+.form-check{
+    padding-left: 2rem;
+}
+.divFind .dropdown{
+    margin-bottom:5px;
+}
+
+
+.btn-adv,.btn-adv:hover{
+    color: #F7F5E6;
+}
+
+.divFind button {
+    background-color: #E8E8E8;
+}
+
+.divFind .form-control {
+    background-color: #E8E8E8;
+}
+
+.my-button {
+    background-color: #F7F5E6;
+}
+.returnDisplay{
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.links{
+    color: #52658F;
+    cursor: pointer;
+
+}
