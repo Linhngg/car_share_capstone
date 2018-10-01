@@ -1,9 +1,11 @@
 <?php
 $url = parse_url("mysql://b6945b0591f9a5:46c9b293@us-cdbr-iron-east-01.cleardb.net/heroku_9e28bddd9d86bb1?reconnect=true");
+$url = parse_url("mysql://b214b2d0e2c345:04bfe688@us-cdbr-iron-east-01.cleardb.net/heroku_c49ce9d2fddad80?reconnect=true");
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $database = substr($url["path"], 1);
+
 return [
 
     /*
@@ -43,27 +45,13 @@ return [
             'prefix' => '',
         ],
 
-        'mysql' => [
-            'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'strict' => true,
-            'engine' => null,
-        ],
 //        'mysql' => [
 //            'driver' => 'mysql',
-//            'host' => env('DB_HOST', $host),
+//            'host' => env('DB_HOST', '127.0.0.1'),
 //            'port' => env('DB_PORT', '3306'),
-//            'database' => env('DB_DATABASE', $database),
-//            'username' => env('DB_USERNAME', $username),
-//            'password' => env('DB_PASSWORD', $password),
+//            'database' => env('DB_DATABASE', 'forge'),
+//            'username' => env('DB_USERNAME', 'forge'),
+//            'password' => env('DB_PASSWORD', ''),
 //            'unix_socket' => env('DB_SOCKET', ''),
 //            'charset' => 'utf8mb4',
 //            'collation' => 'utf8mb4_unicode_ci',
@@ -71,6 +59,20 @@ return [
 //            'strict' => true,
 //            'engine' => null,
 //        ],
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', $host),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', $database),
+            'username' => env('DB_USERNAME', $username),
+            'password' => env('DB_PASSWORD', $password),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
