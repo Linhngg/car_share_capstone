@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     protected $fillable = [
-        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate', 'brand', 'features', 'seats'
+        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate',
+        'brand', 'features', 'seats', 'price_rate'
     ];
 
     public function getReadableStatusAttribute()
