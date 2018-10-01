@@ -184,7 +184,7 @@ function initCarMarker (cars) {
 
             '<div id="bodyContent">'+
             '<h3 >'+marker.carData.model+'</h3>'+
-            '<p class="h4 text-muted">$10.00/hour</p>'+
+            '<p class="h4 text-muted">$'+marker.carData.price_rate+'/hour</p>'+
             '</div>'+
             '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
         '</div>';
@@ -253,7 +253,7 @@ function openClusterMarker (cluster) {
     for (let marker of cluster.getMarkers()){
         contentString += '<li class="list-group-item d-flex justify-content-between align-items-center" onclick="goBookPage('+marker.carData.id+')">'+
             marker.carData.model+
-            '<span class="badge badge-primary badge-pill">$10/hrs</span></li>'
+            '<span class="badge badge-primary badge-pill">$'+marker.carData.price_rate+'/hrs</span></li>'
     }
 
     contentString += '</ul>'+

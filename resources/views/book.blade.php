@@ -16,77 +16,15 @@
 
         <div class="row justify-content-center main" style="margin:0">
             <div class="col-md-11 col-sm-7">
-                {{--<nav aria-label="breadcrumb">
-                    <ol class="breadcrumb font-weight-bold" style="margin-bottom: 0px;padding-bottom: 0px;padding-left: 3px">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Book</li>
-                    </ol>
-                </nav>--}}
-                <h1 class="display-5 titleCar">Book for {{ $car->model }}</h1>
+                <h1 class="display-5 titleCar">Book for: {{ $car->model }}</h1>
             </div>
 
-            <div class="col-md-7 col-sm-5 border rounded" >
-
-                {{--    <div class="row" id="inputBox">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="pickupDate" class="font-weight-bold" >Pickup Date</label>
-                            <div class="input-group">
-                                <input type="date" id="pickupDate" disabled class="font-weight-bold text-info form-control todayDate" />
-                                <span class="input-group-prepend">
-                                 <span class="input-group-text rounded-right">
-                                    <i class="far fa-calendar-alt fa-lg"></i>
-                                 </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="pickupTime" class="font-weight-bold" >Pickup Time</label>
-                                <div class="input-group">
-                                    <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
-                                    <span class="input-group-prepend" onclick="timepickerFunc()">
-                                        <span class="input-group-text rounded-right">
-                                           <i class="far fa-clock fa-lg"></i>
-                                        </span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="returnDate" class="font-weight-bold">Return Date</label>
-                                <div class="input-group">
-                                    <input type="date" id="returnDate" disabled class="font-weight-bold text-info form-control todayDate" />
-                                        <span class="input-group-prepend">
-                                         <span class="input-group-text rounded-right">
-                                            <i class="far fa-calendar-alt fa-lg"></i>
-                                         </span>
-                                        </span>
-                                </div>
-                            </div>
-                        </div>
-                                --}}{{--wickedpicker--}}{{--
-                        <div class="col-md-3">
-                            <div class="form-group ">
-                                <label for="returnTime" class="font-weight-bold">Return Time</label>
-                                <div class="input-group">
-                                    <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
-                                    <span class="input-group-prepend" onclick="timepickerFunc()">
-                                        <span class="input-group-text rounded-right">
-                                           <i class="far fa-clock fa-lg"></i>
-                                        </span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
+            <div class="col-md-7 col-sm-5 border rounded car-info" >
                 <div class="row locationDisplay">
                     <div class="col-md-7">
                         <div class="form-group">
                             <h3 class="display-5">Pickup location</h3>
-                            <p class="font-weight-bold">Secure Parking - QV Car Park</p>
+                            <p class="font-weight-bold"> {{ $car_park->name }} - {{ $car_park->address }}</p>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -94,16 +32,10 @@
                             <h3 class="display-5">Price</h3>
                             <ul class="list-inline infoCar ">
                                 <li class="list-inline-item"> <p class="font-weight-bold">Price per hour</p> </li>
-                                <li class="form-check-inline text-center">  <p class="font-weight-bold">- $7.00</p></li>
+                                <li class="form-check-inline text-center">  <p class="font-weight-bold">- ${{$car->price_rate}}</p></li>
                             </ul>
                         </div>
                     </div>
-                    {{--  <div class="col-md-3">
-                        <div class="form-group">
-                            <h3 class="display-5">Return Location</h3>
-                             <p class="font-weight-bold text-info">Secure Parking - QV Car Park</p>
-                        </div>
-                    </div>--}}
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -131,7 +63,7 @@
                         </ul>
                         <ul class="list-inline infoCar">
                             <li class="list-inline-item"> <img class="img-thumbnail " src="{{url('/images/icons/person.png')}}" alt="Image person"/> </li>
-                            <li class="list-inline-item"> <p class="font-weight-bold">Up to 7 passenger</p></li>
+                            <li class="list-inline-item"> <p class="font-weight-bold">Up to {{ $car->seats }} passenger</p></li>
                         </ul>
                         <ul class="list-inline infoCar">
                             <li class="list-inline-item"> <img class="img-thumbnail " src="{{url('/images/icons/gearshift.svg')}}" alt="Image gear"/></li>
@@ -143,28 +75,47 @@
                     {{--2nd column--}}
                     <div class="col-md-4">
                         <h3 class="display-5">Car extras</h3>
-                        <ul class="list-inline infoCar">
-                            <li class="list-inline-item"><img class="img-thumbnail " src="{{url('/images/icons/bikeRack.png')}}" alt="Image bike rack"/></li>
-                            <li class="list-inline-item">   <p class="font-weight-bold">Bike Rack </p></li>
-                        </ul>
-                        <ul class="list-inline infoCar">
-                            <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/gpsCar.svg')}}" alt="Image car top"/></li>
-                            <li class="list-inline-item"> <p class="font-weight-bold">GPS system </p></li>
-                        </ul>
-                        <ul class="list-inline infoCar">
-                            <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/baby.png')}}" alt="Image car top"/></li>
-                            <li class="list-inline-item"> <p class="font-weight-bold">Child seat </p></li>
-                        </ul>
-                        <ul class="list-inline infoCar">
-                            <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/wheelchair.png')}}" alt="Image car top"/></li>
-                            <li class="list-inline-item"> <p class="font-weight-bold">Wheelchair accessible </p></li>
-                        </ul>
-
+                        @if (in_array('roof-rack', $features))
+                            <ul class="list-inline infoCar">
+                                <li class="list-inline-item"><img class="img-thumbnail " src="{{url('/images/icons/bikeRack.png')}}" alt="Image bike rack"/></li>
+                                <li class="list-inline-item"><p class="font-weight-bold">Roof Rack </p></li>
+                            </ul>
+                        @endif
+                        @if (in_array('bike-rack', $features))
+                            <ul class="list-inline infoCar">
+                                <li class="list-inline-item"><img class="img-thumbnail " src="{{url('/images/icons/bikeRack.png')}}" alt="Image bike rack"/></li>
+                                <li class="list-inline-item"><p class="font-weight-bold">Bike Rack </p></li>
+                            </ul>
+                        @endif
+                        @if (in_array('wheelchair', $features))
+                            <ul class="list-inline infoCar">
+                                <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/wheelchair.png')}}" alt="Image car top"/></li>
+                                <li class="list-inline-item"> <p class="font-weight-bold">Wheelchair accessible </p></li>
+                            </ul>
+                        @endif
+                        @if (in_array('gps', $features))
+                            <ul class="list-inline infoCar">
+                                <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/gpsCar.svg')}}" alt="Image car top"/></li>
+                                <li class="list-inline-item"> <p class="font-weight-bold">GPS system </p></li>
+                            </ul>
+                        @endif
+                        @if (in_array('child-seat', $features))
+                            <ul class="list-inline infoCar">
+                                <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/baby.png')}}" alt="Image car top"/></li>
+                                <li class="list-inline-item"> <p class="font-weight-bold">Child seat </p></li>
+                            </ul>
+                        @endif
+                        @if (in_array('cruise-control', $features))
+                            <ul class="list-inline infoCar">
+                                <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/cruise-control.png')}}" alt="Image car top"/></li>
+                                <li class="list-inline-item"> <p class="font-weight-bold">Cruise control</p></li>
+                            </ul>
+                        @endif
                     </div>
                     <div class="col-md-4">
                         <div class="">
                             <h3 class="display-5">Car type</h3>
-                            <p class="font-weight-bold">Toyota</p>
+                            <p class="font-weight-bold"> {{ $car->brand }}</p>
                         </div>
                     </div>
 
@@ -186,19 +137,19 @@
                             </ol>
                             <div class="carousel-inner rounded">
                                 <div class="carousel-item active">
-                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda1.jpg')}}" alt="First slide">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/car_images/'.$car->model.'/main.jpg')}}" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda2.jpg')}}" alt="Second slide">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/car_images/'.$car->model.'/side1.jpg')}}" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda3.jpg')}}" alt="Third slide">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/car_images/'.$car->model.'/side2.jpg')}}" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda4.jpg')}}" alt="Fourth slide">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/car_images/'.$car->model.'/side3.jpg')}}" alt="Fourth slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="img-fluid d-block w-100" src="{{url('/images/honda5.jpg')}}" alt="Fifth slide">
+                                    <img class="img-fluid d-block w-100" src="{{url('/images/car_images/'.$car->model.'/side4.jpg')}}" alt="Fifth slide">
                                 </div>
 
                             </div>
@@ -213,11 +164,11 @@
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2" id="slideSmall">
-                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="0" src="{{url('/images/honda1.jpg')}}" alt="slide 1 small image">
-                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="1" src="{{url('/images/honda2.jpg')}}" alt="slide 2 small image">
-                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="2" src="{{url('/images/honda3.jpg')}}" alt="slide 3 small image">
-                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="3" src="{{url('/images/honda4.jpg')}}" alt="slide 4 small image">
-                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="4" src="{{url('/images/honda5.jpg')}}" alt="slide 5 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="0" src="{{url('/images/car_images/'.$car->model.'/main.jpg')}}" alt="slide 1 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="1" src="{{url('/images/car_images/'.$car->model.'/side1.jpg')}}" alt="slide 2 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="2" src="{{url('/images/car_images/'.$car->model.'/side2.jpg')}}" alt="slide 3 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="3" src="{{url('/images/car_images/'.$car->model.'/side3.jpg')}}" alt="slide 4 small image">
+                        <img class="img-fluid rounded" data-target="#carousel" data-slide-to="4" src="{{url('/images/car_images/'.$car->model.'/side4.jpg')}}" alt="slide 5 small image">
                     </div>
                 </div>
                 <div class="row">
