@@ -4,6 +4,7 @@ var map = null;
 
 // Initialize and add the map
 function initMap() {
+    console.log(1)
     var carparks = JSON.parse(document.getElementById('content').dataset.carparks);
 
     //Init the map, centered at Melb CBD: -37.814, 144.96332
@@ -51,3 +52,8 @@ function recenterMap(lat,long) {
     map.panTo(center);
 }
 
+function setActive(ele) {
+    $('tr').removeClass('table-primary');
+    document.getElementById(ele).classList.add('table-primary');
+
+}

@@ -32,3 +32,5 @@ Route::post('/retireCar', 'AdminController@retireCar')->name('retireCar');
 Route::post('/return', 'BookingController@return')->name('return');
 Route::post('/postreturn', 'BookingController@post_return')->name('post_return');
 Route::post('/simupdate', 'AdminController@simUpdate')->name('simupdate');
+Route::get('/u/', 'UserDashboardController@index')->name('user');
+Route::get('/u/bookings', 'UserDashboardController@history')->name('user-bookings');

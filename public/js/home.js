@@ -140,6 +140,7 @@ function refreshMap (filteredCar) {
 
 // Initialize and add the map
 function initMap() {
+    console.log(1)
     loadCars()
 
     //Init the map, centered at Melb CBD: -37.814, 144.96332

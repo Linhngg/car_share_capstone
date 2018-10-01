@@ -1,0 +1,43 @@
+.thead{
+    background-color: #52658F;
+    color: #ffffff;
+}
+.table{
+    max-height:80vh;
+    margin-bottom:5px;
+}
+.thead th {
+    position: sticky;
+    top: 0;
+    background-color: #52658F;
+}
+.titlePage{
+    margin: 10px 10px 5px 20px;
+
+}
+#map {
+    height: 67vh;
+}
+
+.full-height {
+    height: 80vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 36px;
+    padding: 20px;
+}

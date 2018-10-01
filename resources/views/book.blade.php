@@ -14,7 +14,7 @@
 
     <div class="container-fluid" id="outerInputBox">
 
-        <div class="row justify-content-center" style="margin:0">
+        <div class="row justify-content-center main" style="margin:0">
             <div class="col-md-11 col-sm-7">
                 {{--<nav aria-label="breadcrumb">
                     <ol class="breadcrumb font-weight-bold" style="margin-bottom: 0px;padding-bottom: 0px;padding-left: 3px">
@@ -27,88 +27,84 @@
 
             <div class="col-md-7 col-sm-5 border rounded" >
 
-            {{--    <div class="row" id="inputBox">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="pickupDate" class="font-weight-bold" >Pickup Date</label>
-                        <div class="input-group">
-                            <input type="date" id="pickupDate" disabled class="font-weight-bold text-info form-control todayDate" />
-                            <span class="input-group-prepend">
-                             <span class="input-group-text rounded-right">
-                                <i class="far fa-calendar-alt fa-lg"></i>
-                             </span>
-                            </span>
+                {{--    <div class="row" id="inputBox">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="pickupDate" class="font-weight-bold" >Pickup Date</label>
+                            <div class="input-group">
+                                <input type="date" id="pickupDate" disabled class="font-weight-bold text-info form-control todayDate" />
+                                <span class="input-group-prepend">
+                                 <span class="input-group-text rounded-right">
+                                    <i class="far fa-calendar-alt fa-lg"></i>
+                                 </span>
+                                </span>
+                            </div>
                         </div>
-
                     </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="pickupTime" class="font-weight-bold" >Pickup Time</label>
+                                <div class="input-group">
+                                    <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
+                                    <span class="input-group-prepend" onclick="timepickerFunc()">
+                                        <span class="input-group-text rounded-right">
+                                           <i class="far fa-clock fa-lg"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="returnDate" class="font-weight-bold">Return Date</label>
+                                <div class="input-group">
+                                    <input type="date" id="returnDate" disabled class="font-weight-bold text-info form-control todayDate" />
+                                        <span class="input-group-prepend">
+                                         <span class="input-group-text rounded-right">
+                                            <i class="far fa-calendar-alt fa-lg"></i>
+                                         </span>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                                --}}{{--wickedpicker--}}{{--
+                        <div class="col-md-3">
+                            <div class="form-group ">
+                                <label for="returnTime" class="font-weight-bold">Return Time</label>
+                                <div class="input-group">
+                                    <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
+                                    <span class="input-group-prepend" onclick="timepickerFunc()">
+                                        <span class="input-group-text rounded-right">
+                                           <i class="far fa-clock fa-lg"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--}}
+                <div class="row locationDisplay">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <h3 class="display-5">Pickup location</h3>
+                            <p class="font-weight-bold">Secure Parking - QV Car Park</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group text-justify">
+                            <h3 class="display-5">Price</h3>
+                            <ul class="list-inline infoCar ">
+                                <li class="list-inline-item"> <p class="font-weight-bold">Price per hour</p> </li>
+                                <li class="form-check-inline text-center">  <p class="font-weight-bold">- $7.00</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{--  <div class="col-md-3">
+                        <div class="form-group">
+                            <h3 class="display-5">Return Location</h3>
+                             <p class="font-weight-bold text-info">Secure Parking - QV Car Park</p>
+                        </div>
+                    </div>--}}
                 </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="pickupTime" class="font-weight-bold" >Pickup Time</label>
-                            <div class="input-group">
-                                <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
-                                <span class="input-group-prepend" onclick="timepickerFunc()">
-                                    <span class="input-group-text rounded-right">
-                                       <i class="far fa-clock fa-lg"></i>
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="returnDate" class="font-weight-bold">Return Date</label>
-                            <div class="input-group">
-                                <input type="date" id="returnDate" disabled class="font-weight-bold text-info form-control todayDate" />
-                                    <span class="input-group-prepend">
-                                     <span class="input-group-text rounded-right">
-                                        <i class="far fa-calendar-alt fa-lg"></i>
-                                     </span>
-                                    </span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                            --}}{{--wickedpicker--}}{{--
-                    <div class="col-md-3">
-                        <div class="form-group ">
-                            <label for="returnTime" class="font-weight-bold">Return Time</label>
-                            <div class="input-group">
-                                <input type="text" id="pickupTime" onfocus="timepickerFunc()" name="timepicker" class="timepicker form-control"/>
-                                <span class="input-group-prepend" onclick="timepickerFunc()">
-                                    <span class="input-group-text rounded-right">
-                                       <i class="far fa-clock fa-lg"></i>
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>--}}
-                        <div class="row locationDisplay">
-                            <div class="col-md-7">
-                                <div class="form-group">
-                                    <h3 class="display-5">Pickup location</h3>
-                                      <p class="font-weight-bold">Secure Parking - QV Car Park</p>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="form-group text-justify">
-                                    <h3 class="display-5">Price</h3>
-                                    <ul class="list-inline infoCar ">
-                                        <li class="list-inline-item"> <p class="font-weight-bold">Price per hour</p> </li>
-                                        <li class="form-check-inline text-center">  <p class="font-weight-bold">- $7.00</p></li>
-                                    </ul>
-                               </div>
-                            </div>
-                            {{--  <div class="col-md-3">
-                                <div class="form-group">
-                                    <h3 class="display-5">Return Location</h3>
-                                     <p class="font-weight-bold text-info">Secure Parking - QV Car Park</p>
-                                </div>
-                            </div>--}}
-                        </div>
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="display-5">Car overview</h3>
@@ -163,19 +159,19 @@
                             <li class="list-inline-item "> <img class="img-thumbnail " src="{{url('/images/icons/wheelchair.png')}}" alt="Image car top"/></li>
                             <li class="list-inline-item"> <p class="font-weight-bold">Wheelchair accessible </p></li>
                         </ul>
+
                     </div>
                     <div class="col-md-4">
                         <div class="">
                             <h3 class="display-5">Car type</h3>
                             <p class="font-weight-bold">Toyota</p>
                         </div>
-                </div>
-                {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
-                {{ Form::hidden('id', $car->id) }}
-                <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn">Confirm</button>
-                {!! Form::close() !!}
+                    </div>
 
-        </div>
+
+                </div>
+                <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Confirm</button>
+            </div>
             {{--Slide images--}}
             <div class="col-md-4 col-sm-4 col-3" id="slide">
                 <div class="row">
@@ -235,12 +231,28 @@
                 </div>
             </div>
 
+        </div>
+        <!-- Popup -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Booking Confirmed <i class="fas fa-check-circle text-success"></i></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
+                        {{ Form::hidden('id', $car->id) }}
+                        <button type="submit" class="btn btnModal">Close</button>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-{{--    <script type="text/javascript" src="{{ asset('https://code.jquery.com/jquery-3.3.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/wickedpicker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/book.js') }}"></script>--}}
+    </div>\
 @endsection
 @section('assets')
 
