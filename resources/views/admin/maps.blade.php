@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('assets')
+    <!-- <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/simulation.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
@@ -8,7 +10,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script type="text/javascript" src="{{ asset('js/simdata.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/carsim.js') }}"></script>
-    <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -22,6 +23,12 @@
      */
     $i = 0;
     ?>
+    <script>
+        // global app configuration object
+        window.aboutUsLink = "{{URL::to('/simupdate')}}";
+        console.log(window.aboutUsLink);
+    </script>
+    <meta name="_token" content="{{csrf_token()}}" />
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             {{--side navbar --}}
@@ -37,6 +44,7 @@
                     <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left">&nbsp;Map</span></a>
                     <a href="{{ route('bookings') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Bookings</span></a>
                     <a href="{{ route('service') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Service</span></a>
+                    <a href="{{ route('retire') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Retire</span></a>
                 </div>
             </div>
             {{--main content--}}
@@ -69,8 +77,9 @@
         var cars = [];
 
         //Control box object constructor
-        //Controls: Auto, Run, Timescale, view nodes, view end
+        //Controls: Auto, Run, view nodes, view end, end sim
         //Welcome to the overloaded meme zone
+        //Uncomment for debug
         function controlBox(index, id, make){
             this.index = index;
 
@@ -83,16 +92,17 @@
 
             this.start = document.createElement('span');
 
-            this.timeScale = document.createElement('span');
-            this.timeScale.innerHTML = "</br>Timescale";
+            //this.viewNodes = document.createElement('span');
 
-            this.viewNodes = document.createElement('span');
+            //this.viewEnd = document.createElement('span');
 
-            this.viewEnd = document.createElement('span');
-            this.viewEnd.innerHTML = "</br>View End: <input type=\"checkbox\">";
+            this.forceEnd = document.createElement('span');
+
+            this.updateDB = document.createElement('span');
         };
 
         var controlBoxes = [];
+        var activeCar = new car(0, 0, 0, 0, 0, 0);
     </script>
     @foreach($cars as $car)
         @if($car->status == 0)
@@ -118,48 +128,27 @@
         <div id="control_panel"></div>
     </div>
 
-    <button id = "ajaxsubmit">Click me</button>
-
     <script type = "text/javascript">
         //Dynamically generate control panel for each car on the map
+        //Un comment for debug
         for(var i = 0; i < cars.length; i++){
             controlBoxes[i] = new controlBox(i, cars[i].id, cars[i].make);
             var tmpIndex = controlBoxes[i].index;
-            var tmpViewNodeId = "viewNode" + tmpIndex;
-            var tmpViewEndId = "viewEnd" + tmpIndex;
+            //var tmpViewNodeId = "viewNode" + tmpIndex;
+            //var tmpViewEndId = "viewEnd" + tmpIndex;
             controlBoxes[i].start.innerHTML = "</br><button onclick=\"startSimulation(" + tmpIndex + ")\">Start</button>";
-            controlBoxes[i].viewNodes.innerHTML = "</br>View Nodes: <input type=\"checkbox\"  id =\"" + tmpViewNodeId + "\" onclick=\"viewNodes(" + tmpIndex + ")\">";
-            controlBoxes[i].viewEnd.innerHTML = "</br>View End: <input type=\"checkbox\" id=\"" + tmpViewEndId + "\" onclick=\"viewEnd(" + tmpIndex + ")\">";
+            //controlBoxes[i].viewNodes.innerHTML = "</br>View Nodes: <input type=\"checkbox\"  id =\"" + tmpViewNodeId + "\" onclick=\"viewNodes(" + tmpIndex + ")\">";
+            //controlBoxes[i].viewEnd.innerHTML = "</br>View End: <input type=\"checkbox\" id=\"" + tmpViewEndId + "\" onclick=\"viewEnd(" + tmpIndex + ")\">";
+            controlBoxes[i].updateDB.innerHTML = "<button class = \"ajaxsubmit\" onclick = \"setActive(" + tmpIndex + ")\">Update db</button>";
+            controlBoxes[i].forceEnd.innerHTML = "<button onclick = \"forceEnd(" + tmpIndex + ")\">End Sim</button>";
             document.getElementById('control_panel').appendChild(controlBoxes[i].boxDiv);
             document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].auto);
             document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].start);
-            document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].timeScale);
-            document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].viewNodes);
-            document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].viewEnd);
+            //document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].viewNodes);
+            //document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].viewEnd);
+            document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].forceEnd);
+            document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].updateDB);
         };
-
-        //Asynchronous form submission to change the database
-        //Uses AJAX as to not disrupt the simulation
-        jQuery(document).ready(function(){
-            jQuery('#ajaxsubmit').click(function(e){
-                e.preventDefault();
-                $.ajaxSetup({
-                    headers:{
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                });
-                jQuery.ajax({
-                    url: "{{url('/simupdate')}}",
-                    method: 'post',
-                    data: {
-
-                    },
-                    success: function(result){
-                        console.log(result);
-                    }
-                })
-            });
-        });
 
         function submitForm() {
             var http = new XMLHttpRequest();
@@ -176,6 +165,8 @@
         function startSimulation(index){
             cars[index].running = true;
         }
+    </script>
+    <script type = "text/javascript">
     </script>
     </body>
     </html>
