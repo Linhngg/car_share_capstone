@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $user = Auth::user();
