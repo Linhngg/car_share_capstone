@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'current_booking_id' => -1,
+            'type' => User::DEFAULT_TYPE
         ]);
     }
 }
