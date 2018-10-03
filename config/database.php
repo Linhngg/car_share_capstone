@@ -1,9 +1,9 @@
 <?php
-$url = parse_url("mysql://b6945b0591f9a5:46c9b293@us-cdbr-iron-east-01.cleardb.net/heroku_9e28bddd9d86bb1?reconnect=true");
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
+//$url = parse_url("mysql://b04ffcbf0605b2:1ed62efc@us-cdbr-iron-east-01.cleardb.net/heroku_6bfd2f3c9dc7b61?reconnect=true");
+//$host = $url["host"];
+//$username = $url["user"];
+//$password = $url["pass"];
+//$database = substr($url["path"], 1);
 return [
 
     /*
@@ -71,6 +71,16 @@ return [
 //            'strict' => true,
 //            'engine' => null,
 //        ],
+//        'mysql' => array(
+//            'driver'    => 'mysql',
+//            'host'      => $host,
+//            'database'  => $database,
+//            'username'  => $username,
+//            'password'  => $password,
+//            'charset'   => 'utf8',
+//            'collation' => 'utf8_unicode_ci',
+//            'prefix'    => '',
+//        ),
 
         'pgsql' => [
             'driver' => 'pgsql',

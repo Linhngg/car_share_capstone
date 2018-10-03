@@ -7,6 +7,11 @@ use App\Car;
 
 class simulation extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin_auth');
+    }
+
     //
     public function index()
     {

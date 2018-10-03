@@ -12,10 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function book($id)
     {
         $car = Car::find($id);
-        return view('book')->with('car', $car);
+        $features = json_decode($car->features);
+        $car_park = Carpark::where('lat', $car->lat)->where('long', $car->long)->first();
+        return view('book')->with('car', $car)->with('features', $features)->with('car_park', $car_park);
     }
 
     public function confirm(Request $request)
