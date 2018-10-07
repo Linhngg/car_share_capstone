@@ -16,14 +16,14 @@
         <table class="table table-hover rounded table-bordered ">
             <thead class="thead">
             <tr>
-                <th>Id</th>
-                <th>Car</th>
-                <th>Book Date</th>
-                <th>Start Time</th>
-                <th>Return Date</th>
-                <th>Return Time</th>
-                <th>Total Time</th>
-                <th>Total Fee</th>
+                <th class="border-right-0 border-left-0">Id</th>
+                <th class="border-right-0 border-left-0">Car</th>
+                <th class="border-right-0 border-left-0">Book Date</th>
+                <th class="border-right-0 border-left-0">Start Time</th>
+                <th class="border-right-0 border-left-0">Return Date</th>
+                <th class="border-right-0 border-left-0">Return Time</th>
+                <th class="border-right-0 border-left-0">Total Time</th>
+                <th class="border-right-0 border-left-0">Total Fee</th>
             </tr>
             </thead>
             <tbody>
