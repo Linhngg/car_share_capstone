@@ -113,6 +113,14 @@ class ProgrammaticalCarsTableSeeder extends Seeder
             144.958348
         ];
 
+        $price_rates = [
+            1,
+            2.5,
+            5,
+            7.5,
+            10
+        ];
+
         for ($i = 0; $i < 51; $i++) {
             $odometer = $odometers[rand(0, count($odometers)-1)];
             $serviceInterval = $serviceIntervals[rand(0, count($serviceIntervals)-1)];
@@ -123,6 +131,7 @@ class ProgrammaticalCarsTableSeeder extends Seeder
             $car_features = array_unique($car_features);
             $model_index = rand(0, count($car_models)-1);
             $carpark_index = rand(0, count($carparks_lat)-1);
+            $price_rate_index = rand(0, count($price_rates)-1);
 
             DB::table('cars')->insert([
                 'model' => $car_models[$model_index],
@@ -137,7 +146,8 @@ class ProgrammaticalCarsTableSeeder extends Seeder
                 'lastServiceDate' => date('Y-m-d', strtotime('-5 days', strtotime('2018-9-7'))),
                 'created_at' => date("Y-m-d"),
                 'updated_at' => date("Y-m-d"),
-                'features' => json_encode($car_features)
+                'features' => json_encode($car_features),
+                'price_rate' => $price_rates[$price_rate_index]
             ]);
         }
     }

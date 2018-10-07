@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Booking extends Model
 {
     protected $fillable = [
-        'id', 'user_id', 'car_id', 'start', 'end'
+        'id', 'user_id', 'car_id', 'start', 'end', 'total_fee', 'penalty_fee', 'final_fee'
     ];
 
     public function make(int $car_id, int $user_id)
@@ -18,6 +18,9 @@ class Booking extends Model
         $this->car_id = $car_id;
         $this->start =  date("Y-m-d H:i:s");
         $this->end =  date("Y-m-d H:i:s");
+        $this->total_fee = 0;
+        $this->penalty_fee = 0;
+        $this->final_fee = 0;
 
         $this->created_at =  date("Y-m-d H:i:s");
         $this->updated_at =  date("Y-m-d H:i:s");
@@ -43,6 +46,11 @@ class Booking extends Model
         $car = Car::find($this->car_id);
         $carpark = Carpark::find($carpark_id);
         $car->return($carpark);
+        //Update fee
+        $rate = $car->price_rate;
+        $this->total_fee = round( abs((new \DateTime($this->start))->getTimestamp() - (new \DateTime($this->end))->getTimestamp()) / 60 * $rate, 2);
+        $this->final_fee = $this->total_fee + $this->penalty_fee;
+        $this->save();
     }
 
     function user() {

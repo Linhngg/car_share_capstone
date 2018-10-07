@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     protected $fillable = [
-        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate', 'brand', 'features', 'seats'
+        'id', 'model', 'status', 'lat', 'long', 'updated_at', 'odometer', 'lastServiceOdometer', 'serviceInterval', 'lastServiceDate',
+        'brand', 'features', 'seats', 'price_rate'
     ];
 
     public function getReadableStatusAttribute()
@@ -68,6 +69,18 @@ class Car extends Model
         return $readableStatus;
     }
 
+    public function getRetireRangeAttribute(){
+        $createdYear = $this->created_at->format('Y');
+        $curYear  = date("Y");
+        $readableStatus = 'default';
+        if($curYear - $createdYear >= 5)
+            $readableStatus = true;
+        else
+            $readableStatus = false;
+
+        return $readableStatus;
+    }
+
     public function service(){
         if($this->status != 2){
             $this->status = 2;
@@ -123,11 +136,11 @@ class Car extends Model
         return false;
     }
 
-//    public function update($lat, $long, $distance){
-//        $this->lat =  $lat;
-//        $this->long = $long;
-//        $this->odometer += $distance;
-//        $this->save();
-//        return true;
-//    }
+    public function simulationUpdate($lat, $long, $distance){
+        $this->lat =  $lat;
+        $this->long = $long;
+        $this->odometer += $distance;
+        $this->save();
+        return true;
+    }
 }

@@ -92,6 +92,8 @@ body.modal-open .main{
 .modal-dialog{
     position: relative;
     top:20vh;
+}
 
-
+.car-info {
+    background-color: #F7F5E6;
 }
