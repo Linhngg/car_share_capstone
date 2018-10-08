@@ -203,7 +203,9 @@ label span {
     color: #cfcfcf;
     text-transform: uppercase;
 }
-
+.font-primary{
+    color: #333A56;
+}
 input {
     display: block;
     width: 100%;

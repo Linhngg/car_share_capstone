@@ -186,7 +186,7 @@ function initCarMarker (cars) {
             '<h3 >'+marker.carData.model+'</h3>'+
             '<p class="h4 text-muted">$'+marker.carData.price_rate+'/hour</p>'+
             '</div>'+
-            '<button onclick="goBookPage('+marker.carData.id+')">Book now</button>'
+            '<button class="btn btnFind btn-block font-weight-bold text-uppercase my-button" onclick="goBookPage('+marker.carData.id+')">Book now</button>'
         '</div>';
 
         marker.infoWindow = new google.maps.InfoWindow({
