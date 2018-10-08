@@ -5,24 +5,23 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/simulation.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
     <script type="text/javascript" src="{{ asset('js/simdata.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/carsim.js') }}"></script>
+
 @endsection
 
 @section('content')
-
+    <title>Car Simulation</title>
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: Curtis
-     * Date: 17/08/2018
-     * Time: 4:10 PM
-     */
+
     $i = 0;
     ?>
+
     <script>
         // global app configuration object
         window.aboutUsLink = "{{URL::to('/simupdate')}}";
@@ -40,16 +39,16 @@
                     <div id="sidebarTitleCollapse" class="d-inline-block ">
                         {{--<i  class="fas fa-car-side fa-lg text-light"></i>--}} <h5 class="text-light font-weight-bold">Admin</h5>
                     </div>
-                    <a href="{{ route('dashboard') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-warning font-weight-bold"><i class="fas fa-home fa-lg img-fluid"></i> <span class="text-left">Dashboard</span></a>
-                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left">&nbsp;Map</span></a>
+                    <a href="{{ route('dashboard') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-home fa-lg img-fluid"></i> <span class="text-left">Dashboard</span></a>
+                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-warning font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left">&nbsp;Map</span></a>
                     <a href="{{ route('bookings') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Bookings</span></a>
                     <a href="{{ route('service') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Service</span></a>
                     <a href="{{ route('retire') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Retire</span></a>
                 </div>
             </div>
             {{--main content--}}
-            <main class="col-md-10 float-left">
-                <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
+            <main class="main col-md-10 float-left">
+              <!--  <a class="navbar-toggler"id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a>-->
                 <h1>Simulation</h1>
             </main>
         </div>
@@ -88,7 +87,7 @@
             this.boxDiv.id = id + make;
 
             this.auto = document.createElement('span');
-            this.auto.innerHTML = "Sim start: " + make;
+            this.auto.innerHTML = "Car name: " + make;
 
             this.start = document.createElement('span');
 
@@ -118,15 +117,16 @@
             <?php $i++ ?>
         @endif
     @endforeach
-    <!DOCTYPE html>
-    <head>
-        <title>Car Simulation</title>
-    </head>
-    <body>
+
     <div id="container">
-        <div id="map"></div>
-        <div id="control_panel"></div>
+            <div id="map"></div>
+            <div class="outer">
+                <div id="control_panel" class="card font-weight-normal">
+                    <h3 class="card-title">Control Panel</h3>
+                </div>
+            </div>
     </div>
+
 
     <script type = "text/javascript">
         //Dynamically generate control panel for each car on the map
@@ -136,11 +136,11 @@
             var tmpIndex = controlBoxes[i].index;
             //var tmpViewNodeId = "viewNode" + tmpIndex;
             //var tmpViewEndId = "viewEnd" + tmpIndex;
-            controlBoxes[i].start.innerHTML = "</br><button onclick=\"startSimulation(" + tmpIndex + ")\">Start</button>";
+            controlBoxes[i].start.innerHTML = "</br><button class='font-weight-bold btn' onclick=\"startSimulation(" + tmpIndex + ")\">Start</button>";
             //controlBoxes[i].viewNodes.innerHTML = "</br>View Nodes: <input type=\"checkbox\"  id =\"" + tmpViewNodeId + "\" onclick=\"viewNodes(" + tmpIndex + ")\">";
             //controlBoxes[i].viewEnd.innerHTML = "</br>View End: <input type=\"checkbox\" id=\"" + tmpViewEndId + "\" onclick=\"viewEnd(" + tmpIndex + ")\">";
-            controlBoxes[i].updateDB.innerHTML = "<button class = \"ajaxsubmit\" onclick = \"setActive(" + tmpIndex + ")\">Update db</button>";
-            controlBoxes[i].forceEnd.innerHTML = "<button onclick = \"forceEnd(" + tmpIndex + ")\">End Sim</button>";
+                controlBoxes[i].updateDB.innerHTML = "<button class =\"ajaxsubmit\" onclick = \"setActive(" + tmpIndex + ")\">Update DB</button>";
+            controlBoxes[i].forceEnd.innerHTML = "<button class='font-weight-bold btn'  onclick = \"forceEnd(" + tmpIndex + ")\">End Sim</button>";
             document.getElementById('control_panel').appendChild(controlBoxes[i].boxDiv);
             document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].auto);
             document.getElementById(controlBoxes[i].boxDiv.id).appendChild(controlBoxes[i].start);
@@ -166,7 +166,5 @@
             cars[index].running = true;
         }
     </script>
-    <script type = "text/javascript">
-    </script>
-    </body>
-    </html>
+
+    @endsection

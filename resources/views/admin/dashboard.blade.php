@@ -32,16 +32,16 @@
             </div>
             {{--main content--}}
             <main class="col-md-10 float-left">
-                <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
-                <h1>dashboard</h1>
-                <table class="table table-hover rounded table-bordered ">
-                    <thead class="thead-dark">
+                <a class="navbar-toggler"id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a>
+                <h1>All Cars </h1>
+                <table class="table table-hover rounded table-bordered">
+                    <thead class="thead">
                     <tr>
-                        <th scope="col"> Car Make/Model</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Odometer</th>
-                        <th scope="col">Service Status</th>
+                        <th scope="col" class="border-right-0 border-left-0"> Car Make/Model</th>
+                        <th scope="col" class="border-right-0 border-left-0">Location</th>
+                        <th scope="col" class="border-right-0 border-left-0">Status</th>
+                        <th scope="col" class="border-right-0 border-left-0">Odometer</th>
+                        <th scope="col" class="border-right-0 border-left-0">Service Status</th>
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">

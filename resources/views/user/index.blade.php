@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('assets')
-    <link href="{{ asset('css/history.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/index-user.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/userdashboard.js') }}"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPWvU7gcEWfLVo5nFPBbM9AL3KfYHqTaU&callback=initMap">

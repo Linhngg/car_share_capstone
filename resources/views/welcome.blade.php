@@ -62,8 +62,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            .logo{
-                width:35%;
+            .welcome-logo{
+                width:135%;
+                position: relative;
+                right: 80px;
             }
         </style>
     </head>
@@ -84,8 +86,8 @@
 
             <div class="content">
                 <div class="title">
-                    <img class="logo" src="{{url('/images/logo1.png')}}" alt="Image logo"/>
-                    Car Share
+                    <img class="welcome-logo" src="{{url('/images/logo.png')}}" alt="Image logo"/>
+
                 </div>
 
                 <div class="links">
