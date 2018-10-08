@@ -4,8 +4,8 @@ var map;
 
 window.onload = function() {
     var mapOptions = {
-    zoom: 16,
-    center: new google.maps.LatLng(-37.836711, 144.914824),
+    zoom: 14,
+    center: new google.maps.LatLng( -37.814,  144.96332),
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 

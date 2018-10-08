@@ -1,26 +1,10 @@
-.thead{
-    background-color: #52658F;
-    color: #F7F5E6;
-}
-.titlePage{
-    margin: 10px 10px 5px 20px;
-
-}
-.content {
-    text-align: center;
-}
-
-.title {
-    font-size: 36px;
-    padding: 20px;
-}
 table {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    height: 79vh;
+    height: 34vh;
 }
 
 table * {
@@ -47,16 +31,12 @@ thead > tr, tbody > tr, tfoot > tr {
 
 thead{
     flex-shrink: 0;
+    background-color: #52658F;
+    color: #ffffff;
 }
 
-th {
-    width: 19%;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-}
-tbody td{
-    width: 25%;
+th, tbody td {
+    width: 20%;
     overflow-x: hidden;
     text-overflow: ellipsis;
     display: inline-block;

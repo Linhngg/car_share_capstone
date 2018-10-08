@@ -1,5 +1,7 @@
 
-
+.wrapper{
+    margin-bottom:3px;
+}
 #sidebar {
     overflow: hidden;
     z-index: 3;
