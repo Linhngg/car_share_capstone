@@ -18,7 +18,7 @@
     width: 20%;
     height: 55vh;
     overflow: hidden;
-    display: flex;
+    display:block;
     position:absolute;
     top:250px;
     left:325px;

@@ -60,4 +60,26 @@ class UserHttpTest extends TestCase
 
         $response->assertStatus(200);
     }
+    public function testGetNonExistPageAsUser()
+    {    $user = factory(User::class)->create([
+            'current_booking_id' => -1,
+            'type' => User::DEFAULT_TYPE
+        ]);
+            $response = $this->actingAs($user)->get('/NotExist');
+
+            $response->assertStatus(404);
+    }
+
+    public function testGetWelcomePageAsUser()
+    {
+        $user = factory(User::class)->create([
+            'current_booking_id' => -1,
+            'type' => User::DEFAULT_TYPE
+        ]);
+
+        $response = $this->actingAs($user)
+            ->get('/');
+
+        $response->assertStatus(200);
+    }
 }
