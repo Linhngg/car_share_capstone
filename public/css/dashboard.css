@@ -42,3 +42,7 @@ th, tbody td {
     text-overflow: ellipsis;
     display: inline-block;
 }
+.btnSubmit{
+    background-color: #F7F5E6;
+    color: #333A56;
+}
