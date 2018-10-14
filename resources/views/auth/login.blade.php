@@ -163,7 +163,7 @@
                 @csrf
                 <h2>Welcome back,</h2>
                 <label>
-                    <span>Email</span>
+                    <span class="font-weight-normal font-primary">Email</span>
                     <input id="email" type="email" class=" border-top-0 border-right-0 border-left-0 form-text form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required autofocus>
 
                     @if ($errors->has('email'))
@@ -173,7 +173,7 @@
                     @endif
                 </label>
                 <label>
-                    <span>Password</span>
+                    <span class="font-weight-normal font-primary">Password</span>
                     <input id="password" type="password"
                            class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                     @if ($errors->has('password'))

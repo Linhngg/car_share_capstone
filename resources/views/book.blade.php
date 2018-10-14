@@ -121,7 +121,7 @@
 
 
                 </div>
-                <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Book</button>
+                <button type="submit" class="btn float-right btn-lg d-block font-weight-bold" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Book Car</button>
             </div>
             {{--Slide images--}}
             <div class="col-md-4 col-sm-4 col-3" id="slide">

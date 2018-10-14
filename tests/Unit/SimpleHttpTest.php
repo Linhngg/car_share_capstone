@@ -20,7 +20,7 @@ class SimpleHttpTest extends TestCase
 
     public function testNonExistingUrl()
     {
-        $response = $this->get('/uansjas');
+        $response = $this->get( '/NotExist');
 
         $response->assertStatus(404);
     }

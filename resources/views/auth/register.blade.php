@@ -197,7 +197,7 @@
                 @csrf
                 <h2>Time to feel like home,</h2>
                 <label>
-                    <span>Name</span>
+                    <span class="font-primary font-weight-normal">Name</span>
                     <input id="name" type="text" class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                     @if ($errors->has('name'))
@@ -207,7 +207,7 @@
                     @endif
                 </label>
                 <label>
-                    <span>Email</span>
+                    <span class="font-weight-normal font-primary">Email</span>
                     <input type ="email" class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" name="email" required autofocus>
                     @if ($errors->has('Email'))
                         <span class="invalid-feedback" role="alert">
@@ -217,7 +217,7 @@
                 </label>
 
                 <label>
-                    <span>Password</span>
+                    <span class="font-weight-normal font-primary">Password</span>
                     <input  type="password" class=" border-top-0 border-right-0 border-left-0 form-text form-control{{ $errors->has('Password') ? ' is-invalid' : '' }}" name="password" required>
                     @if ($errors->has('Password'))
                         <span class="invalid-feedback" role="alert">
@@ -225,8 +225,9 @@
                         </span>
                     @endif
                 </label>
+
                 <label>
-                    <span>Confirm password</span>
+                    <span class="font-weight-normal font-primary">Confirm password</span>
                     <input id="password-confirm" type="password" class="border-top-0 border-right-0 border-left-0 form-control form-text" name="password_confirmation" required>
                 </label>
                 <button type="submit" class="submit btn-dark">Sign Up</button>

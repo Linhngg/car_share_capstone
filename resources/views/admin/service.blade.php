@@ -30,7 +30,7 @@
                         {{--<i  class="fas fa-car-side fa-lg text-light"></i>--}} <h5 class="text-light font-weight-bold">Admin</h5>
                     </div>
                     <a href="{{ route('dashboard') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-home fa-lg img-fluid"></i> <span class="text-left">Dashboard</span></a>
-                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left">&nbsp;Map</span></a>
+                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left"> Map simulation</span></a>
                     <a href="{{ route('bookings') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Bookings</span></a>
                     <a href="{{ route('service') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-warning font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Service</span></a>
                     <a href="{{ route('retire') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Retire</span></a>
@@ -38,8 +38,8 @@
             </div>
             {{--main content--}}
             <main class="col-md-10 float-left">
-                <a class="navbar-toggler"id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a>
-                <h1>Service</h1>
+                <a class="navbar-toggler" id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a>
+                <h1>Cars need service</h1>
                 <table class="table table-hover rounded table-bordered ">
                     <thead class="thead">
                     <tr>
@@ -61,7 +61,7 @@
                                 <td>
                                     {!! Form::open(['method' => 'POST', 'route' => 'sendService', ]) !!}
                                     {{ Form::hidden('id', $car->id) }}
-                                    <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Service</button>
+                                    <button type="submit" class="btn btn-lg d-block font-weight-bold btnSubmit" id="bookBtn">Service</button>
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
@@ -69,7 +69,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <h1>In Service</h1>
+                <h1>Cars in service</h1>
                 <table class="table table-hover rounded table-bordered">
                     <thead class="thead">
                         <tr>
@@ -91,7 +91,7 @@
                                     <td>
                                         {!! Form::open(['method' => 'POST', 'route' => 'releaseService', ]) !!}
                                         {{ Form::hidden('id', $car->id) }}
-                                        <button type="submit" class="btn float-right btn-lg btn-dark d-block " id="bookBtn">Release</button>
+                                        <button type="submit" class="btn btn-lg d-block font-weight-bold btnSubmit" id="bookBtn">Release</button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
