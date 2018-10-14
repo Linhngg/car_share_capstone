@@ -3,7 +3,6 @@
 @section('assets')
     <link href="{{ asset('css/book.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('https://code.jquery.com/jquery-3.3.1.slim.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/wickedpicker.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/book.js') }}"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -16,7 +15,7 @@
 
         <div class="row justify-content-center main" style="margin:0">
             <div class="col-md-11 col-sm-7">
-                <h1 class="display-5 titleCar">Book for: {{ $car->model }}</h1>
+                <h1 class="display-5 titleCar">Book for: {{ $car->model }} {{$car->id}}</h1>
             </div>
 
             <div class="col-md-7 col-sm-5 border rounded car-info" >
@@ -24,7 +23,8 @@
                     <div class="col-md-7">
                         <div class="form-group">
                             <h3 class="display-5">Pickup location</h3>
-                            <p class="font-weight-bold"> {{ $car_park->name }} - {{ $car_park->address }}</p>
+                            <p class="font-weight-bold"> {{ $car_park->name }} - {{ $car_park->address }} </p>
+
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -41,10 +41,10 @@
                     <div class="col-md-12">
                         <h3 class="display-5">Car overview</h3>
                         <p class="font-weight-bold">
-                        <ul>
-                            <li class="font-weight-normal text-justify ">The company continued to work at its regular pace. In 1972, the P250 Urraco, the 400 GT Jarama, the 400 GT Espada .</li>
-                            <li class="font-weight-normal text-justify">In 1972, the Urraco, which had experienced several initial slowdowns, was finally put into production. </li>
-                        </ul>
+                            <ul>
+                                <li class="font-weight-normal text-justify ">The company continued to work at its regular pace. In 1972, the P250 Urraco, the 400 GT Jarama, the 400 GT Espada .</li>
+                                <li class="font-weight-normal text-justify">In 1972, the Urraco, which had experienced several initial slowdowns, was finally put into production. </li>
+                            </ul>
                         </p>
                     </div>
                 </div>
@@ -121,12 +121,12 @@
 
 
                 </div>
-                <button type="submit" class="btn float-right btn-lg d-block" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Confirm</button>
+                <button type="submit" class="btn float-right btn-lg d-block font-weight-bold" id="bookBtn"  data-toggle="modal" data-target="#exampleModal">Book Car</button>
             </div>
             {{--Slide images--}}
             <div class="col-md-4 col-sm-4 col-3" id="slide">
                 <div class="row">
-                    <div class="col-md-10" style="padding-right: 0px!important;">
+                    <div class="col-md-10" style="padding-right: 0 !important;">
                         <div id="carousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -187,23 +187,23 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header border-bottom-0">
                         <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Booking Confirmed <i class="fas fa-check-circle text-success"></i></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-top-0">
                         {!! Form::open(['method' => 'POST', 'route' => 'confirm-booking', ]) !!}
                         {{ Form::hidden('id', $car->id) }}
-                        <button type="submit" class="btn btnModal">Close</button>
+                        <button type="submit" class="btn btnModal">Confirm</button>
                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>\
+    </div>
 @endsection
 @section('assets')
 

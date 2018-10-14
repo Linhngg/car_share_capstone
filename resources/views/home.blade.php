@@ -53,8 +53,10 @@
                                         <option value="7">7</option>
                                     </select>
                                 </div>
-
+                                <div class="form-control">
+                                    <h5 class="font-weight-bold" style="margin-bottom: 0">Amenities</h5>
                                 <div class="form-control border-0 form-check check">
+
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="child-seat">
                                     <label class="form-check-label" for="checkboxChild">Child seat</label><br>
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="gps">
@@ -68,7 +70,7 @@
                                     <input type="checkbox" class="form-check-input" name="carFeatures" value="roof-rack">
                                     <label class="form-check-label" for="checkboxRack">Roof rack</label><br>
                                 </div>
-
+                                </div>
                             </div>
                             <button class="btn btnFind btn-block font-weight-bold text-uppercase my-button" onclick="filterCars()">Find cars</button>
                         </div>

@@ -24,7 +24,7 @@
                         {{--<i  class="fas fa-car-side fa-lg text-light"></i>--}} <h5 class="text-light font-weight-bold">Admin</h5>
                     </div>
                     <a href="{{ route('dashboard') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-warning font-weight-bold"><i class="fas fa-home fa-lg img-fluid"></i> <span class="text-left">Dashboard</span></a>
-                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left">&nbsp;Map</span></a>
+                    <a href="{{ route('maps') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-globe-asia fa-lg img-fluid"></i><span class="text-left"> Map simulation</span></a>
                     <a href="{{ route('bookings') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Bookings</span></a>
                     <a href="{{ route('service') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Service</span></a>
                     <a href="{{ route('retire') }}" class="nav-item border-0 list-group-item d-inline-block collapsed text-light font-weight-bold"><i class="fas fa-table fa-lg img-fluid"></i> <span class="text-left">Retire</span></a>
@@ -32,16 +32,16 @@
             </div>
             {{--main content--}}
             <main class="col-md-10 float-left">
-                <a id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="fas fa-bars text-dark"></i></a>
-                <h1>dashboard</h1>
-                <table class="table table-hover rounded table-bordered ">
-                    <thead class="thead-dark">
+                <a class="navbar-toggler" id="sidebarCollapse" href="#" data-target="#sidebar" data-toggle="collapse"><i class="navbar-toggler-icon fas fa-bars text-dark float-left"></i></a>
+                <h1>All Cars </h1>
+                <table class="table table-hover rounded table-bordered">
+                    <thead class="thead">
                     <tr>
-                        <th scope="col"> Car Make/Model</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Odometer</th>
-                        <th scope="col">Service Status</th>
+                        <th scope="col" class="border-right-0 border-left-0"> Car Make/Model</th>
+                        <th scope="col" class="border-right-0 border-left-0">Location</th>
+                        <th scope="col" class="border-right-0 border-left-0">Status</th>
+                        <th scope="col" class="border-right-0 border-left-0">Odometer</th>
+                        <th scope="col" class="border-right-0 border-left-0">Service Status</th>
                     </tr>
                     </thead>
                     <tbody class="font-weight-bold">

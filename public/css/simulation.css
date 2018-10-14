@@ -1,17 +1,50 @@
 #map {
-    width: 70%;
+   width: 82%;
     display: inline-block;
+    max-height: 82vh;
+    margin-left: 1px;
 }
-
+.main{
+    margin-top:3px;
+}
 #control_panel {
-    width: 10%;
-    height: 80%;
-    display: inline-block;
-    overflow: scroll;
     margin: auto;
+    padding:10px 10px 10px 10px;
+    color:#333A56;
+    flex: 1;
+    overflow-y: scroll;
+}
+.outer{
+    width: 20%;
+    height: 55vh;
+    overflow: hidden;
+    display:block;
+    position:absolute;
+    top:250px;
+    left:325px;
+    flex-direction: column;
 }
 
 .controller{
-    margin-bottom: 5px;
-    border: solid black 1px;
+    margin-bottom: 15px;
+
+}
+.controller button{
+    margin:2px 3px 0 3px;
+    display: inline-block;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    cursor: pointer;
+
+}
+.controller button:hover{
+    background-color: #cdcbbb;
 }
